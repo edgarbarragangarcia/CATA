@@ -19,13 +19,12 @@ export default function Home() {
         <ScrollReveal yOffset={40} className="text-center max-w-5xl mx-auto flex flex-col items-center">
           
           {/* Photo Presentation */}
-          <div className="relative w-48 h-48 md:w-64 md:h-64 mb-10 md:mb-14 rounded-full overflow-hidden shadow-2xl border-4 border-white/50">
-            <div className="absolute inset-0 bg-brand-amber rounded-full blur-3xl opacity-30 mix-blend-multiply" />
+          <div className="relative w-[280px] sm:w-[320px] md:w-[400px] mb-10 md:mb-14 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50">
+            <div className="absolute inset-0 bg-brand-amber blur-3xl opacity-30 mix-blend-multiply" />
             <Image 
               src={cataImg} 
               alt="Cata Ayala" 
-              fill 
-              className="object-cover object-top"
+              className="w-full h-auto object-cover object-top relative z-10"
               priority
             />
           </div>
