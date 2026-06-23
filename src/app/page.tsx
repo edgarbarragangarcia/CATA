@@ -25,7 +25,7 @@ export default function Home() {
               src={cataImg} 
               alt="Cata Ayala" 
               fill 
-              className="object-cover"
+              className="object-cover object-top"
               priority
             />
           </div>
