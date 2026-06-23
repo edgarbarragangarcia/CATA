@@ -15,41 +15,49 @@ export default function Home() {
       <Navbar />
 
       {/* 1. HERO SECTION (El Espíritu 101%) */}
-      <section id="hero" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-32 pb-20">
-        <ScrollReveal yOffset={40} className="text-center max-w-5xl mx-auto flex flex-col items-center">
+      <section id="hero" className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 pt-32 pb-20">
+        <ScrollReveal yOffset={40} className="w-full max-w-6xl mx-auto">
           
-          {/* Photo Presentation */}
-          <div className="relative w-[280px] sm:w-[320px] md:w-[400px] mb-10 md:mb-14 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50">
-            <div className="absolute inset-0 bg-brand-amber blur-3xl opacity-30 mix-blend-multiply" />
-            <Image 
-              src={cataImg} 
-              alt="Cata Ayala" 
-              className="w-full h-auto object-cover object-top relative z-10"
-              priority
-            />
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            
+            {/* Text Presentation */}
+            <div className="text-center md:text-left flex flex-col items-center md:items-start order-2 md:order-1">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-navy mb-6 md:mb-8 leading-[1.15]">
+                <span className="block mb-2 md:mb-3">Gózate la vida:</span>
+                <span
+                  className="font-serif block pb-2 text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight"
+                  style={{
+                    background: 'linear-gradient(135deg, #8B6914 0%, #C8920A 25%, #8B6914 50%, #B8830A 75%, #6B4F0A 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  El arte de vivir y tomar decisiones con propósito, criterio y una actitud al 101%
+                </span>
+              </h1>
+              <div className="w-24 h-1 bg-brand-mint mb-8 md:mx-0 rounded-full" />
+              <p className="text-lg md:text-xl font-sans font-light text-brand-navy/80 max-w-lg leading-relaxed px-4 md:px-0">
+                Una mentoría que no te da fórmulas mágicas, sino que te devuelve el poder de descubrir tus propias respuestas.
+              </p>
+            </div>
+
+            {/* Photo Presentation */}
+            <div className="order-1 md:order-2 flex justify-center md:justify-end">
+              <div className="relative w-[280px] sm:w-[320px] md:w-[380px] lg:w-[420px] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50 aspect-[4/5]">
+                <div className="absolute inset-0 bg-brand-amber blur-3xl opacity-30 mix-blend-multiply" />
+                <Image 
+                  src={cataImg} 
+                  alt="Cata Ayala" 
+                  fill
+                  className="object-cover object-top relative z-10"
+                  priority
+                />
+              </div>
+            </div>
+
           </div>
 
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-brand-navy mb-6 md:mb-8 leading-[1.15]">
-            <span className="block mb-2 md:mb-4">Gózate la vida:</span>
-            <span
-              className="font-serif block pb-2 text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight"
-              style={{
-                background: 'linear-gradient(135deg, #8B6914 0%, #C8920A 25%, #8B6914 50%, #B8830A 75%, #6B4F0A 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              El arte de vivir y tomar decisiones con propósito, criterio y una actitud al 101%
-            </span>
-          </h1>
-
-          <div className="w-24 h-1 bg-brand-mint mx-auto mb-10 rounded-full" />
-
-          <p className="text-lg md:text-2xl font-sans font-light text-brand-navy/80 max-w-3xl leading-relaxed px-4">
-            Una mentoría que no te da fórmulas mágicas, sino que te devuelve el poder de descubrir tus propias respuestas.
-          </p>
-          
         </ScrollReveal>
       </section>
 
