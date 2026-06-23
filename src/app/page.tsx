@@ -1,14 +1,15 @@
 import React from 'react';
+import Image from 'next/image';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { ColorSwatch } from '@/components/ColorSwatch';
 import { Navbar } from '@/components/Navbar';
+import cataImg from '@/img/cata.jpg';
 
 export default function Home() {
   return (
     <main className="min-h-screen relative overflow-hidden selection:bg-brand-coral selection:text-white pb-32">
 
-      {/* Golden Hour Light Global Overlay */}
-      <div className="absolute inset-0 bg-golden-hour pointer-events-none z-0 fixed" />
+      {/* Golden Hour Light Global Overlay removed for white background */}
 
       {/* Navbar */}
       <Navbar />
@@ -17,18 +18,16 @@ export default function Home() {
       <section id="hero" className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 pt-32 pb-20">
         <ScrollReveal yOffset={40} className="text-center max-w-5xl mx-auto flex flex-col items-center">
           
-          {/* SVG Imagotype */}
-          <div className="relative w-32 h-32 md:w-40 md:h-40 mb-10 md:mb-14 animate-pulse" style={{ animationDuration: '5s' }}>
+          {/* Photo Presentation */}
+          <div className="relative w-48 h-48 md:w-64 md:h-64 mb-10 md:mb-14 rounded-full overflow-hidden shadow-2xl border-4 border-white/50">
             <div className="absolute inset-0 bg-brand-amber rounded-full blur-3xl opacity-30 mix-blend-multiply" />
-            <div className="absolute inset-4 bg-gradient-to-tr from-brand-coral to-brand-amber rounded-full shadow-2xl" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              {/* The "C" envelope shielding the upward "A" */}
-              <svg viewBox="0 0 100 100" className="w-16 h-16 md:w-20 md:h-20 text-white drop-shadow-md">
-                <path d="M 80 20 C 30 10, 10 40, 30 85" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-                <path d="M50 25 L75 75 L25 75 Z" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M40 58 L60 58" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-              </svg>
-            </div>
+            <Image 
+              src={cataImg} 
+              alt="Cata Ayala" 
+              fill 
+              className="object-cover"
+              priority
+            />
           </div>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-brand-navy mb-6 md:mb-8 leading-[1.15]">
