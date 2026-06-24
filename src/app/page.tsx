@@ -46,16 +46,14 @@ export default function Home() {
 
             {/* Photo Presentation */}
             <div className="order-1 md:order-2 flex justify-center md:justify-end">
-              <div className="relative w-[260px] sm:w-[300px] md:w-[320px] lg:w-[320px] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50 aspect-[4/5]">
+              <div className="relative w-[260px] sm:w-[300px] md:w-[320px] lg:w-[320px] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50">
                 <div className="absolute inset-0 bg-brand-amber blur-3xl opacity-30 mix-blend-multiply" />
                 <Image 
                   src={cataImg} 
                   alt="Cata Ayala" 
-                  fill
-                  className="object-cover object-top relative z-10"
+                  className="w-full h-auto relative z-10"
                   priority
                   quality={100}
-                  sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 380px, 420px"
                   style={{ imageRendering: 'auto' }}
                 />
               </div>
