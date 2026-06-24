@@ -5,6 +5,7 @@ import { ColorSwatch } from '@/components/ColorSwatch';
 import { Navbar } from '@/components/Navbar';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { BookingSection } from '@/components/BookingSection';
+import { Footer } from '@/components/Footer';
 import cataImg from '@/img/cata.jpg';
 
 export default function Home() {
@@ -190,11 +191,7 @@ export default function Home() {
       <BookingSection />
 
       {/* Footer */}
-      <footer className="relative z-10 text-center py-12 px-6 bg-brand-navy border-t border-white/10">
-        <p className="font-serif text-brand-sand/40 text-sm tracking-widest uppercase">
-          © {new Date().getFullYear()} Cata Ayala · Life Coach &amp; Strategic Life Mentor
-        </p>
-      </footer>
+      <Footer />
 
       {/* WhatsApp Floating Button */}
       <WhatsAppButton />
