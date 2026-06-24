@@ -39,7 +39,7 @@ export default function Home() {
             </div>
 
             {/* Text Presentation */}
-            <div className="text-center md:text-left flex flex-col items-center md:items-start order-2 md:col-span-7">
+            <div className="text-center md:text-left flex flex-col items-center md:items-start order-2 md:col-span-7 md:pl-16">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-navy mb-6 md:mb-8 leading-[1.15]">
                 <span className="block mb-2 md:mb-3">Gózate la vida:</span>
                 <span
