@@ -21,10 +21,25 @@ export default function Home() {
       <section id="hero" className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 pt-32 pb-20">
         <ScrollReveal yOffset={40} className="w-full max-w-6xl mx-auto">
           
-          <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
             
+            {/* Photo Presentation */}
+            <div className="order-1 md:col-span-5 flex justify-center md:justify-end">
+              <div className="relative w-[260px] sm:w-[300px] md:w-[320px] lg:w-[320px] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50">
+                <div className="absolute inset-0 bg-brand-amber blur-3xl opacity-30 mix-blend-multiply" />
+                <Image 
+                  src={cataImg} 
+                  alt="Cata Ayala" 
+                  className="w-full h-auto relative z-10"
+                  priority
+                  quality={100}
+                  style={{ imageRendering: 'auto' }}
+                />
+              </div>
+            </div>
+
             {/* Text Presentation */}
-            <div className="text-center md:text-left flex flex-col items-center md:items-start order-2">
+            <div className="text-center md:text-left flex flex-col items-center md:items-start order-2 md:col-span-7">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-navy mb-6 md:mb-8 leading-[1.15]">
                 <span className="block mb-2 md:mb-3">Gózate la vida:</span>
                 <span
@@ -43,21 +58,6 @@ export default function Home() {
               <p className="text-lg md:text-xl font-sans font-light text-brand-navy/80 max-w-lg leading-relaxed px-4 md:px-0">
                 Una mentoría que no te da fórmulas mágicas, sino que te devuelve el poder de descubrir tus propias respuestas.
               </p>
-            </div>
-
-            {/* Photo Presentation */}
-            <div className="order-1 flex justify-center md:justify-start">
-              <div className="relative w-[260px] sm:w-[300px] md:w-[320px] lg:w-[320px] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50">
-                <div className="absolute inset-0 bg-brand-amber blur-3xl opacity-30 mix-blend-multiply" />
-                <Image 
-                  src={cataImg} 
-                  alt="Cata Ayala" 
-                  className="w-full h-auto relative z-10"
-                  priority
-                  quality={100}
-                  style={{ imageRendering: 'auto' }}
-                />
-              </div>
             </div>
 
           </div>
