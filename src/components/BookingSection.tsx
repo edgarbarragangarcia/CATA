@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Compass, Flame, Coffee } from 'lucide-react';
 
 // ─────────────────────────────────────────────
 // CONFIGURACIÓN — cambia este valor cuando tengas tu link de Calendly o Cal.com
@@ -15,17 +16,23 @@ const WHATSAPP_BOOKING_MESSAGE =
 
 const features = [
   {
-    icon: '🧭',
+    icon: Compass,
+    iconColor: 'text-[#B8830A]',
+    bgColor: 'bg-[#B8830A]/10',
     title: 'Sesión Estratégica',
     desc: '60 minutos de claridad profunda sobre tu próximo gran paso.',
   },
   {
-    icon: '🔥',
+    icon: Flame,
+    iconColor: 'text-brand-coral',
+    bgColor: 'bg-brand-coral/10',
     title: 'Mentoría Intensiva',
     desc: 'Un proceso de acompañamiento con herramientas y criterio real.',
   },
   {
-    icon: '💡',
+    icon: Coffee,
+    iconColor: 'text-brand-mint',
+    bgColor: 'bg-brand-mint/15',
     title: 'Exploración Inicial',
     desc: '30 minutos gratuitos para conocernos y definir si somos el match.',
   },
@@ -97,7 +104,9 @@ export const BookingSection: React.FC = () => {
               transition={{ duration: 0.6, delay: i * 0.12 }}
               className="group bg-white/60 backdrop-blur-md border border-white/80 rounded-[1.5rem] p-7 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-400"
             >
-              <div className="text-3xl mb-4">{f.icon}</div>
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${f.bgColor} group-hover:scale-110 transition-transform duration-300`}>
+                <f.icon className={`w-6 h-6 ${f.iconColor}`} />
+              </div>
               <h3 className="text-lg font-bold text-brand-navy mb-2">
                 {f.title}
               </h3>
