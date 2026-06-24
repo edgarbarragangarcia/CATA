@@ -10,7 +10,7 @@ import cataImg from '@/img/cata.jpg';
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative overflow-hidden selection:bg-brand-coral selection:text-white pb-32">
+    <main className="min-h-screen relative overflow-hidden selection:bg-brand-coral selection:text-white">
 
       {/* Golden Hour Light Global Overlay removed for white background */}
 
