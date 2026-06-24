@@ -123,7 +123,7 @@ export default function Home() {
       </section>
 
       {/* 3. FILOSOFÍA (Criterio, Coherencia & El Espíritu 101%) */}
-      <section id="filosofia" className="relative z-10 px-4 sm:px-6 py-24 md:py-32 max-w-7xl mx-auto">
+      <section id="filosofia" className="relative z-10 px-4 sm:px-6 pt-10 pb-24 md:pt-12 md:pb-32 max-w-7xl mx-auto">
         <ScrollReveal>
           <div className="text-center mb-16 md:mb-20">
             <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-coral uppercase mb-4">La Filosofía</h2>
