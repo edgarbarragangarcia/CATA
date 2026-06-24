@@ -23,7 +23,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
             
             {/* Text Presentation */}
-            <div className="text-center md:text-left flex flex-col items-center md:items-start order-2 md:order-1">
+            <div className="text-center md:text-left flex flex-col items-center md:items-start order-2">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-navy mb-6 md:mb-8 leading-[1.15]">
                 <span className="block mb-2 md:mb-3">Gózate la vida:</span>
                 <span
@@ -45,7 +45,7 @@ export default function Home() {
             </div>
 
             {/* Photo Presentation */}
-            <div className="order-1 md:order-2 flex justify-center md:justify-end">
+            <div className="order-1 flex justify-center md:justify-start">
               <div className="relative w-[260px] sm:w-[300px] md:w-[320px] lg:w-[320px] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50">
                 <div className="absolute inset-0 bg-brand-amber blur-3xl opacity-30 mix-blend-multiply" />
                 <Image 
