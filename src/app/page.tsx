@@ -12,7 +12,13 @@ export default function Home() {
   return (
     <main className="min-h-screen relative overflow-hidden selection:bg-brand-coral selection:text-white">
 
-      {/* Golden Hour Light Global Overlay removed for white background */}
+      {/* Dynamic Animated Aurora Background */}
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10vw] left-[-10vw] w-[50vw] h-[50vw] rounded-full blur-[100px] bg-blob-one" />
+        <div className="absolute bottom-[-15vw] right-[-10vw] w-[60vw] h-[60vw] rounded-full blur-[110px] bg-blob-two" />
+        <div className="absolute top-[25vw] right-[-5vw] w-[45vw] h-[45vw] rounded-full blur-[100px] bg-blob-three" />
+        <div className="absolute bottom-[20vw] left-[-5vw] w-[50vw] h-[50vw] rounded-full blur-[90px] bg-blob-four" />
+      </div>
 
       {/* Navbar */}
       <Navbar />
