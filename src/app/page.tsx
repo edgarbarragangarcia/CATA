@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { ColorSwatch } from '@/components/ColorSwatch';
 import { Navbar } from '@/components/Navbar';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { BookingSection } from '@/components/BookingSection';
 import cataImg from '@/img/cata.jpg';
 
 export default function Home() {
@@ -44,7 +46,7 @@ export default function Home() {
 
             {/* Photo Presentation */}
             <div className="order-1 md:order-2 flex justify-center md:justify-end">
-              <div className="relative w-[280px] sm:w-[320px] md:w-[380px] lg:w-[420px] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50 aspect-[4/5]">
+              <div className="relative w-[260px] sm:w-[300px] md:w-[320px] lg:w-[320px] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/50 aspect-[4/5]">
                 <div className="absolute inset-0 bg-brand-amber blur-3xl opacity-30 mix-blend-multiply" />
                 <Image 
                   src={cataImg} 
@@ -52,6 +54,9 @@ export default function Home() {
                   fill
                   className="object-cover object-top relative z-10"
                   priority
+                  quality={100}
+                  sizes="(max-width: 640px) 280px, (max-width: 768px) 320px, (max-width: 1024px) 380px, 420px"
+                  style={{ imageRendering: 'auto' }}
                 />
               </div>
             </div>
@@ -225,12 +230,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 6. AGENDA SECTION */}
+      <BookingSection />
+
       {/* Footer */}
       <footer className="relative z-10 text-center py-12 px-6 bg-brand-navy border-t border-white/10">
         <p className="font-serif text-brand-sand/40 text-sm tracking-widest uppercase">
-          © {new Date().getFullYear()} Cata Ayala · Life Coach & Strategic Life Mentor
+          © {new Date().getFullYear()} Cata Ayala · Life Coach &amp; Strategic Life Mentor
         </p>
       </footer>
+
+      {/* WhatsApp Floating Button */}
+      <WhatsAppButton />
 
     </main>
   );

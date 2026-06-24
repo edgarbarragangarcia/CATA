@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'Posicionamiento', href: '#posicionamiento' },
   { label: 'Pilares Estratégicos', href: '#pilares' },
   { label: 'Identidad Visual', href: '#marca' },
+  { label: 'Agenda', href: '#agenda' },
 ];
 
 export const Navbar: React.FC = () => {
@@ -84,7 +85,7 @@ export const Navbar: React.FC = () => {
 
           {/* CTA Button */}
           <a
-            href="#posicionamiento"
+            href="#agenda"
             className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-sans font-semibold tracking-widest uppercase text-white bg-brand-coral border border-transparent hover:bg-transparent hover:text-brand-coral hover:border-[#BF953F] shadow-md hover:shadow-lg transition-all duration-300"
           >
             Conectar
@@ -126,7 +127,7 @@ export const Navbar: React.FC = () => {
               ))}
               <li className="pt-4 border-t border-white/10">
                 <a
-                  href="#posicionamiento"
+                  href="#agenda"
                   onClick={() => setMenuOpen(false)}
                   className="inline-block px-8 py-3 rounded-full text-sm font-semibold tracking-widest uppercase text-white bg-brand-coral hover:bg-transparent hover:text-brand-coral hover:border hover:border-[#BF953F] transition-all"
                 >
