@@ -9,7 +9,6 @@ const navLinks = [
   { label: 'Filosofía', href: '#filosofia' },
   { label: 'Posicionamiento', href: '#posicionamiento' },
   { label: 'Pilares Estratégicos', href: '#pilares' },
-  { label: 'Identidad Visual', href: '#marca' },
   { label: 'Agenda', href: '#agenda' },
 ];
 

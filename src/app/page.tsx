@@ -186,49 +186,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. IDENTIDAD VISUAL EXHIBIT (Dynamic Digital Manual) */}
-      <section id="marca" className="relative z-10 px-4 sm:px-6 py-24 md:py-32 bg-brand-navy text-white">
-        <div className="max-w-7xl mx-auto">
-          <ScrollReveal>
-            <div className="text-center mb-16 md:mb-20">
-              <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-mint uppercase mb-4">DNA Visual</h2>
-              <h3 className="text-3xl md:text-5xl font-bold text-brand-sand mb-4 md:mb-6">Sistema de Marca & Arquetipos</h3>
-              <p className="text-base md:text-lg font-sans text-brand-sand/70 max-w-2xl mx-auto font-light">
-                La identidad de Cata Ayala se construye sobre la fusión de dos arquetipos poderosos.
-              </p>
-            </div>
-          </ScrollReveal>
 
-          <ScrollReveal staggerChildren={0.2} className="grid md:grid-cols-2 gap-8 md:gap-12 pb-16">
-            <div className="bg-white/5 border border-white/10 p-8 sm:p-10 rounded-3xl backdrop-blur-md">
-              <div className="flex items-center gap-6 mb-6">
-                <div className="w-14 h-14 md:w-16 md:h-16 shrink-0 rounded-2xl bg-brand-sand flex items-center justify-center">
-                  <span className="text-brand-navy text-xl md:text-2xl font-serif font-bold">S</span>
-                </div>
-                <h4 className="text-2xl md:text-3xl font-bold text-brand-sand">El Sabio <span className="block text-xs md:text-sm font-sans font-normal text-brand-mint mt-1">THE SAGE</span></h4>
-              </div>
-              <p className="font-sans text-brand-sand/70 font-light leading-relaxed text-sm md:text-base">
-                Aporta la metodología, la estructura corporativa, la verdad fundamentada y el criterio. Guía a través del conocimiento profundo y la experiencia estratégica acumulada en 17 años.
-              </p>
-            </div>
-
-            <div className="bg-white/5 border border-white/10 p-8 sm:p-10 rounded-3xl backdrop-blur-md">
-              <div className="flex items-center gap-6 mb-6">
-                <div className="w-14 h-14 md:w-16 md:h-16 shrink-0 rounded-2xl bg-brand-coral flex items-center justify-center">
-                  <span className="text-white text-xl md:text-2xl font-serif font-bold">C</span>
-                </div>
-                <h4 className="text-2xl md:text-3xl font-bold text-brand-sand">El Cuidador <span className="block text-xs md:text-sm font-sans font-normal text-brand-amber mt-1">THE CAREGIVER</span></h4>
-              </div>
-              <p className="font-sans text-brand-sand/70 font-light leading-relaxed text-sm md:text-base">
-                Aporta la empatía, el acompañamiento genuino y el calor humano. La energía protectora, resiliente y estimulante de la maternidad puesta al servicio del crecimiento personal.
-              </p>
-            </div>
-          </ScrollReveal>
-
-
-          
-        </div>
-      </section>
 
       {/* 6. AGENDA SECTION */}
       <BookingSection />
