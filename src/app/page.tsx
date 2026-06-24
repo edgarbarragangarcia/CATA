@@ -21,7 +21,7 @@ export default function Home() {
       <section id="hero" className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 pt-32 pb-20">
         <ScrollReveal yOffset={40} className="w-full max-w-6xl mx-auto">
           
-          <div className="grid md:grid-cols-12 gap-10 md:gap-12 items-center">
+          <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-center">
             
             {/* Photo Presentation */}
             <div className="order-1 md:col-span-5 flex justify-center md:justify-end">
