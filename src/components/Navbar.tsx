@@ -29,7 +29,7 @@ export const Navbar: React.FC = () => {
             foundDark = true;
             break;
           }
-          if (el.className.includes('bg-white') || el.className.includes('bg-[#f5f5f7]') || el.className.includes('bg-brand-sand')) {
+          if (el.className.includes('bg-white') || el.className.includes('bg-brand-sand')) {
             break; // found a light section first
           }
         }
@@ -96,7 +96,7 @@ export const Navbar: React.FC = () => {
           {/* CTA Button */}
           <a
             href="#agenda"
-            className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-sans font-semibold tracking-widest uppercase text-white bg-brand-coral border border-transparent hover:bg-transparent hover:text-brand-coral hover:border-[#BF953F] shadow-md hover:shadow-lg transition-all duration-300"
+            className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-sans font-semibold tracking-widest uppercase text-white bg-brand-coral border border-transparent hover:bg-transparent hover:text-brand-coral hover:border-brand-coral shadow-md hover:shadow-lg transition-all duration-300"
           >
             Conectar
           </a>

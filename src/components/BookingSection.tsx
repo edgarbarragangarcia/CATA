@@ -17,8 +17,8 @@ const WHATSAPP_BOOKING_MESSAGE =
 const features = [
   {
     icon: Compass,
-    iconColor: 'text-[#B8830A]',
-    bgColor: 'bg-[#B8830A]/10',
+    iconColor: 'text-brand-amber',
+    bgColor: 'bg-brand-amber/10',
     title: 'Sesión Estratégica',
     desc: '60 minutos de claridad profunda sobre tu próximo gran paso.',
   },
@@ -53,7 +53,7 @@ export const BookingSection: React.FC = () => {
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
-              'radial-gradient(circle at 20% 50%, #C8920A 0%, transparent 60%), radial-gradient(circle at 80% 50%, #E8735A 0%, transparent 60%)',
+              'radial-gradient(circle at 20% 50%, #FF9100 0%, transparent 60%), radial-gradient(circle at 80% 50%, #FF5E36 0%, transparent 60%)',
           }}
         />
       </div>
@@ -77,7 +77,7 @@ export const BookingSection: React.FC = () => {
               className="font-serif italic"
               style={{
                 background:
-                  'linear-gradient(135deg, #8B6914 0%, #C8920A 40%, #B8830A 100%)',
+                  'linear-gradient(135deg, #FF5E36 0%, #FF9100 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -136,7 +136,7 @@ export const BookingSection: React.FC = () => {
                 </div>
               )}
               <iframe
-                src={`${CALENDLY_URL}?hide_gdpr_banner=1&background_color=fffcf5&text_color=1B2A4A&primary_color=C8920A`}
+                src={`${CALENDLY_URL}?hide_gdpr_banner=1&background_color=F5E6D3&text_color=0B2545&primary_color=FF9100`}
                 width="100%"
                 height="700"
                 frameBorder="0"
@@ -148,18 +148,14 @@ export const BookingSection: React.FC = () => {
           ) : (
             /* ── CTA de WhatsApp mientras no hay calendario ── */
             <div
-              className="relative rounded-[2rem] overflow-hidden text-center py-16 px-8 shadow-2xl"
-              style={{
-                background:
-                  'linear-gradient(135deg, #1B2A4A 0%, #243660 50%, #1B2A4A 100%)',
-              }}
+              className="relative rounded-[2rem] overflow-hidden text-center py-16 px-8 shadow-2xl bg-brand-navy"
             >
-              {/* Gold shimmer overlay */}
+              {/* Warm shimmer overlay */}
               <div
                 className="absolute inset-0 opacity-10"
                 style={{
                   background:
-                    'linear-gradient(135deg, #BF953F 0%, #FCF6BA 35%, #B38728 65%, #AA771C 100%)',
+                    'linear-gradient(135deg, #FF5E36 0%, #FF9100 50%, #FF5E36 100%)',
                 }}
               />
 

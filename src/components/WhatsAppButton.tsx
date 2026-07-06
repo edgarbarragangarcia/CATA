@@ -45,7 +45,7 @@ export const WhatsAppButton: React.FC = () => {
       href: `mailto:${EMAIL}`,
       target: '_self',
       bgColor: 'bg-brand-coral',
-      hoverColor: 'hover:bg-[#d85c45]', // un poco más oscuro
+      hoverColor: 'hover:brightness-90',
     },
     {
       id: 'agenda',
@@ -53,8 +53,8 @@ export const WhatsAppButton: React.FC = () => {
       icon: Calendar,
       href: CALENDLY_URL,
       target: '_blank',
-      bgColor: 'bg-[#B8830A]',
-      hoverColor: 'hover:bg-[#8B6914]',
+      bgColor: 'bg-brand-amber',
+      hoverColor: 'hover:brightness-90',
     }
   ];
 
@@ -123,12 +123,12 @@ export const WhatsAppButton: React.FC = () => {
               onClick={toggleMenu}
               className="relative w-14 h-14 rounded-full shadow-2xl flex items-center justify-center z-50 overflow-hidden"
               style={{
-                background: isOpen 
-                  ? '#1B2A4A' // brand-navy 
-                  : 'linear-gradient(135deg, #1B2A4A 0%, #B8830A 100%)', // gradient brand
-                boxShadow: isOpen 
-                  ? '0 4px 20px rgba(0,0,0,0.3)' 
-                  : '0 8px 32px rgba(184, 131, 10, 0.4)'
+                background: isOpen
+                  ? '#0B2545' // brand-navy
+                  : 'linear-gradient(135deg, #0B2545 0%, #FF9100 100%)', // gradient brand
+                boxShadow: isOpen
+                  ? '0 4px 20px rgba(0,0,0,0.3)'
+                  : '0 8px 32px rgba(255, 145, 0, 0.4)'
               }}
             >
               <motion.div

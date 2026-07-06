@@ -54,7 +54,7 @@ export default function Home() {
           >
             <h1 className="text-7xl md:text-9xl lg:text-[11rem] font-bold tracking-tighter leading-none mb-6">
               <span className="block text-white mb-2">Gózate</span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#BF953F] via-[#FCF6BA] to-[#B38728]">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-brand-amber to-brand-coral">
                 la vida.
               </span>
             </h1>
@@ -108,7 +108,7 @@ export default function Home() {
 
       {/* 3. MAJESTIC QUOTE (DARK PARALLAX) */}
       <section className="relative h-[100vh] bg-black flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle at center, #BF953F 0%, transparent 60%)' }} />
+        <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle at center, #FF5E36 0%, transparent 60%)' }} />
         <ScrollReveal>
           <h3 className="text-5xl md:text-7xl lg:text-8xl font-serif italic font-bold text-center leading-tight px-6 max-w-6xl mx-auto relative z-10">
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">
@@ -119,7 +119,7 @@ export default function Home() {
       </section>
 
       {/* 4. FILOSOFÍA */}
-      <section id="filosofia" className="relative py-32 md:py-48 bg-[#f5f5f7] text-black">
+      <section id="filosofia" className="relative py-32 md:py-48 bg-brand-sand text-brand-navy">
         <div className="max-w-7xl mx-auto px-6">
           <div className="mb-24 md:mb-32 text-center md:text-left">
             <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-gray-400 uppercase mb-4">El Código de Vida</h2>
@@ -139,7 +139,7 @@ export default function Home() {
               </p>
             </ScrollReveal>
 
-            <ScrollReveal delay={0.2} yOffset={80} className="bg-brand-navy text-white p-12 md:p-20 rounded-[3rem] shadow-xl hover:shadow-2xl transition-shadow duration-500 border border-[#BF953F]/20 flex flex-col justify-between">
+            <ScrollReveal delay={0.2} yOffset={80} className="bg-brand-navy text-white p-12 md:p-20 rounded-[3rem] shadow-xl hover:shadow-2xl transition-shadow duration-500 border border-brand-mint/20 flex flex-col justify-between">
               <div>
                 <h4 className="text-4xl md:text-5xl font-bold text-brand-sand mb-8 tracking-tight">Criterio & Carácter</h4>
                 <p className="text-xl md:text-2xl font-light text-brand-sand/80 leading-relaxed mb-12">
@@ -155,7 +155,7 @@ export default function Home() {
       </section>
 
       {/* 5. PILARES & RESPALDO ACADÉMICO */}
-      <section id="respaldo" className="py-32 md:py-48 bg-white text-black">
+      <section id="respaldo" className="py-32 md:py-48 bg-white text-brand-navy">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <ScrollReveal>
@@ -167,7 +167,7 @@ export default function Home() {
               <p className="text-2xl font-light text-gray-700 leading-relaxed mb-10">
                 Toda historia necesita pruebas. El origen de esta fuerza radica en su mayor red de apoyo. La historia de Cata es una historia de milagros: madre de 3 hijos concebidos desafiando diagnósticos médicos restrictivos.
               </p>
-              <div className="bg-[#f5f5f7] p-10 rounded-[2rem]">
+              <div className="bg-brand-sand p-10 rounded-[2rem]">
                 <p className="text-xl italic text-gray-600 font-serif leading-relaxed">
                   "El liderazgo maternal me preparó para la junta directiva más exigente. Sé exactamente lo que es balancear la presión corporativa con el amor incondicional."
                 </p>
@@ -178,7 +178,7 @@ export default function Home() {
       </section>
 
       {/* 6. AGENDA SECTION */}
-      <div className="bg-[#f5f5f7]">
+      <div className="bg-brand-sand">
         <BookingSection />
       </div>
 

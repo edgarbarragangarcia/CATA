@@ -5,9 +5,9 @@ import { Mail, Phone, Globe } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="relative z-10 bg-brand-navy text-white border-t border-[#BF953F]/10 pt-16 pb-12 px-6 sm:px-8">
-      {/* Subtle gold line on top */}
-      <div className="absolute top-0 left-0 right-0 h-[1.5px]" style={{ background: 'linear-gradient(90deg, transparent 0%, #BF953F 50%, transparent 100%)' }} />
+    <footer className="relative z-10 bg-brand-navy text-white border-t border-brand-sand/10 pt-16 pb-12 px-6 sm:px-8">
+      {/* Subtle mint accent line on top */}
+      <div className="absolute top-0 left-0 right-0 h-[1.5px]" style={{ background: 'linear-gradient(90deg, transparent 0%, #30D5C8 50%, transparent 100%)' }} />
       
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 pb-12 border-b border-white/10">
         {/* Col 1: Brand & Tagline */}
@@ -26,7 +26,7 @@ export const Footer: React.FC = () => {
               <span
                 className="font-serif font-bold text-lg tracking-wide block"
                 style={{
-                  background: 'linear-gradient(135deg, #BF953F 0%, #FCF6BA 40%, #B38728 70%, #AA771C 100%)',
+                  background: 'linear-gradient(135deg, #FF5E36 0%, #FF9100 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',

@@ -22,7 +22,7 @@ const config: Config = {
         sans: ['var(--font-montserrat)', 'sans-serif'],
       },
       backgroundImage: {
-        'hot-stamping-gold': 'linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%)',
+        'brand-warm': 'linear-gradient(135deg, #FF5E36 0%, #FF9100 100%)',
         'golden-hour': 'radial-gradient(circle at top right, rgba(255, 145, 0, 0.15), transparent 60%)',
       },
     },
