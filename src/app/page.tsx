@@ -41,7 +41,7 @@ export default function Home() {
               src={cataImg} 
               alt="Cata Ayala" 
               fill
-              className="object-cover object-[center_30%] opacity-60 brightness-90"
+              className="object-cover object-top opacity-60 brightness-90"
               priority
             />
           </motion.div>
