@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
                 Cata Ayala
               </span>
               <p className="text-[9px] font-sans tracking-[0.2em] uppercase font-semibold text-brand-sand/60">
-                COACH & MENTOR
+                COACH DE VIDA
               </p>
             </div>
           </a>

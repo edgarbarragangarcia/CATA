@@ -2,120 +2,146 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { MessageCircle, Mail, Calendar, Plus, X } from 'lucide-react';
 
 // ─────────────────────────────────────────────
-// CONFIGURACIÓN — cambia estos valores
+// CONFIGURACIÓN
 // ─────────────────────────────────────────────
-const WHATSAPP_NUMBER = '573142736009'; // Número con código de país, sin + ni espacios
-const WHATSAPP_MESSAGE =
-  '¡Hola Cata! 👋 Me interesa agendar una sesión de mentoría contigo.';
+const WHATSAPP_NUMBER = '573142736009';
+const WHATSAPP_MESSAGE = '¡Hola Cata! 👋 Me interesa agendar una sesión de mentoría contigo.';
+const EMAIL = 'hola@cataayala.com';
+const CALENDLY_URL = 'https://calendly.com/cata-ayala'; // Reemplazar con URL real
 // ─────────────────────────────────────────────
 
 export const WhatsAppButton: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [hovered, setHovered] = useState(false);
-  const [pulse, setPulse] = useState(false);
 
   useEffect(() => {
-    // Aparece después de 3 segundos
-    const t1 = setTimeout(() => setVisible(true), 3000);
-    // Pulso de atención cada 8 segundos
-    const t2 = setInterval(() => {
-      setPulse(true);
-      setTimeout(() => setPulse(false), 1000);
-    }, 8000);
-    return () => {
-      clearTimeout(t1);
-      clearInterval(t2);
-    };
+    // Aparece después de 1 segundo
+    const t1 = setTimeout(() => setVisible(true), 1000);
+    return () => clearTimeout(t1);
   }, []);
 
   const encodedMessage = encodeURIComponent(WHATSAPP_MESSAGE);
   const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  const options = [
+    {
+      id: 'whatsapp',
+      label: 'WhatsApp',
+      icon: MessageCircle,
+      href: waUrl,
+      target: '_blank',
+      bgColor: 'bg-[#25D366]',
+      hoverColor: 'hover:bg-[#128C7E]',
+    },
+    {
+      id: 'email',
+      label: 'Email',
+      icon: Mail,
+      href: `mailto:${EMAIL}`,
+      target: '_self',
+      bgColor: 'bg-brand-coral',
+      hoverColor: 'hover:bg-[#d85c45]', // un poco más oscuro
+    },
+    {
+      id: 'agenda',
+      label: 'Agendar Sesión',
+      icon: Calendar,
+      href: CALENDLY_URL,
+      target: '_blank',
+      bgColor: 'bg-[#B8830A]',
+      hoverColor: 'hover:bg-[#8B6914]',
+    }
+  ];
+
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{ scale: 0, opacity: 0, y: 20 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          exit={{ scale: 0, opacity: 0, y: 20 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-          className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3"
-        >
-          {/* Burbuja de mensaje */}
-          <AnimatePresence>
-            {hovered && (
-              <motion.div
-                key="bubble"
-                initial={{ opacity: 0, scale: 0.8, y: 8 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, y: 8 }}
-                transition={{ duration: 0.2 }}
-                className="relative bg-white rounded-2xl rounded-br-sm shadow-2xl px-4 py-3 max-w-[220px]"
-                style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.15)' }}
-              >
-                {/* Flecha de la burbuja */}
-                <div
-                  className="absolute bottom-[-8px] right-4 w-0 h-0"
-                  style={{
-                    borderLeft: '8px solid transparent',
-                    borderRight: '8px solid transparent',
-                    borderTop: '8px solid white',
+    <>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 bg-brand-navy/30 backdrop-blur-sm z-40"
+            onClick={() => setIsOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {visible && (
+          <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
+            
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial="closed"
+                  animate="open"
+                  exit="closed"
+                  variants={{
+                    open: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+                    closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
                   }}
-                />
-                <p className="text-sm font-sans font-semibold text-gray-800 leading-snug">
-                  ¡Hablemos! 💬
-                </p>
-                <p className="text-xs font-sans text-gray-500 mt-0.5">
-                  Respondo rápidamente
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                  className="flex flex-col items-end gap-4"
+                >
+                  {options.map((option) => (
+                    <motion.a
+                      key={option.id}
+                      href={option.href}
+                      target={option.target}
+                      rel="noopener noreferrer"
+                      variants={{
+                        open: { opacity: 1, y: 0, scale: 1 },
+                        closed: { opacity: 0, y: 20, scale: 0.8 }
+                      }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="flex items-center gap-3 group"
+                    >
+                      <span className="bg-white px-3 py-1.5 rounded-lg shadow-lg text-sm font-sans font-semibold text-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                        {option.label}
+                      </span>
+                      <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg transition-colors duration-300 ${option.bgColor} ${option.hoverColor}`}>
+                        <option.icon size={22} />
+                      </div>
+                    </motion.a>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
 
-          {/* Botón principal */}
-          <div className="relative">
-            {/* Anillo de pulso */}
-            {pulse && (
-              <motion.div
-                key="pulse-ring"
-                initial={{ scale: 1, opacity: 0.6 }}
-                animate={{ scale: 2, opacity: 0 }}
-                transition={{ duration: 0.9, ease: 'easeOut' }}
-                className="absolute inset-0 rounded-full bg-[#25D366]"
-              />
-            )}
-
-            <motion.a
-              href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Contactar por WhatsApp"
-              id="whatsapp-floating-btn"
-              onHoverStart={() => setHovered(true)}
-              onHoverEnd={() => setHovered(false)}
-              whileTap={{ scale: 0.92 }}
-              whileHover={{ scale: 1.08 }}
-              className="relative flex items-center justify-center w-14 h-14 rounded-full shadow-2xl cursor-pointer"
+            <motion.button
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleMenu}
+              className="relative w-14 h-14 rounded-full shadow-2xl flex items-center justify-center z-50 overflow-hidden"
               style={{
-                background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
-                boxShadow: '0 4px 24px rgba(37, 211, 102, 0.45)',
+                background: isOpen 
+                  ? '#1B2A4A' // brand-navy 
+                  : 'linear-gradient(135deg, #1B2A4A 0%, #B8830A 100%)', // gradient brand
+                boxShadow: isOpen 
+                  ? '0 4px 20px rgba(0,0,0,0.3)' 
+                  : '0 8px 32px rgba(184, 131, 10, 0.4)'
               }}
             >
-              {/* Ícono WhatsApp SVG */}
-              <svg
-                viewBox="0 0 32 32"
-                className="w-7 h-7"
-                fill="white"
-                xmlns="http://www.w3.org/2000/svg"
+              <motion.div
+                animate={{ rotate: isOpen ? 135 : 0 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20 }}
               >
-                <path d="M16.001 2.667C8.637 2.667 2.667 8.637 2.667 16c0 2.347.64 4.64 1.853 6.64L2.667 29.333l6.853-1.8A13.267 13.267 0 0 0 16 29.333c7.363 0 13.333-5.97 13.333-13.333 0-7.363-5.97-13.333-13.332-13.333zM16 27.2a11.147 11.147 0 0 1-5.68-1.547l-.4-.24-4.08 1.067 1.093-3.973-.267-.413A11.12 11.12 0 0 1 4.8 16c0-6.187 5.013-11.2 11.2-11.2S27.2 9.813 27.2 16 22.187 27.2 16 27.2zm6.147-8.387c-.334-.173-1.987-.987-2.294-1.093-.306-.107-.533-.16-.76.173-.226.334-.88 1.094-1.08 1.32-.2.227-.4.254-.733.08-.333-.16-1.414-.52-2.694-1.653-.987-.894-1.654-1.987-1.854-2.32-.2-.334-.013-.507.16-.68.16-.147.333-.387.506-.574.16-.186.213-.32.32-.534.107-.213.054-.4-.027-.573-.08-.174-.747-1.814-1.04-2.48-.267-.64-.546-.56-.747-.573h-.64c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.666c0 1.574 1.147 3.094 1.307 3.307.16.213 2.24 3.467 5.467 4.854.76.333 1.36.52 1.827.653.773.24 1.467.2 2.027.12.614-.093 1.987-.813 2.267-1.6.28-.786.28-1.466.2-1.6-.08-.133-.307-.213-.64-.373z" />
-              </svg>
-            </motion.a>
+                <Plus className="text-white" size={28} />
+              </motion.div>
+            </motion.button>
+
           </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+        )}
+      </AnimatePresence>
+    </>
   );
 };

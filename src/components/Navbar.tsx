@@ -61,7 +61,7 @@ export const Navbar: React.FC = () => {
                 Cata Ayala
               </span>
               <p className={`text-[10px] font-sans tracking-[0.2em] uppercase font-semibold transition-colors duration-500 ${scrolled ? 'text-brand-sand/60' : 'text-brand-navy/60'}`}>
-                COACH & MENTOR
+                COACH DE VIDA
               </p>
             </div>
           </a>

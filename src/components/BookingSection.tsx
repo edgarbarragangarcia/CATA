@@ -8,7 +8,7 @@ import { Compass, Flame, Coffee } from 'lucide-react';
 // CONFIGURACIÓN — cambia este valor cuando tengas tu link de Calendly o Cal.com
 // Ejemplo: 'https://cal.com/cata-ayala/sesion-estrategia'
 // ─────────────────────────────────────────────
-const CALENDLY_URL = ''; // Deja vacío para mostrar sólo el CTA de WhatsApp
+const CALENDLY_URL = 'https://calendly.com/cata-ayala'; // ← Reemplaza con tu link real de Calendly
 const WHATSAPP_NUMBER = '573142736009';
 const WHATSAPP_BOOKING_MESSAGE =
   '¡Hola Cata! 👋 Quiero agendar una sesión de mentoría contigo. ¿Cuándo tienes disponibilidad?';

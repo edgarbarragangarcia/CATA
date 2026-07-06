@@ -62,7 +62,7 @@ export default function Home() {
               </h1>
               <div className="w-24 h-1 bg-brand-mint mb-8 md:mx-0 rounded-full" />
               <p className="text-lg md:text-xl font-sans font-light text-brand-navy/80 max-w-lg leading-relaxed px-4 md:px-0">
-                Una mentoría que no te da fórmulas mágicas, sino que te devuelve el poder de descubrir tus propias respuestas.
+                Un espacio donde no te doy fórmulas mágicas, sino que te devuelvo el poder de descubrir tus propias respuestas.
               </p>
             </div>
 
@@ -171,7 +171,7 @@ export default function Home() {
                 </h3>
                 <div className="w-16 h-1 bg-brand-navy mb-6 md:mb-8 rounded-full" />
                 <p className="text-base md:text-lg font-sans text-brand-navy/80 leading-relaxed mb-6 font-light">
-                  Todo marco teórico necesita pruebas. El origen de esta fuerza radica en su mayor red de apoyo: su esposo y su familia. La historia de Cata es una historia de milagros: <strong>madre de 3 hijos (incluidos gemelos)</strong> concebidos de manera natural desafiando diagnósticos médicos restrictivos.
+                  Toda historia necesita pruebas. El origen de esta fuerza radica en su mayor red de apoyo: su esposo y su familia. La historia de Cata es una historia de milagros: <strong>madre de 3 hijos (incluidos gemelos)</strong> concebidos de manera natural desafiando diagnósticos médicos restrictivos.
                 </p>
               </div>
 
@@ -191,7 +191,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 5. RESPALDO ACADÉMICO */}
+      <section id="respaldo" className="relative z-10 px-4 sm:px-6 py-20 bg-brand-navy text-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <ScrollReveal>
+            <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-sand uppercase mb-4">Respaldo Académico</h2>
+            <h3 className="text-3xl md:text-5xl font-bold mb-12">Certificaciones</h3>
+          </ScrollReveal>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <ScrollReveal delay={0.2}>
+              <a href="/diplomas/CatalinaAyala-DNACert.pdf" target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-colors h-full flex flex-col items-center justify-center gap-4">
+                  <div className="w-16 h-16 rounded-full bg-brand-amber/20 text-brand-amber flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
+                  </div>
+                  <h4 className="text-xl font-bold text-brand-sand">Certificación DNA</h4>
+                  <p className="text-sm font-light text-brand-sand/70">Ver Diploma (PDF)</p>
+                </div>
+              </a>
+            </ScrollReveal>
 
+            <ScrollReveal delay={0.3}>
+              <a href="/diplomas/Maestría%20en%20Coaching-%20Catalina%20Ayala%20Cadavid.pdf" target="_blank" rel="noopener noreferrer" className="block group">
+                <div className="bg-white/5 border border-white/10 p-8 rounded-3xl hover:bg-white/10 transition-colors h-full flex flex-col items-center justify-center gap-4">
+                  <div className="w-16 h-16 rounded-full bg-brand-coral/20 text-brand-coral flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
+                  </div>
+                  <h4 className="text-xl font-bold text-brand-sand">Maestría en Coaching</h4>
+                  <p className="text-sm font-light text-brand-sand/70">Ver Diploma (PDF)</p>
+                </div>
+              </a>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
 
       {/* 6. AGENDA SECTION */}
       <BookingSection />
