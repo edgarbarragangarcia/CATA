@@ -34,9 +34,10 @@ export default function Home() {
           {/* Background Image that scales up */}
           <motion.div 
             style={{ scale: heroImageScale, opacity: heroImageOpacity }}
-            className="absolute inset-0 z-0"
+            className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-5xl z-0"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10" />
             <Image 
               src={cataImg} 
               alt="Cata Ayala" 
