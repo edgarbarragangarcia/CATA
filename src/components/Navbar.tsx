@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
@@ -14,6 +14,40 @@ const navLinks = [
 
 export const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isLightBg, setIsLightBg] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Find which section is currently behind the navbar
+      const elements = document.elementsFromPoint(window.innerWidth / 2, 30);
+      let foundDark = false;
+      
+      // Look through the elements to see if any have a dark background class
+      for (const el of elements) {
+        if (el.tagName === 'SECTION' || el.tagName === 'DIV') {
+          if (el.className.includes('bg-black') || el.className.includes('bg-brand-navy')) {
+            foundDark = true;
+            break;
+          }
+          if (el.className.includes('bg-white') || el.className.includes('bg-[#f5f5f7]') || el.className.includes('bg-brand-sand')) {
+            break; // found a light section first
+          }
+        }
+      }
+      
+      setIsLightBg(!foundDark);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Initial check
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const textColor = isLightBg ? 'text-brand-navy' : 'text-white';
+  const textMuted = isLightBg ? 'text-brand-navy/70' : 'text-white/70';
+  const linkHover = isLightBg ? 'hover:text-brand-coral' : 'hover:text-gray-300';
 
   return (
     <>
@@ -35,23 +69,23 @@ export const Navbar: React.FC = () => {
                 </svg>
               </div>
             </div>
-            <div className="leading-tight mix-blend-difference text-white">
+            <div className={`leading-tight transition-colors duration-300 ${textColor}`}>
               <span className="font-serif font-bold text-xl tracking-wide block">
                 Cata Ayala
               </span>
-              <p className="text-[10px] font-sans tracking-[0.2em] uppercase font-semibold text-white/70">
+              <p className={`text-[10px] font-sans tracking-[0.2em] uppercase font-semibold transition-colors duration-300 ${textMuted}`}>
                 COACH DE VIDA
               </p>
             </div>
           </a>
 
           {/* Desktop Nav Links */}
-          <ul className="hidden lg:flex items-center gap-8 mix-blend-difference text-white">
+          <ul className={`hidden lg:flex items-center gap-8 transition-colors duration-300 ${textColor}`}>
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="font-sans text-xs font-semibold tracking-widest uppercase transition-colors duration-300 hover:text-gray-300"
+                  className={`font-sans text-xs font-semibold tracking-widest uppercase transition-colors duration-300 ${linkHover}`}
                 >
                   {link.label}
                 </a>
@@ -70,7 +104,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMenuOpen((o) => !o)}
-            className="lg:hidden p-2 rounded-lg transition-colors mix-blend-difference text-white"
+            className={`lg:hidden p-2 rounded-lg transition-colors ${textColor}`}
             aria-label="Toggle menu"
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
