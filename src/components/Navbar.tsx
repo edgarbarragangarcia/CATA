@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
@@ -13,14 +13,7 @@ const navLinks = [
 ];
 
 export const Navbar: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   return (
     <>
@@ -28,13 +21,9 @@ export const Navbar: React.FC = () => {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? 'bg-brand-navy/90 backdrop-blur-xl shadow-lg shadow-brand-navy/20 border-b border-white/10 py-3'
-            : 'bg-transparent py-5'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent py-5 pointer-events-none"
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between pointer-events-auto">
           {/* Logo */}
           <a href="#hero" className="flex items-center gap-4 group">
             <div className="relative w-10 h-10">
@@ -46,35 +35,23 @@ export const Navbar: React.FC = () => {
                 </svg>
               </div>
             </div>
-            <div className="leading-tight">
-              <span
-                className={`font-serif font-bold text-xl tracking-wide transition-colors duration-500 ${
-                  scrolled ? '' : 'text-white'
-                }`}
-                style={scrolled ? {
-                  background: 'linear-gradient(135deg, #BF953F 0%, #FCF6BA 40%, #B38728 70%, #AA771C 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                } : {}}
-              >
+            <div className="leading-tight mix-blend-difference text-white">
+              <span className="font-serif font-bold text-xl tracking-wide block">
                 Cata Ayala
               </span>
-              <p className={`text-[10px] font-sans tracking-[0.2em] uppercase font-semibold transition-colors duration-500 ${scrolled ? 'text-brand-sand/60' : 'text-white/70'}`}>
+              <p className="text-[10px] font-sans tracking-[0.2em] uppercase font-semibold text-white/70">
                 COACH DE VIDA
               </p>
             </div>
           </a>
 
           {/* Desktop Nav Links */}
-          <ul className="hidden lg:flex items-center gap-8">
+          <ul className="hidden lg:flex items-center gap-8 mix-blend-difference text-white">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`font-sans text-xs font-semibold tracking-widest uppercase transition-colors duration-300 hover:text-brand-coral ${
-                    scrolled ? 'text-brand-sand/90' : 'text-white/90'
-                  }`}
+                  className="font-sans text-xs font-semibold tracking-widest uppercase transition-colors duration-300 hover:text-gray-300"
                 >
                   {link.label}
                 </a>
@@ -93,7 +70,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMenuOpen((o) => !o)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled ? 'text-brand-sand' : 'text-white'}`}
+            className="lg:hidden p-2 rounded-lg transition-colors mix-blend-difference text-white"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -101,42 +78,33 @@ export const Navbar: React.FC = () => {
         </div>
       </motion.nav>
 
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            key="mobile-menu"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.25 }}
-            className="fixed top-[68px] left-0 right-0 z-40 bg-brand-navy/95 backdrop-blur-xl border-b border-white/10 shadow-xl"
-          >
-            <ul className="flex flex-col px-8 py-8 gap-6">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="block font-sans text-sm font-semibold tracking-widest uppercase text-brand-sand/80 hover:text-brand-coral transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-              <li className="pt-4 border-t border-white/10">
+      {/* Mobile Menu Overlay */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-40 bg-brand-navy/95 backdrop-blur-xl flex flex-col items-center justify-center lg:hidden">
+          <ul className="flex flex-col items-center gap-8">
+            {navLinks.map((link) => (
+              <li key={link.href}>
                 <a
-                  href="#agenda"
+                  href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="inline-block px-8 py-3 rounded-full text-sm font-semibold tracking-widest uppercase text-white bg-brand-coral hover:bg-transparent hover:text-brand-coral hover:border hover:border-[#BF953F] transition-all"
+                  className="font-serif text-2xl text-white/90 hover:text-brand-coral transition-colors"
                 >
-                  Conectar
+                  {link.label}
                 </a>
               </li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+            <li>
+              <a
+                href="#agenda"
+                onClick={() => setMenuOpen(false)}
+                className="inline-block mt-4 px-8 py-3 rounded-full text-sm font-sans font-semibold tracking-widest uppercase text-brand-navy bg-brand-sand shadow-lg"
+              >
+                Conectar
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
     </>
   );
 };
