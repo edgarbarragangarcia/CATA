@@ -31,7 +31,7 @@ export const Navbar: React.FC = () => {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
             ? 'bg-brand-navy/90 backdrop-blur-xl shadow-lg shadow-brand-navy/20 border-b border-white/10 py-3'
-            : 'bg-brand-sand/70 backdrop-blur-md py-5'
+            : 'bg-transparent py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -49,7 +49,7 @@ export const Navbar: React.FC = () => {
             <div className="leading-tight">
               <span
                 className={`font-serif font-bold text-xl tracking-wide transition-colors duration-500 ${
-                  scrolled ? '' : 'text-brand-navy'
+                  scrolled ? '' : 'text-white'
                 }`}
                 style={scrolled ? {
                   background: 'linear-gradient(135deg, #BF953F 0%, #FCF6BA 40%, #B38728 70%, #AA771C 100%)',
@@ -60,7 +60,7 @@ export const Navbar: React.FC = () => {
               >
                 Cata Ayala
               </span>
-              <p className={`text-[10px] font-sans tracking-[0.2em] uppercase font-semibold transition-colors duration-500 ${scrolled ? 'text-brand-sand/60' : 'text-brand-navy/60'}`}>
+              <p className={`text-[10px] font-sans tracking-[0.2em] uppercase font-semibold transition-colors duration-500 ${scrolled ? 'text-brand-sand/60' : 'text-white/70'}`}>
                 COACH DE VIDA
               </p>
             </div>
@@ -73,7 +73,7 @@ export const Navbar: React.FC = () => {
                 <a
                   href={link.href}
                   className={`font-sans text-xs font-semibold tracking-widest uppercase transition-colors duration-300 hover:text-brand-coral ${
-                    scrolled ? 'text-brand-sand/90' : 'text-brand-navy'
+                    scrolled ? 'text-brand-sand/90' : 'text-white/90'
                   }`}
                 >
                   {link.label}
@@ -93,7 +93,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMenuOpen((o) => !o)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled ? 'text-brand-sand' : 'text-brand-navy'}`}
+            className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled ? 'text-brand-sand' : 'text-white'}`}
             aria-label="Toggle menu"
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
