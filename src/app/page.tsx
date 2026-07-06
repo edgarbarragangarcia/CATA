@@ -156,7 +156,7 @@ export default function Home() {
       {/* 5. PILARES & RESPALDO ACADÉMICO */}
       <section id="respaldo" className="py-32 md:py-48 bg-white text-black">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="max-w-4xl mx-auto">
             <ScrollReveal>
               <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-coral uppercase mb-6">El Origen</h2>
               <h3 className="text-5xl md:text-7xl font-bold tracking-tight mb-10 leading-[1.1]">
@@ -172,32 +172,6 @@ export default function Home() {
                 </p>
               </div>
             </ScrollReveal>
-
-            <div className="flex flex-col gap-8">
-              <ScrollReveal delay={0.2}>
-                <a href="/diplomas/CatalinaAyala-DNACert.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-8 p-8 bg-white border border-gray-200 rounded-[2.5rem] hover:shadow-2xl hover:-translate-y-2 hover:border-gray-300 transition-all duration-500 group">
-                  <div className="w-24 h-24 rounded-[1.5rem] bg-gray-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-500 shadow-inner">
-                    <Image src="/diplomas/dna-cert.png" alt="DNA" width={70} height={70} className="object-contain" />
-                  </div>
-                  <div>
-                    <h4 className="text-2xl font-bold text-gray-900 mb-2">Certificación DNA</h4>
-                    <p className="text-lg text-brand-coral font-medium">Ver Diploma PDF →</p>
-                  </div>
-                </a>
-              </ScrollReveal>
-
-              <ScrollReveal delay={0.3}>
-                <a href="/diplomas/Maestría%20en%20Coaching-%20Catalina%20Ayala%20Cadavid.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-8 p-8 bg-white border border-gray-200 rounded-[2.5rem] hover:shadow-2xl hover:-translate-y-2 hover:border-gray-300 transition-all duration-500 group">
-                  <div className="w-24 h-24 rounded-[1.5rem] bg-gray-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-500 shadow-inner">
-                    <Image src="/diplomas/coaching-cert.png" alt="Coaching" width={70} height={70} className="object-contain" />
-                  </div>
-                  <div>
-                    <h4 className="text-2xl font-bold text-gray-900 mb-2">Maestría en Coaching</h4>
-                    <p className="text-lg text-brand-coral font-medium">Ver Diploma PDF →</p>
-                  </div>
-                </a>
-              </ScrollReveal>
-            </div>
           </div>
         </div>
       </section>
