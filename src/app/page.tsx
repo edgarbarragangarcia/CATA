@@ -108,7 +108,7 @@ export default function Home() {
       {/* 3. MAJESTIC QUOTE (DARK PARALLAX) */}
       <section className="relative h-[100vh] bg-black flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle at center, #BF953F 0%, transparent 60%)' }} />
-        <ScrollReveal scale={0.95}>
+        <ScrollReveal>
           <h3 className="text-5xl md:text-7xl lg:text-8xl font-serif italic font-bold text-center leading-tight px-6 max-w-6xl mx-auto relative z-10">
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">
               "No te doy respuestas.<br />Te ayudo a descubrir las tuyas."
