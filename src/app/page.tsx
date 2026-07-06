@@ -24,20 +24,20 @@ export default function Home() {
   const heroImageOpacity = useTransform(heroProgress, [0.5, 1], [1, 0]);
 
   return (
-    <main className="min-h-screen relative selection:bg-brand-coral selection:text-white bg-black text-white">
+    <main className="min-h-screen relative selection:bg-brand-coral selection:text-white bg-brand-navy text-white">
       <Navbar />
 
       {/* 1. HERO SECTION (APPLE STYLE) */}
-      <section ref={heroRef} className="relative h-[200vh] bg-black">
+      <section ref={heroRef} className="relative h-[200vh] bg-brand-navy">
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
-          
+
           {/* Background Image that scales up */}
-          <motion.div 
+          <motion.div
             style={{ scale: heroImageScale, opacity: heroImageOpacity }}
             className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-5xl z-0"
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-black via-black/20 to-black z-10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-brand-navy via-brand-navy/20 to-brand-navy z-10" />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-transparent to-brand-navy z-10" />
             <Image 
               src={cataImg} 
               alt="Cata Ayala" 
