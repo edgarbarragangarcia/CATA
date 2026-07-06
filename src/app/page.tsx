@@ -88,13 +88,21 @@ export default function Home() {
                   Todo esto se fusiona con una feroz resiliencia humana. Es el equilibrio perfecto entre la estructura corporativa implacable y el acompañamiento empático genuino.
                 </p>
               </div>
-              <div className="relative h-[300px] sm:h-[400px] w-full rounded-[2rem] overflow-hidden bg-brand-sand shadow-2xl border border-white">
+              <a href="#respaldo" className="relative block h-[300px] sm:h-[400px] w-full rounded-[2rem] overflow-hidden bg-brand-sand shadow-2xl border border-white flex items-center justify-center group cursor-pointer">
                 <div className="absolute inset-0 bg-brand-navy/5 backdrop-blur-3xl" />
-                {/* Abstract graphic representing strategy and human warmth */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 border-2 border-brand-coral/20 rounded-full" />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-brand-amber/30 rounded-full rotate-45" />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-tr from-brand-coral to-brand-amber rounded-full blur-xl opacity-50" />
-              </div>
+                
+                <div className="absolute w-[70%] sm:w-[65%] aspect-[4/3] right-2 sm:right-6 top-8 sm:top-12 rounded-lg overflow-hidden shadow-xl transition-all duration-500 group-hover:rotate-6 group-hover:translate-x-4 group-hover:-translate-y-2 bg-white">
+                  <Image src="/diplomas/dna-cert.png" alt="Certificación DNA" fill className="object-contain p-2" />
+                  <div className="absolute inset-0 border border-black/10 rounded-lg pointer-events-none" />
+                </div>
+
+                <div className="absolute w-[75%] sm:w-[70%] aspect-[4/3] left-2 sm:left-6 bottom-8 sm:bottom-12 rounded-lg overflow-hidden shadow-2xl transition-all duration-500 group-hover:-rotate-3 group-hover:-translate-x-4 group-hover:translate-y-2 z-10 bg-white border border-brand-amber/30">
+                  <Image src="/diplomas/coaching-cert.png" alt="Maestría en Coaching" fill className="object-contain p-2" />
+                  <div className="absolute inset-0 border border-black/10 rounded-lg pointer-events-none" />
+                </div>
+                
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-tr from-brand-coral to-brand-amber rounded-full blur-3xl opacity-20 pointer-events-none" />
+              </a>
             </div>
           </ScrollReveal>
         </div>
