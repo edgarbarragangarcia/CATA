@@ -7,7 +7,6 @@ import { Navbar } from '@/components/Navbar';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { BookingSection } from '@/components/BookingSection';
 import { Footer } from '@/components/Footer';
-import cataImg from '@/img/cata.jpg';
 import { ScrollReveal } from '@/components/ScrollReveal';
 
 export default function Home() {
@@ -31,20 +30,13 @@ export default function Home() {
       <section ref={heroRef} className="relative h-[200vh] bg-brand-navy">
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
 
-          {/* Background Image that scales up */}
+          {/* Background Texture that scales up */}
           <motion.div
             style={{ scale: heroImageScale, opacity: heroImageOpacity }}
-            className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-5xl z-0"
+            className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-full max-w-5xl z-0 bg-brand-navy bg-mesh"
           >
             <div className="absolute inset-0 bg-gradient-to-b from-brand-navy via-brand-navy/20 to-brand-navy z-10" />
             <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-transparent to-brand-navy z-10" />
-            <Image 
-              src={cataImg} 
-              alt="Cata Ayala" 
-              fill
-              className="object-cover object-[center_15%] opacity-60 brightness-90"
-              priority
-            />
           </motion.div>
 
           {/* Central Hero Text */}

@@ -72,6 +72,13 @@
   .glass-card {
     @apply bg-white/20 backdrop-blur-md border border-white/30 shadow-xl rounded-2xl;
   }
+  
+  .bg-mesh {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 6px 6px;
+  }
 }
 
 @keyframes float {
