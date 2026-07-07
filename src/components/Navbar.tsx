@@ -60,15 +60,15 @@ export const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between pointer-events-auto">
           {/* Logo */}
           <a href="#hero" className="flex items-center gap-4 group">
-            <div className="relative w-10 h-10">
-              <div className="absolute inset-0 bg-gradient-to-tr from-brand-coral to-brand-amber rounded-full opacity-90 group-hover:opacity-100 transition-opacity" />
+            <div className="relative w-12 h-12 flex-shrink-0">
+              <div className="absolute inset-0 bg-white rounded-full shadow-sm group-hover:shadow-md transition-shadow" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <svg viewBox="-50 -50 100 100" className="w-8 h-8 text-current">
+                <svg viewBox="-50 -50 100 100" className="w-9 h-9">
                   {/* C Shape */}
                   <path 
                     d="M 38,-10 A 40 40 0 1 0 15,38 C 35,32 30,10 5,10 C -10,10 -20,15 -25,5" 
                     fill="none" 
-                    stroke="currentColor" 
+                    stroke="#0B2545" 
                     strokeWidth="7" 
                     strokeLinecap="round" 
                   />
