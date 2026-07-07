@@ -63,9 +63,26 @@ export const Navbar: React.FC = () => {
             <div className="relative w-10 h-10">
               <div className="absolute inset-0 bg-gradient-to-tr from-brand-coral to-brand-amber rounded-full opacity-90 group-hover:opacity-100 transition-opacity" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <svg viewBox="0 0 100 100" className="w-5 h-5 text-white">
-                  <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M35 60 L65 60" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
+                <svg viewBox="-50 -50 100 100" className="w-8 h-8 text-current">
+                  {/* C Shape */}
+                  <path 
+                    d="M 38,-10 A 40 40 0 1 0 15,38 C 35,32 30,10 5,10 C -10,10 -20,15 -25,5" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="7" 
+                    strokeLinecap="round" 
+                  />
+                  {/* A Shape */}
+                  <path 
+                    d="M 0,-15 L -20,25 M 0,-15 L 20,25" 
+                    fill="none" 
+                    stroke="#FF5E36" 
+                    strokeWidth="7" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  />
+                  {/* Dot */}
+                  <circle cx="0" cy="5" r="4" fill="#FF5E36"/>
                 </svg>
               </div>
             </div>
