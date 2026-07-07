@@ -79,6 +79,15 @@
       linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
     background-size: 6px 6px;
   }
+
+  .hero-img-pos {
+    object-position: 100% 15% !important;
+  }
+  @media (min-width: 768px) {
+    .hero-img-pos {
+      object-position: 50% 15% !important;
+    }
+  }
 }
 
 @keyframes float {
