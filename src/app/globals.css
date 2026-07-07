@@ -81,7 +81,7 @@
   }
 
   .hero-img-pos {
-    object-position: 100% 15% !important;
+    object-position: 70% 0% !important;
   }
   @media (min-width: 768px) {
     .hero-img-pos {
