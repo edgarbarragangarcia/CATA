@@ -43,6 +43,7 @@ export default function Home() {
               className="object-cover blur-md scale-110"
               priority
             />
+            <div className="absolute inset-x-0 top-0 h-40 md:h-48 bg-gradient-to-b from-brand-navy to-transparent z-10" />
           </motion.div>
 
           {/* Central Hero Text */}
