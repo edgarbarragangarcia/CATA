@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion';
 import { Navbar } from '@/components/Navbar';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { BookingSection } from '@/components/BookingSection';
@@ -19,49 +19,25 @@ export default function Home() {
     offset: ["start start", "end start"]
   });
 
-  const heroTextOpacity = useTransform(heroProgress, [0, 0.4], [1, 0]);
-  const heroTextScale = useTransform(heroProgress, [0, 0.4], [1, 0.8]);
+  const heroTextOpacity = useTransform(heroProgress, [0, 0.45], [0, 1]);
+  const heroTextBlurPx = useTransform(heroProgress, [0, 0.45], [14, 0]);
+  const heroTextBlur = useMotionTemplate`blur(${heroTextBlurPx}px)`;
   const heroImageScale = useTransform(heroProgress, [0, 1], [1, 1.1]);
-  const heroImageOpacity = useTransform(heroProgress, [0.5, 1], [1, 0]);
+  const heroImageBlurPx = useTransform(heroProgress, [0.15, 1], [0, 16]);
+  const heroImageBlur = useMotionTemplate`blur(${heroImageBlurPx}px)`;
+  const heroImageOpacity = useTransform(heroProgress, [0.7, 1], [1, 0]);
 
   return (
     <main className="min-h-screen relative selection:bg-brand-coral selection:text-white bg-brand-navy text-white">
       <Navbar />
 
-      {/* 1. HERO SECTION — MOBILE (static, stacked card layout) */}
-      <section className="relative md:hidden bg-brand-navy px-6 pt-28 pb-12 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image src={heroBgImg} alt="" fill className="object-cover blur-md scale-110 opacity-60" priority />
-          <div className="absolute inset-0 bg-brand-navy/70" />
-        </div>
-
-        <div className="relative z-10 flex flex-col items-center text-center">
-          <h1 className="text-6xl font-bold tracking-tighter leading-none mb-6">
-            <span className="block text-white mb-1">Gózate</span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-brand-amber to-brand-coral">
-              la vida.
-            </span>
-          </h1>
-
-          <div className="relative w-full max-w-xs aspect-[4/5] rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-            <Image src={heroBgImg} alt="" fill className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent" />
-            <Image src={cataCutoutImg} alt="Cata Ayala" fill className="object-contain object-bottom scale-[1.15] translate-y-2" priority />
-          </div>
-
-          <p className="text-lg font-light text-white/90 leading-relaxed mt-8 max-w-sm">
-            Un espacio donde no te doy fórmulas mágicas, sino que te devuelvo el poder de descubrir tus propias respuestas.
-          </p>
-        </div>
-      </section>
-
-      {/* 1. HERO SECTION (APPLE STYLE) — DESKTOP */}
-      <section ref={heroRef} className="hidden md:block relative h-[200vh] bg-brand-navy">
+      {/* 1. HERO SECTION (APPLE STYLE) — scroll: text sharpens in, photo blurs out */}
+      <section ref={heroRef} className="relative h-[200vh] bg-brand-navy">
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
 
           {/* Background Texture that scales up */}
           <motion.div
-            style={{ scale: heroImageScale, opacity: heroImageOpacity }}
+            style={{ scale: heroImageScale, opacity: heroImageOpacity, filter: heroImageBlur }}
             className="absolute inset-0 z-0"
           >
             <Image
@@ -76,8 +52,8 @@ export default function Home() {
 
           {/* Cata silhouette cutout, sitting on the textured background */}
           <motion.div
-            style={{ scale: heroImageScale, opacity: heroImageOpacity }}
-            className="absolute bottom-0 md:right-8 lg:right-16 z-[5] md:h-[85%] lg:h-[90%] aspect-[356/723]"
+            style={{ scale: heroImageScale, opacity: heroImageOpacity, filter: heroImageBlur }}
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-8 lg:right-16 z-[5] h-[55%] md:h-[85%] lg:h-[90%] aspect-[356/723]"
           >
             <Image
               src={cataCutoutImg}
@@ -90,16 +66,16 @@ export default function Home() {
 
           {/* Central Hero Text */}
           <motion.div
-            style={{ opacity: heroTextOpacity, scale: heroTextScale }}
-            className="relative z-10 text-left px-0 max-w-none mx-auto flex flex-col items-start mt-20 w-full pl-16 lg:pl-24 pr-[32%] lg:pr-[28%]"
+            style={{ opacity: heroTextOpacity, filter: heroTextBlur }}
+            className="relative z-10 text-center md:text-left px-6 md:px-0 max-w-5xl md:max-w-none mx-auto flex flex-col items-center md:items-start mt-12 md:mt-20 w-full md:pl-16 lg:pl-24 md:pr-[32%] lg:pr-[28%]"
           >
-            <h1 className="text-8xl lg:text-9xl font-bold tracking-tighter leading-none mb-6">
-              <span className="block text-white mb-2">Gózate</span>
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none mb-4 md:mb-6">
+              <span className="block text-white mb-1 md:mb-2">Gózate</span>
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-brand-amber to-brand-coral">
                 la vida.
               </span>
             </h1>
-            <p className="text-2xl font-light text-white/90 max-w-3xl leading-relaxed mt-8">
+            <p className="text-base sm:text-lg md:text-2xl font-light text-white/90 max-w-3xl mx-auto md:mx-0 leading-relaxed mt-4 md:mt-8">
               Un espacio donde no te doy fórmulas mágicas, sino que te devuelvo el poder de descubrir tus propias respuestas.
             </p>
           </motion.div>
