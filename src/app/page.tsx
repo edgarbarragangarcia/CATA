@@ -30,10 +30,10 @@ export default function Home() {
 
   // Mobile: green background always visible; text shows first then fades
   // out as photo fades/blurs in on top of it while scrolling.
-  const heroTextOpacity = useTransform(heroProgress, [0, 0.3], [1, 0]);
-  const heroImageBlurPx = useTransform(heroProgress, [0.25, 0.6], [24, 0]);
+  const heroTextOpacity = useTransform(heroProgress, [0, 0.12], [1, 0]);
+  const heroImageBlurPx = useTransform(heroProgress, [0.1, 0.25], [24, 0]);
   const heroImageBlur = useMotionTemplate`blur(${heroImageBlurPx}px)`;
-  const heroImageOpacityMobile = useTransform(heroProgress, [0.25, 0.5], [0, 1]);
+  const heroImageOpacityMobile = useTransform(heroProgress, [0.1, 0.2], [0, 1]);
 
   // Desktop: original Apple-style zoom/fade as the section scrolls away.
   const heroTextOpacityDesktop = useTransform(heroProgress, [0, 0.4], [1, 0]);
