@@ -8,6 +8,7 @@ import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { BookingSection } from '@/components/BookingSection';
 import { Footer } from '@/components/Footer';
 import heroBgImg from '@/img/hero-bg.jpg';
+import cataImg from '@/img/cata.jpg';
 import { ScrollReveal } from '@/components/ScrollReveal';
 
 export default function Home() {
@@ -46,18 +47,33 @@ export default function Home() {
             <div className="absolute inset-x-0 top-0 h-40 md:h-48 bg-gradient-to-b from-brand-navy to-transparent z-10" />
           </motion.div>
 
-          {/* Central Hero Text */}
-          <motion.div 
-            style={{ opacity: heroTextOpacity, scale: heroTextScale }}
-            className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center mt-20"
+          {/* Cata photo, sharp, right side */}
+          <motion.div
+            style={{ scale: heroImageScale, opacity: heroImageOpacity }}
+            className="absolute inset-y-0 right-0 z-[5] hidden md:block w-1/2 lg:w-[45%]"
           >
-            <h1 className="text-7xl md:text-9xl lg:text-[11rem] font-bold tracking-tighter leading-none mb-6">
+            <Image
+              src={cataImg}
+              alt="Cata Ayala"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-brand-navy to-transparent" />
+          </motion.div>
+
+          {/* Central Hero Text */}
+          <motion.div
+            style={{ opacity: heroTextOpacity, scale: heroTextScale }}
+            className="relative z-10 text-center md:text-left px-4 md:px-0 max-w-5xl md:max-w-none mx-auto flex flex-col items-center md:items-start mt-20 w-full md:pl-16 lg:pl-24 md:pr-[45%] lg:pr-[40%]"
+          >
+            <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none mb-6">
               <span className="block text-white mb-2">Gózate</span>
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-brand-amber to-brand-coral">
                 la vida.
               </span>
             </h1>
-            <p className="text-xl md:text-3xl font-light text-white/90 max-w-3xl mx-auto leading-relaxed mt-8">
+            <p className="text-xl md:text-2xl font-light text-white/90 max-w-3xl mx-auto md:mx-0 leading-relaxed mt-8">
               Un espacio donde no te doy fórmulas mágicas, sino que te devuelvo el poder de descubrir tus propias respuestas.
             </p>
           </motion.div>
