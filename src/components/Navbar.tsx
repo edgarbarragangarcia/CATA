@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
@@ -63,27 +64,14 @@ export const Navbar: React.FC = () => {
             <div className="relative w-12 h-12 flex-shrink-0">
               <div className="absolute inset-0 bg-white rounded-full shadow-sm group-hover:shadow-md transition-shadow" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <svg viewBox="-50 -50 100 100" className="w-9 h-9">
-                  {/* C Shape */}
-                  <path 
-                    d="M 38,-10 A 40 40 0 1 0 15,38 C 35,32 30,10 5,10 C -10,10 -20,15 -25,5" 
-                    fill="none" 
-                    stroke="#0B2545" 
-                    strokeWidth="7" 
-                    strokeLinecap="round" 
-                  />
-                  {/* A Shape */}
-                  <path 
-                    d="M 0,-15 L -20,25 M 0,-15 L 20,25" 
-                    fill="none" 
-                    stroke="#FF5E36" 
-                    strokeWidth="7" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round"
-                  />
-                  {/* Dot */}
-                  <circle cx="0" cy="5" r="4" fill="#FF5E36"/>
-                </svg>
+                <Image
+                  src="/logo-icon.png"
+                  alt="Cata Ayala"
+                  width={249}
+                  height={217}
+                  className="w-9 h-9 object-contain"
+                  priority
+                />
               </div>
             </div>
             <div className={`leading-tight transition-colors duration-300 ${textColor}`}>
