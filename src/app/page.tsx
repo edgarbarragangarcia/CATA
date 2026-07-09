@@ -93,13 +93,13 @@ export default function Home() {
             style={heroTextStyle}
             className="relative z-10 text-center md:text-left px-6 md:px-0 max-w-5xl md:max-w-none mx-auto flex flex-col items-center md:items-start mt-12 md:mt-20 w-full md:pl-16 lg:pl-24 md:pr-[32%] lg:pr-[28%]"
           >
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none mb-4 md:mb-6">
+            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none mb-4 md:mb-6">
               <span className="block text-white mb-1 md:mb-2">Gózate</span>
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-brand-amber to-brand-coral">
                 la vida.
               </span>
             </h1>
-            <p className="text-base sm:text-lg md:text-2xl font-light text-white/90 max-w-3xl mx-auto md:mx-0 leading-relaxed mt-4 md:mt-8">
+            <p className="text-lg sm:text-xl md:text-2xl font-light text-white/90 max-w-3xl mx-auto md:mx-0 leading-relaxed mt-4 md:mt-8">
               Un espacio donde no te doy fórmulas mágicas, sino que te devuelvo el poder de descubrir tus propias respuestas.
             </p>
           </motion.div>
