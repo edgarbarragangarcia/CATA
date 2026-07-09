@@ -47,10 +47,10 @@ export default function Home() {
             <div className="absolute inset-x-0 top-0 h-40 md:h-48 bg-gradient-to-b from-brand-navy to-transparent z-10" />
           </motion.div>
 
-          {/* Cata silhouette cutout, right side, sitting on the textured background */}
+          {/* Cata silhouette cutout, sitting on the textured background */}
           <motion.div
             style={{ scale: heroImageScale, opacity: heroImageOpacity }}
-            className="absolute bottom-0 right-0 md:right-8 lg:right-16 z-[5] hidden md:block h-[85%] lg:h-[90%] aspect-[356/723]"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-8 lg:right-16 z-[5] h-[50%] md:h-[85%] lg:h-[90%] aspect-[356/723]"
           >
             <Image
               src={cataCutoutImg}
