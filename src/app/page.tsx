@@ -8,7 +8,7 @@ import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { BookingSection } from '@/components/BookingSection';
 import { Footer } from '@/components/Footer';
 import heroBgImg from '@/img/hero-bg.jpg';
-import cataImg from '@/img/cata.jpg';
+import cataCutoutImg from '@/img/cata-cutout.png';
 import { ScrollReveal } from '@/components/ScrollReveal';
 
 export default function Home() {
@@ -47,25 +47,24 @@ export default function Home() {
             <div className="absolute inset-x-0 top-0 h-40 md:h-48 bg-gradient-to-b from-brand-navy to-transparent z-10" />
           </motion.div>
 
-          {/* Cata photo, sharp, right side */}
+          {/* Cata silhouette cutout, sharp, right side, sitting on the textured background */}
           <motion.div
             style={{ scale: heroImageScale, opacity: heroImageOpacity }}
-            className="absolute inset-y-0 right-0 z-[5] hidden md:block w-1/2 lg:w-[45%]"
+            className="absolute bottom-0 right-0 md:right-8 lg:right-16 z-[5] hidden md:block h-[85%] lg:h-[90%] aspect-[356/723]"
           >
             <Image
-              src={cataImg}
+              src={cataCutoutImg}
               alt="Cata Ayala"
               fill
-              className="object-cover"
+              className="object-contain object-bottom"
               priority
             />
-            <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-brand-navy to-transparent" />
           </motion.div>
 
           {/* Central Hero Text */}
           <motion.div
             style={{ opacity: heroTextOpacity, scale: heroTextScale }}
-            className="relative z-10 text-center md:text-left px-4 md:px-0 max-w-5xl md:max-w-none mx-auto flex flex-col items-center md:items-start mt-20 w-full md:pl-16 lg:pl-24 md:pr-[45%] lg:pr-[40%]"
+            className="relative z-10 text-center md:text-left px-4 md:px-0 max-w-5xl md:max-w-none mx-auto flex flex-col items-center md:items-start mt-20 w-full md:pl-16 lg:pl-24 md:pr-[32%] lg:pr-[28%]"
           >
             <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none mb-6">
               <span className="block text-white mb-2">Gózate</span>
