@@ -61,15 +61,28 @@ export const Navbar: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between pointer-events-auto">
           {/* Logo */}
           <a href="#hero" className="flex items-center gap-4 group">
-            <div className="relative w-12 h-12 flex-shrink-0 rounded-full overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
-              <Image
-                src="/logo-icon.png"
-                alt="Cata Ayala"
-                width={176}
-                height={176}
-                className="w-full h-full object-cover"
-                priority
-              />
+            <div className="relative w-12 h-12 flex-shrink-0">
+              {isLightBg ? (
+                <Image
+                  src="/logo-icon-light.png"
+                  alt="Cata Ayala"
+                  width={176}
+                  height={176}
+                  className="w-full h-full object-contain"
+                  priority
+                />
+              ) : (
+                <div className="w-full h-full rounded-full overflow-hidden shadow-sm group-hover:shadow-md transition-shadow">
+                  <Image
+                    src="/logo-icon.png"
+                    alt="Cata Ayala"
+                    width={176}
+                    height={176}
+                    className="w-full h-full object-cover"
+                    priority
+                  />
+                </div>
+              )}
             </div>
             <div className={`leading-tight transition-colors duration-300 ${textColor}`}>
               <span className="font-serif font-bold text-xl tracking-wide block">
