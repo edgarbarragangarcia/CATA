@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motion';
 import { Navbar } from '@/components/Navbar';
@@ -19,13 +19,27 @@ export default function Home() {
     offset: ["start start", "end start"]
   });
 
-  const heroTextOpacity = useTransform(heroProgress, [0, 0.45], [0, 1]);
-  const heroTextBlurPx = useTransform(heroProgress, [0, 0.45], [14, 0]);
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)');
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  const heroTextOpacity = useTransform(heroProgress, [0, 0.15], [1, 1]);
+  const heroTextBlurPx = useTransform(heroProgress, [0, 0.15], [0, 0]);
   const heroTextBlur = useMotionTemplate`blur(${heroTextBlurPx}px)`;
-  const heroImageScale = useTransform(heroProgress, [0, 1], [1, 1.1]);
-  const heroImageBlurPx = useTransform(heroProgress, [0.15, 1], [0, 16]);
+  const heroImageScale = useTransform(heroProgress, [0.3, 1], [1, 1.1]);
+  const heroImageBlurPx = useTransform(heroProgress, [0.2, 0.55], [24, 0]);
   const heroImageBlur = useMotionTemplate`blur(${heroImageBlurPx}px)`;
-  const heroImageOpacity = useTransform(heroProgress, [0.7, 1], [1, 0]);
+  const heroImageOpacity = useTransform(heroProgress, [0.2, 0.45], [0, 1]);
+
+  // Scroll-driven blur/order effects are mobile-only; desktop stays static.
+  const heroBgStyle = isDesktop ? {} : { scale: heroImageScale, opacity: heroImageOpacity, filter: heroImageBlur };
+  const heroPhotoStyle = isDesktop ? {} : { scale: heroImageScale, opacity: heroImageOpacity, filter: heroImageBlur };
+  const heroTextStyle = isDesktop ? {} : { opacity: heroTextOpacity, filter: heroTextBlur };
 
   return (
     <main className="min-h-screen relative selection:bg-brand-coral selection:text-white bg-brand-navy text-white">
@@ -37,7 +51,7 @@ export default function Home() {
 
           {/* Background Texture that scales up */}
           <motion.div
-            style={{ scale: heroImageScale, opacity: heroImageOpacity, filter: heroImageBlur }}
+            style={heroBgStyle}
             className="absolute inset-0 z-0"
           >
             <Image
@@ -52,7 +66,7 @@ export default function Home() {
 
           {/* Cata silhouette cutout, sitting on the textured background */}
           <motion.div
-            style={{ scale: heroImageScale, opacity: heroImageOpacity, filter: heroImageBlur }}
+            style={heroPhotoStyle}
             className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-8 lg:right-16 z-[5] h-[55%] md:h-[85%] lg:h-[90%] aspect-[356/723]"
           >
             <Image
@@ -66,7 +80,7 @@ export default function Home() {
 
           {/* Central Hero Text */}
           <motion.div
-            style={{ opacity: heroTextOpacity, filter: heroTextBlur }}
+            style={heroTextStyle}
             className="relative z-10 text-center md:text-left px-6 md:px-0 max-w-5xl md:max-w-none mx-auto flex flex-col items-center md:items-start mt-12 md:mt-20 w-full md:pl-16 lg:pl-24 md:pr-[32%] lg:pr-[28%]"
           >
             <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none mb-4 md:mb-6">
