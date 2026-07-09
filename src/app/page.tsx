@@ -34,16 +34,15 @@ export default function Home() {
           {/* Background Texture that scales up */}
           <motion.div
             style={{ scale: heroImageScale, opacity: heroImageOpacity }}
-            className="absolute inset-0 z-0 bg-brand-navy"
+            className="absolute inset-0 z-0"
           >
             <Image
               src={heroBgImg}
               alt=""
               fill
-              className="object-cover opacity-40 brightness-75 blur-md scale-110"
+              className="object-cover blur-md scale-110"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-brand-navy via-brand-navy/40 to-brand-navy z-10" />
           </motion.div>
 
           {/* Central Hero Text */}
