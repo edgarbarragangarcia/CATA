@@ -45,7 +45,7 @@ export default function Home() {
     ? { scale: heroImageScaleDesktop, opacity: heroImageOpacityDesktop }
     : {};
   const heroPhotoStyle = isDesktop
-    ? { scale: heroImageScaleDesktop, opacity: heroImageOpacityDesktop }
+    ? {}
     : { opacity: heroImageOpacityMobile, filter: heroImageBlur };
   const heroTextStyle = isDesktop
     ? { opacity: heroTextOpacityDesktop, scale: heroTextScaleDesktop }
