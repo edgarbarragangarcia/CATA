@@ -28,14 +28,12 @@ export default function Home() {
     return () => mq.removeEventListener('change', update);
   }, []);
 
-  // Mobile: sequential blur effect (text sharpens in first, then photo).
-  const heroTextOpacity = useTransform(heroProgress, [0, 0.15], [1, 1]);
-  const heroTextBlurPx = useTransform(heroProgress, [0, 0.15], [0, 0]);
-  const heroTextBlur = useMotionTemplate`blur(${heroTextBlurPx}px)`;
-  const heroImageBlurPx = useTransform(heroProgress, [0.2, 0.55], [24, 0]);
+  // Mobile: green background always visible; text shows first then fades
+  // out as photo fades/blurs in on top of it while scrolling.
+  const heroTextOpacity = useTransform(heroProgress, [0, 0.3], [1, 0]);
+  const heroImageBlurPx = useTransform(heroProgress, [0.25, 0.6], [24, 0]);
   const heroImageBlur = useMotionTemplate`blur(${heroImageBlurPx}px)`;
-  const heroImageOpacityMobile = useTransform(heroProgress, [0.2, 0.45], [0, 1]);
-  const heroImageScaleMobile = useTransform(heroProgress, [0.3, 1], [1, 1.1]);
+  const heroImageOpacityMobile = useTransform(heroProgress, [0.25, 0.5], [0, 1]);
 
   // Desktop: original Apple-style zoom/fade as the section scrolls away.
   const heroTextOpacityDesktop = useTransform(heroProgress, [0, 0.4], [1, 0]);
@@ -45,13 +43,13 @@ export default function Home() {
 
   const heroBgStyle = isDesktop
     ? { scale: heroImageScaleDesktop, opacity: heroImageOpacityDesktop }
-    : { scale: heroImageScaleMobile, opacity: heroImageOpacityMobile, filter: heroImageBlur };
+    : {};
   const heroPhotoStyle = isDesktop
     ? { scale: heroImageScaleDesktop, opacity: heroImageOpacityDesktop }
-    : { scale: heroImageScaleMobile, opacity: heroImageOpacityMobile, filter: heroImageBlur };
+    : { opacity: heroImageOpacityMobile, filter: heroImageBlur };
   const heroTextStyle = isDesktop
     ? { opacity: heroTextOpacityDesktop, scale: heroTextScaleDesktop }
-    : { opacity: heroTextOpacity, filter: heroTextBlur };
+    : { opacity: heroTextOpacity };
 
   return (
     <main className="min-h-screen relative selection:bg-brand-coral selection:text-white bg-brand-navy text-white">
