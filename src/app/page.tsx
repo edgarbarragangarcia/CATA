@@ -56,7 +56,7 @@ export default function Home() {
               src={cataCutoutImg}
               alt="Cata Ayala"
               fill
-              className="object-contain object-bottom blur-sm"
+              className="object-contain object-bottom"
               priority
             />
           </motion.div>
