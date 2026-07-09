@@ -7,7 +7,7 @@ import { Navbar } from '@/components/Navbar';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { BookingSection } from '@/components/BookingSection';
 import { Footer } from '@/components/Footer';
-import cataImg from '@/img/cata.jpg';
+import heroBgImg from '@/img/hero-bg.jpg';
 import { ScrollReveal } from '@/components/ScrollReveal';
 
 export default function Home() {
@@ -38,11 +38,11 @@ export default function Home() {
           >
             <div className="absolute inset-0 bg-gradient-to-b from-brand-navy via-brand-navy/20 to-brand-navy z-10" />
             <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-transparent to-brand-navy z-10" />
-            <Image 
-              src={cataImg} 
-              alt="Cata Ayala" 
+            <Image
+              src={heroBgImg}
+              alt=""
               fill
-              className="object-cover opacity-60 brightness-90 hero-img-pos"
+              className="object-cover opacity-60 brightness-90 blur-md scale-110"
               priority
             />
           </motion.div>
