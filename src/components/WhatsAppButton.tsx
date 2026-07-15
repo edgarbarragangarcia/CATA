@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, Mail, Calendar, Plus, X } from 'lucide-react';
+import { MessageCircle, Mail, Calendar, Contact, X } from 'lucide-react';
 
 // ─────────────────────────────────────────────
 // CONFIGURACIÓN
@@ -131,12 +131,29 @@ export const WhatsAppButton: React.FC = () => {
                   : '0 8px 32px rgba(255, 145, 0, 0.4)'
               }}
             >
-              <motion.div
-                animate={{ rotate: isOpen ? 135 : 0 }}
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-              >
-                <Plus className="text-white" size={28} />
-              </motion.div>
+              <AnimatePresence mode="wait" initial={false}>
+                {isOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ opacity: 0, rotate: -90, scale: 0.6 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: 90, scale: 0.6 }}
+                    transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                  >
+                    <X className="text-white" size={26} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="contact"
+                    initial={{ opacity: 0, rotate: 90, scale: 0.6 }}
+                    animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                    exit={{ opacity: 0, rotate: -90, scale: 0.6 }}
+                    transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                  >
+                    <Contact className="text-white" size={24} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.button>
 
           </div>
