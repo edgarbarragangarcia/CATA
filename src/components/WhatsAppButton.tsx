@@ -10,7 +10,7 @@ import { MessageCircle, Mail, Calendar, Plus, X } from 'lucide-react';
 const WHATSAPP_NUMBER = '573142736009';
 const WHATSAPP_MESSAGE = '¡Hola Cata! 👋 Me interesa agendar una sesión de mentoría contigo.';
 const EMAIL = 'hola@cataayala.com';
-const CALENDLY_URL = 'https://calendly.com/cata-ayala'; // Reemplazar con URL real
+const CALENDLY_URL = 'https://calendly.com/ayalacata/30min';
 // ─────────────────────────────────────────────
 
 export const WhatsAppButton: React.FC = () => {
