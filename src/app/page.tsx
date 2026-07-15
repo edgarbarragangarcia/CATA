@@ -28,12 +28,12 @@ export default function Home() {
     return () => mq.removeEventListener('change', update);
   }, []);
 
-  // Mobile: green background always visible; text shows first then fades
-  // out as photo fades/blurs in on top of it while scrolling.
-  const heroTextOpacity = useTransform(heroProgress, [0, 0.12], [1, 0]);
-  const heroImageBlurPx = useTransform(heroProgress, [0.1, 0.25], [24, 0]);
+  // Mobile: green background always visible; photo shows first then
+  // blurs/fades out as the "Gózate la vida" text transitions in.
+  const heroTextOpacity = useTransform(heroProgress, [0.1, 0.22], [0, 1]);
+  const heroImageBlurPx = useTransform(heroProgress, [0, 0.15], [0, 24]);
   const heroImageBlur = useMotionTemplate`blur(${heroImageBlurPx}px)`;
-  const heroImageOpacityMobile = useTransform(heroProgress, [0.1, 0.2], [0, 1]);
+  const heroImageOpacityMobile = useTransform(heroProgress, [0, 0.15], [1, 0]);
 
   // Desktop: original Apple-style zoom/fade as the section scrolls away.
   const heroTextOpacityDesktop = useTransform(heroProgress, [0, 0.4], [1, 0]);
@@ -45,7 +45,7 @@ export default function Home() {
     ? { scale: heroImageScaleDesktop, opacity: heroImageOpacityDesktop }
     : {};
   const heroPhotoStyle = isDesktop
-    ? {}
+    ? { opacity: 1, filter: 'none' }
     : { opacity: heroImageOpacityMobile, filter: heroImageBlur };
   const heroTextStyle = isDesktop
     ? { opacity: heroTextOpacityDesktop, scale: heroTextScaleDesktop }
