@@ -126,7 +126,7 @@ export const BookingSection: React.FC = () => {
         >
           {CALENDLY_URL ? (
             /* ── Embed de Calendly ── */
-            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-white/60 bg-white">
+            <div className="relative max-w-3xl mx-auto rounded-[2rem] overflow-hidden shadow-2xl border border-white/60 bg-white">
               {!calLoaded && (
                 <div className="flex items-center justify-center h-[600px]">
                   <div className="flex flex-col items-center gap-4 text-brand-navy/40">
@@ -138,7 +138,7 @@ export const BookingSection: React.FC = () => {
               <iframe
                 src={`${CALENDLY_URL}?hide_gdpr_banner=1&background_color=F5E6D3&text_color=0B2545&primary_color=FF9100`}
                 width="100%"
-                height="700"
+                height="630"
                 frameBorder="0"
                 title="Agenda una sesión con Cata Ayala"
                 onLoad={() => setCalLoaded(true)}

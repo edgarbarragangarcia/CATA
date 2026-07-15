@@ -77,7 +77,7 @@ export default function Home() {
           {/* Cata silhouette cutout, sitting on the textured background */}
           <motion.div
             style={heroPhotoStyle}
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-8 lg:right-16 z-[5] h-[75%] md:h-[85%] lg:h-[90%] aspect-[356/723]"
+            className="absolute bottom-[8%] md:bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-8 lg:right-16 z-[5] h-[75%] md:h-[85%] lg:h-[90%] aspect-[356/723]"
           >
             <Image
               src={cataCutoutImg}
@@ -149,7 +149,7 @@ export default function Home() {
 
       {/* 3. MAJESTIC QUOTE (DARK PARALLAX) */}
       <section className="relative h-[100vh] bg-black flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle at center, #FF5E36 0%, transparent 60%)' }} />
+        <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle at center, #0B2545 0%, transparent 60%)' }} />
         <ScrollReveal>
           <h3 className="text-5xl md:text-7xl lg:text-8xl font-serif italic font-bold text-center leading-tight px-6 max-w-6xl mx-auto relative z-10">
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">
