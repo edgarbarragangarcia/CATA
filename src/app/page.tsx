@@ -30,10 +30,10 @@ export default function Home() {
 
   // Mobile: green background always visible; photo shows first then
   // blurs/fades out as the "Gózate la vida" text transitions in.
-  const heroTextOpacity = useTransform(heroProgress, [0.1, 0.22], [0, 1]);
-  const heroImageBlurPx = useTransform(heroProgress, [0, 0.15], [0, 24]);
+  const heroTextOpacity = useTransform(heroProgress, [0.25, 0.45], [0, 1]);
+  const heroImageBlurPx = useTransform(heroProgress, [0, 0.35], [0, 24]);
   const heroImageBlur = useMotionTemplate`blur(${heroImageBlurPx}px)`;
-  const heroImageOpacityMobile = useTransform(heroProgress, [0, 0.15], [1, 0]);
+  const heroImageOpacityMobile = useTransform(heroProgress, [0, 0.35], [1, 0]);
 
   // Desktop: original Apple-style zoom/fade as the section scrolls away.
   const heroTextOpacityDesktop = useTransform(heroProgress, [0, 0.4], [1, 0]);
@@ -77,7 +77,7 @@ export default function Home() {
           {/* Cata silhouette cutout, sitting on the textured background */}
           <motion.div
             style={heroPhotoStyle}
-            className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-8 lg:right-16 z-[5] h-[55%] md:h-[85%] lg:h-[90%] aspect-[356/723]"
+            className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-8 lg:right-16 z-[5] h-[75%] md:h-[85%] lg:h-[90%] aspect-[356/723]"
           >
             <Image
               src={cataCutoutImg}
