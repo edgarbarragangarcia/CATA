@@ -26,7 +26,10 @@ export const Navbar: React.FC = () => {
         className="fixed top-0 left-0 right-0 z-50 py-5 pointer-events-none"
       >
         {/* Textured background bar */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="absolute inset-0 overflow-hidden pointer-events-none"
+          style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 60%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 0%, black 60%, transparent 100%)' }}
+        >
           <Image
             src={heroBgImg}
             alt=""
@@ -34,8 +37,7 @@ export const Navbar: React.FC = () => {
             className="object-cover blur-md scale-110"
             priority
           />
-          <div className="absolute inset-0 bg-brand-navy/60" />
-          <div className="absolute inset-x-0 bottom-0 h-px bg-white/10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/60 via-brand-navy/40 to-transparent" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 flex items-center justify-between pointer-events-auto">
