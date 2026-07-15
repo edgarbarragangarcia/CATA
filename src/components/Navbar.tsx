@@ -37,7 +37,7 @@ export const Navbar: React.FC = () => {
             className="object-cover blur-md scale-110"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/60 via-brand-navy/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/80 via-brand-navy/50 to-transparent" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 flex items-center justify-between pointer-events-auto">
