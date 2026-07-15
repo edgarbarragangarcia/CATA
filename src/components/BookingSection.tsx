@@ -126,7 +126,7 @@ export const BookingSection: React.FC = () => {
         >
           {CALENDLY_URL ? (
             /* ── Embed de Calendly ── */
-            <div className="rounded-[2rem] overflow-hidden shadow-2xl border border-white/60 bg-white">
+            <div className="relative rounded-[2rem] overflow-hidden shadow-2xl border border-white/60 bg-white">
               {!calLoaded && (
                 <div className="flex items-center justify-center h-[600px]">
                   <div className="flex flex-col items-center gap-4 text-brand-navy/40">
@@ -144,6 +144,13 @@ export const BookingSection: React.FC = () => {
                 onLoad={() => setCalLoaded(true)}
                 style={{ display: calLoaded ? 'block' : 'none' }}
               />
+              {/* Cover the "Powered by Calendly" corner ribbon */}
+              {calLoaded && (
+                <div
+                  className="absolute top-0 right-0 w-24 h-24 pointer-events-none"
+                  style={{ background: '#F5E6D3' }}
+                />
+              )}
             </div>
           ) : (
             /* ── CTA de WhatsApp mientras no hay calendario ── */
