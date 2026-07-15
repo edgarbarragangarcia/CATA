@@ -122,7 +122,7 @@ export default function Home() {
 
           <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-center">
             <ScrollReveal yOffset={60}>
-              <p className="text-3xl md:text-4xl lg:text-5xl font-light text-gray-900 leading-tight mb-8 tracking-tight">
+              <p className="text-3xl md:text-4xl lg:text-5xl font-light text-brand-navy leading-tight mb-8 tracking-tight">
                 Lejos del espacio saturado del "life coaching genérico", Cata Ayala trae a la mesa <strong className="font-semibold">17 años de liderazgo en marketing</strong>.
               </p>
               <p className="text-xl md:text-2xl font-light text-gray-500 leading-relaxed">
