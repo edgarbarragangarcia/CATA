@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Compass, Flame, Coffee } from 'lucide-react';
 
@@ -40,7 +40,22 @@ const features = [
 
 export const BookingSection: React.FC = () => {
   const [calLoaded, setCalLoaded] = useState(false);
+  const [calHeight, setCalHeight] = useState(630);
+  const [embedDomain, setEmbedDomain] = useState('');
   const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_BOOKING_MESSAGE)}`;
+
+  useEffect(() => {
+    setEmbedDomain(window.location.hostname);
+
+    const handleMessage = (event: MessageEvent) => {
+      if (event.origin !== 'https://calendly.com') return;
+      if (event.data?.event === 'calendly.page_height' && event.data.payload?.height) {
+        setCalHeight(Math.ceil(event.data.payload.height));
+      }
+    };
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
 
   return (
     <section
@@ -136,13 +151,13 @@ export const BookingSection: React.FC = () => {
                 </div>
               )}
               <iframe
-                src={`${CALENDLY_URL}?hide_gdpr_banner=1&background_color=F5E6D3&text_color=0B2545&primary_color=FF9100`}
+                src={`${CALENDLY_URL}?hide_gdpr_banner=1&background_color=F5E6D3&text_color=0B2545&primary_color=FF9100&embed_type=Inline&embed_domain=${embedDomain}`}
                 width="100%"
-                height="630"
+                height={calHeight}
                 frameBorder="0"
                 title="Agenda una sesión con Cata Ayala"
                 onLoad={() => setCalLoaded(true)}
-                style={{ display: calLoaded ? 'block' : 'none' }}
+                style={{ display: calLoaded ? 'block' : 'none', transition: 'height 0.2s ease' }}
               />
               {/* Cover the "Powered by Calendly" corner ribbon */}
               {calLoaded && (
