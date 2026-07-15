@@ -138,7 +138,7 @@ export const BookingSection: React.FC = () => {
               <iframe
                 src={`${CALENDLY_URL}?hide_gdpr_banner=1&background_color=F5E6D3&text_color=0B2545&primary_color=FF9100`}
                 width="100%"
-                height="850"
+                height="1050"
                 frameBorder="0"
                 title="Agenda una sesión con Cata Ayala"
                 onLoad={() => setCalLoaded(true)}
