@@ -40,7 +40,7 @@ export const Navbar: React.FC = () => {
 
         <div className="relative max-w-7xl mx-auto px-6 flex items-center justify-between pointer-events-auto">
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-4 group">
+          <a href="#hero" className="flex items-center gap-4 group outline-none focus-visible:ring-2 focus-visible:ring-white/40 rounded-lg">
             <div className="relative w-12 h-12 flex-shrink-0">
               <Image
                 src="/logo-icon.png"
