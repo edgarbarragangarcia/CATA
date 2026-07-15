@@ -40,7 +40,7 @@ const features = [
 
 export const BookingSection: React.FC = () => {
   const [calLoaded, setCalLoaded] = useState(false);
-  const [calHeight, setCalHeight] = useState(630);
+  const [calHeight, setCalHeight] = useState(750);
   const [embedDomain, setEmbedDomain] = useState('');
   const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_BOOKING_MESSAGE)}`;
 
@@ -50,7 +50,11 @@ export const BookingSection: React.FC = () => {
     const handleMessage = (event: MessageEvent) => {
       if (event.origin !== 'https://calendly.com') return;
       if (event.data?.event === 'calendly.page_height' && event.data.payload?.height) {
-        setCalHeight(Math.ceil(event.data.payload.height));
+        const next = Math.ceil(event.data.payload.height);
+        // Calendly fires several height updates as its content loads in
+        // stages; only grow to avoid clipping content with an early,
+        // smaller reading.
+        setCalHeight((prev) => Math.max(prev, next));
       }
     };
     window.addEventListener('message', handleMessage);
