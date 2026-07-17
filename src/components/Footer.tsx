@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { Mail, Phone, Globe } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -13,14 +14,14 @@ export const Footer: React.FC = () => {
         {/* Col 1: Brand & Tagline */}
         <div className="flex flex-col items-start gap-4">
           <a href="#hero" className="flex items-center gap-3 group">
-            <div className="relative w-8 h-8">
-              <div className="absolute inset-0 bg-gradient-to-tr from-brand-coral to-brand-amber rounded-full opacity-90 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg viewBox="0 0 100 100" className="w-4 h-4 text-white">
-                  <path d="M50 15 L85 85 L15 85 Z" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M35 60 L65 60" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" />
-                </svg>
-              </div>
+            <div className="relative w-8 h-8 flex-shrink-0">
+              <Image
+                src="/logo-icon.png"
+                alt="Cata Ayala"
+                width={64}
+                height={64}
+                className="w-full h-full object-contain"
+              />
             </div>
             <div className="leading-tight">
               <span
