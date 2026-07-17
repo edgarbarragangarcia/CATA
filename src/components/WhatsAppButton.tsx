@@ -123,9 +123,7 @@ export const WhatsAppButton: React.FC = () => {
               onClick={toggleMenu}
               className="relative w-14 h-14 rounded-full shadow-2xl flex items-center justify-center z-50 overflow-hidden"
               style={{
-                background: isOpen
-                  ? '#0B2545' // brand-navy
-                  : 'linear-gradient(135deg, #0B2545 0%, #30D5C8 100%)', // brand-navy to brand-mint
+                background: isOpen ? '#0B2545' : '#30D5C8', // brand-navy / brand-mint
                 boxShadow: isOpen
                   ? '0 4px 20px rgba(0,0,0,0.3)'
                   : '0 8px 32px rgba(48, 213, 200, 0.4)'
