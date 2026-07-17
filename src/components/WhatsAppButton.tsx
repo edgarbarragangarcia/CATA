@@ -125,10 +125,10 @@ export const WhatsAppButton: React.FC = () => {
               style={{
                 background: isOpen
                   ? '#0B2545' // brand-navy
-                  : 'linear-gradient(135deg, #0B2545 0%, #FF9100 100%)', // gradient brand
+                  : 'linear-gradient(135deg, #0B2545 0%, #30D5C8 100%)', // brand-navy to brand-mint
                 boxShadow: isOpen
                   ? '0 4px 20px rgba(0,0,0,0.3)'
-                  : '0 8px 32px rgba(255, 145, 0, 0.4)'
+                  : '0 8px 32px rgba(48, 213, 200, 0.4)'
               }}
             >
               <AnimatePresence mode="wait" initial={false}>
