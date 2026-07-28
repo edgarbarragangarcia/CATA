@@ -269,13 +269,22 @@ export default function Home() {
       {/* 6. METODOLOGÍA VIDA */}
       <section id="metodologia" className="relative overflow-hidden py-32 md:py-48 bg-gradient-to-b from-brand-coral via-[#FFB09E] to-white text-brand-navy">
         <div
-          className="absolute -top-1/4 left-1/2 -translate-x-1/2 w-[70%] aspect-square rounded-full blur-3xl pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%)' }}
+          className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[60%] aspect-square rounded-full blur-3xl pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%)' }}
+        />
+        <div
+          className="absolute bottom-0 right-0 w-[45%] aspect-square rounded-full blur-3xl pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(11,37,69,0.15) 0%, transparent 70%)' }}
         />
         <div className="relative max-w-6xl mx-auto px-6">
           <ScrollReveal>
             <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-navy uppercase mb-6 text-center">Metodología</h2>
-            <h3 className="text-6xl md:text-8xl font-bold tracking-tighter text-center mb-20 text-white">VIDA</h3>
+            <h3
+              className="text-6xl md:text-8xl font-bold tracking-tighter text-center mb-20 text-white"
+              style={{ textShadow: '0 4px 30px rgba(11,37,69,0.35)' }}
+            >
+              VIDA
+            </h3>
           </ScrollReveal>
 
           <ScrollReveal yOffset={40} staggerChildren={0.1} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
