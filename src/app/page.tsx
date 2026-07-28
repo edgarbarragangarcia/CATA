@@ -267,11 +267,15 @@ export default function Home() {
       </section>
 
       {/* 6. METODOLOGÍA VIDA */}
-      <section id="metodologia" className="py-32 md:py-48 bg-white text-brand-navy">
-        <div className="max-w-6xl mx-auto px-6">
+      <section id="metodologia" className="relative overflow-hidden py-32 md:py-48 bg-gradient-to-b from-brand-coral via-[#FFB09E] to-white text-brand-navy">
+        <div
+          className="absolute -top-1/4 left-1/2 -translate-x-1/2 w-[70%] aspect-square rounded-full blur-3xl pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%)' }}
+        />
+        <div className="relative max-w-6xl mx-auto px-6">
           <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-coral uppercase mb-6 text-center">Metodología</h2>
-            <h3 className="text-6xl md:text-8xl font-bold tracking-tighter text-center mb-20">VIDA</h3>
+            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-navy uppercase mb-6 text-center">Metodología</h2>
+            <h3 className="text-6xl md:text-8xl font-bold tracking-tighter text-center mb-20 text-white">VIDA</h3>
           </ScrollReveal>
 
           <ScrollReveal yOffset={40} staggerChildren={0.1} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -281,7 +285,7 @@ export default function Home() {
               { letter: 'D', title: 'Decidir con criterio' },
               { letter: 'A', title: 'Actuar con propósito' },
             ].map((step) => (
-              <div key={step.letter} className="bg-brand-sand/40 border border-brand-sand/60 rounded-[2rem] p-8 flex flex-col gap-4">
+              <div key={step.letter} className="bg-white/80 border border-white/60 rounded-[2rem] p-8 flex flex-col gap-4 shadow-sm">
                 <span className="text-5xl font-bold text-brand-coral font-serif">{step.letter}</span>
                 <p className="text-xl font-light text-brand-navy leading-snug">{step.title}</p>
               </div>
