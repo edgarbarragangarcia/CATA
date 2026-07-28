@@ -8,9 +8,10 @@ import heroBgImg from '@/img/hero-bg.jpg';
 
 const navLinks = [
   { label: 'Inicio', href: '#hero' },
-  { label: 'Filosofía', href: '#filosofia' },
-  { label: 'Posicionamiento', href: '#posicionamiento' },
-  { label: 'Pilares Estratégicos', href: '#pilares' },
+  { label: 'Quién es Cata', href: '#quien-es' },
+  { label: 'Metodología', href: '#metodologia' },
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Recursos', href: '#recursos' },
   { label: 'Agenda', href: '#agenda' },
 ];
 

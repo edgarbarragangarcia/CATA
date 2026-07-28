@@ -51,9 +51,10 @@ export const Footer: React.FC = () => {
           <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
             {[
               { label: 'Inicio', href: '#hero' },
-              { label: 'Filosofía', href: '#filosofia' },
-              { label: 'Posición', href: '#posicionamiento' },
-              { label: 'Pilares', href: '#pilares' },
+              { label: 'Quién es Cata', href: '#quien-es' },
+              { label: 'Metodología', href: '#metodologia' },
+              { label: 'Servicios', href: '#servicios' },
+              { label: 'Recursos', href: '#recursos' },
               { label: 'Agenda', href: '#agenda' },
             ].map((link) => (
               <li key={link.href}>
