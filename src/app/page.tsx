@@ -156,13 +156,13 @@ export default function Home() {
       </section>
 
       {/* 3. QUIÉN ES CATA AYALA */}
-      <section id="quien-es" className="relative bg-white text-brand-navy pb-28 md:pb-40">
+      <section id="quien-es" className="relative bg-white text-brand-navy pt-28 md:pt-40 pb-28 md:pb-40">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-coral uppercase mb-8 text-center">
+            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-coral uppercase mb-6 text-center">
               Quién es Cata Ayala
             </h2>
-            <h3 className="text-5xl md:text-7xl lg:text-8xl font-bold text-center tracking-tight leading-[1.1] mb-24 max-w-5xl mx-auto text-brand-navy">
+            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center tracking-tight leading-[1.15] mb-24 max-w-3xl mx-auto text-brand-navy">
               Estructura corporativa,<br />
               <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-brand-amber to-brand-coral">alma de madre.</span>
             </h3>
