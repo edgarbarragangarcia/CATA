@@ -156,7 +156,7 @@ export default function Home() {
       </section>
 
       {/* 3. QUIÉN ES CATA AYALA */}
-      <section id="quien-es" className="relative bg-white text-brand-navy pt-28 md:pt-40 pb-28 md:pb-40">
+      <section id="quien-es" className="relative bg-gradient-to-b from-brand-mint via-[#BEF0EB] to-white text-brand-navy pt-28 md:pt-40 pb-28 md:pb-40">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal>
             <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-coral uppercase mb-6 text-center">
