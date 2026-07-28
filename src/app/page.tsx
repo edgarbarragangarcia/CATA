@@ -109,10 +109,10 @@ export default function Home() {
       </section>
 
       {/* 2. ¿TE SIENTES ASÍ? */}
-      <section className="relative z-20 bg-gradient-to-b from-[#FFE3B8] via-[#FFF3E0] to-white text-brand-navy py-28 md:py-40 rounded-t-[3rem] md:rounded-t-[4rem] -mt-20 shadow-[0_-30px_60px_rgba(0,0,0,0.8)]">
+      <section className="relative z-20 bg-gradient-to-b from-brand-amber via-[#FFCB80] to-white text-brand-navy py-28 md:py-40 rounded-t-[3rem] md:rounded-t-[4rem] -mt-20 shadow-[0_-30px_60px_rgba(0,0,0,0.8)]">
         <div className="max-w-6xl mx-auto px-6">
           <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-coral uppercase mb-6 text-center">
+            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-navy uppercase mb-6 text-center">
               Tal vez hoy te sientes así
             </h2>
             <h3 className="text-4xl md:text-6xl font-bold text-center tracking-tight leading-[1.15] mb-16 max-w-4xl mx-auto">
