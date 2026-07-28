@@ -162,6 +162,10 @@ export default function Home() {
             <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-coral uppercase mb-8 text-center">
               Quién es Cata Ayala
             </h2>
+            <h3 className="text-5xl md:text-7xl lg:text-8xl font-bold text-center tracking-tight leading-[1.1] mb-24 max-w-5xl mx-auto text-brand-navy">
+              Estructura corporativa,<br />
+              <span className="italic text-transparent bg-clip-text bg-gradient-to-r from-brand-amber to-brand-coral">alma de madre.</span>
+            </h3>
           </ScrollReveal>
 
           <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-center">
