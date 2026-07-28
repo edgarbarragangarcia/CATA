@@ -398,10 +398,19 @@ export default function Home() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.15} yOffset={40} staggerChildren={0.1} className="grid sm:grid-cols-2 gap-6">
-            {['Vivian Nuñez', 'Pilar Echeverri'].map((name) => (
-              <div key={name} className="bg-brand-sand/40 border border-brand-sand/60 rounded-[2rem] p-10">
-                <p className="text-lg italic text-gray-500 font-serif mb-4">Testimonio próximamente</p>
-                <p className="font-semibold text-brand-navy">{name}</p>
+            {[
+              {
+                name: 'Vivian Nuñez',
+                quote: 'Cata es una persona muy profesional pero sobre todo muy humana. Abre un espacio donde genera confianza desde el momento cero y con paciencia guía a las personas a encontrar las respuestas. Para mí fue un espacio muy enriquecedor que le recomiendo a todos. A ella le agradezco enormemente su empatía, su apertura y su guía.',
+              },
+              {
+                name: 'Pilar Echeverri',
+                quote: 'Testimonio próximamente',
+              },
+            ].map(({ name, quote }) => (
+              <div key={name} className="bg-brand-sand/40 border border-brand-sand/60 rounded-[2rem] p-10 text-left flex flex-col">
+                <p className="text-lg italic text-gray-600 font-serif mb-6 leading-relaxed">"{quote}"</p>
+                <p className="font-semibold text-brand-navy mt-auto">{name}</p>
               </div>
             ))}
           </ScrollReveal>
