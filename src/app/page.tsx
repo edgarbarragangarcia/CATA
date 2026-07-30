@@ -181,11 +181,15 @@ export default function Home() {
             <ScrollReveal delay={0.2} yOffset={60}>
               <a href="#respaldo" className="block relative w-full aspect-square bg-gray-50 rounded-[3rem] md:rounded-[4rem] overflow-hidden group cursor-pointer border border-gray-100 shadow-xl hover:shadow-2xl transition-shadow duration-500">
                 <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-200">
-                  <div className="absolute w-[60%] aspect-[4/3] right-8 md:right-16 top-16 md:top-20 rounded-2xl shadow-2xl transition-all duration-700 group-hover:rotate-6 group-hover:translate-x-6 group-hover:-translate-y-4 bg-white">
+                  <div className="absolute w-[55%] aspect-[4/3] left-1/2 -translate-x-1/2 top-8 md:top-10 rounded-2xl shadow-2xl transition-all duration-700 group-hover:-rotate-3 group-hover:-translate-y-2 bg-white rotate-[-4deg]">
+                    <Image src="/diplomas/master-comunicacion-cert.jpg" alt="Máster en Comunicación Estratégica" fill className="object-contain p-3" />
+                    <div className="absolute inset-0 border border-black/5 rounded-2xl pointer-events-none" />
+                  </div>
+                  <div className="absolute w-[60%] aspect-[4/3] right-8 md:right-16 top-16 md:top-20 rounded-2xl shadow-2xl transition-all duration-700 group-hover:rotate-6 group-hover:translate-x-6 group-hover:-translate-y-4 z-10 bg-white">
                     <Image src="/diplomas/dna-cert.png" alt="DNA" fill className="object-contain p-3" />
                     <div className="absolute inset-0 border border-black/5 rounded-2xl pointer-events-none" />
                   </div>
-                  <div className="absolute w-[65%] aspect-[4/3] left-8 md:left-16 bottom-16 md:bottom-20 rounded-2xl shadow-2xl transition-all duration-700 group-hover:-rotate-6 group-hover:-translate-x-6 group-hover:translate-y-4 z-10 bg-white">
+                  <div className="absolute w-[65%] aspect-[4/3] left-8 md:left-16 bottom-16 md:bottom-20 rounded-2xl shadow-2xl transition-all duration-700 group-hover:-rotate-6 group-hover:-translate-x-6 group-hover:translate-y-4 z-20 bg-white">
                     <Image src="/diplomas/coaching-cert.png" alt="Coaching" fill className="object-contain p-3" />
                     <div className="absolute inset-0 border border-black/5 rounded-2xl pointer-events-none" />
                   </div>
