@@ -101,7 +101,7 @@ export default function Home() {
                 la vida.
               </span>
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl font-light text-white/90 max-w-3xl mx-auto md:mx-0 leading-relaxed mt-4 md:mt-8">
+            <p className="text-xl sm:text-2xl md:text-3xl font-light text-white/90 max-w-3xl mx-auto md:mx-0 leading-relaxed mt-4 md:mt-8">
               Un espacio donde no te doy fórmulas mágicas, sino que te devuelvo el poder de descubrir tus propias respuestas.
             </p>
           </motion.div>
