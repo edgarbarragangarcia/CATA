@@ -234,42 +234,6 @@ export default function Home() {
         </ScrollReveal>
       </section>
 
-      {/* 5. FILOSOFÍA */}
-      <section id="filosofia" className="relative py-32 md:py-48 bg-brand-sand text-brand-navy">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-24 md:mb-32 text-center md:text-left">
-            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-gray-400 uppercase mb-4">El Código de Vida</h2>
-            <h3 className="text-6xl md:text-8xl font-bold tracking-tighter">La Filosofía</h3>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-            <ScrollReveal yOffset={80} className="bg-white p-12 md:p-20 rounded-[3rem] shadow-sm hover:shadow-2xl transition-shadow duration-500 border border-gray-100 flex flex-col justify-between">
-              <div>
-                <h4 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">El Espíritu 101%</h4>
-                <p className="text-xl md:text-2xl font-light text-gray-600 leading-relaxed mb-12">
-                  Nacimos para vivir intensamente. Esta filosofía es el compromiso de prepararnos para vivir hasta los 101 años, dando siempre la milla extra.
-                </p>
-              </div>
-              <p className="text-xl italic text-gray-400 font-serif border-l-4 border-gray-200 pl-6">
-                "La vida es demasiado espectacular como para no disfrutarla."
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.2} yOffset={80} className="bg-brand-navy text-white p-12 md:p-20 rounded-[3rem] shadow-xl hover:shadow-2xl transition-shadow duration-500 border border-brand-mint/20 flex flex-col justify-between">
-              <div>
-                <h4 className="text-4xl md:text-5xl font-bold text-brand-sand mb-8 tracking-tight">Criterio & Carácter</h4>
-                <p className="text-xl md:text-2xl font-light text-brand-sand/80 leading-relaxed mb-12">
-                  Creemos en un solo "yo" indivisible. Equilibramos la lógica implacable, la emoción profunda y una fe inquebrantable.
-                </p>
-              </div>
-              <p className="text-xl italic text-brand-sand/60 font-serif border-l-4 border-brand-sand/30 pl-6">
-                "Necesitamos criterio para saber elegir, y el carácter absoluto para mantener nuestras decisiones."
-              </p>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
       {/* 6. METODOLOGÍA VIDA */}
       <section id="metodologia" className="relative overflow-hidden py-32 md:py-48 bg-gradient-to-b from-brand-coral via-[#FFB09E] to-white text-brand-navy">
         <div
