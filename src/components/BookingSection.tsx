@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Compass, Flame, Coffee } from 'lucide-react';
 
 // ─────────────────────────────────────────────
 // CONFIGURACIÓN — cambia este valor cuando tengas tu link de Calendly o Cal.com
@@ -13,30 +12,6 @@ const WHATSAPP_NUMBER = '573142736009';
 const WHATSAPP_BOOKING_MESSAGE =
   '¡Hola Cata! 👋 Quiero agendar una sesión de mentoría contigo. ¿Cuándo tienes disponibilidad?';
 // ─────────────────────────────────────────────
-
-const features = [
-  {
-    icon: Compass,
-    iconColor: 'text-brand-amber',
-    bgColor: 'bg-brand-amber/10',
-    title: 'Sesión Estratégica',
-    desc: '60 minutos de claridad profunda sobre tu próximo gran paso.',
-  },
-  {
-    icon: Flame,
-    iconColor: 'text-brand-coral',
-    bgColor: 'bg-brand-coral/10',
-    title: 'Mentoría Intensiva',
-    desc: 'Un proceso de acompañamiento con herramientas y criterio real.',
-  },
-  {
-    icon: Coffee,
-    iconColor: 'text-brand-mint',
-    bgColor: 'bg-brand-mint/15',
-    title: 'Exploración Inicial',
-    desc: '30 minutos gratuitos para conocernos y definir si somos el match.',
-  },
-];
 
 export const BookingSection: React.FC = () => {
   const [calLoaded, setCalLoaded] = useState(false);
@@ -92,30 +67,6 @@ export const BookingSection: React.FC = () => {
             se adapta a lo que necesitas.
           </p>
         </motion.div>
-
-        {/* Feature cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
-          {features.map((f, i) => (
-            <motion.div
-              key={f.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="group bg-white/60 backdrop-blur-md border border-white/80 rounded-[1.5rem] p-7 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-400"
-            >
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${f.bgColor} group-hover:scale-110 transition-transform duration-300`}>
-                <f.icon className={`w-6 h-6 ${f.iconColor}`} />
-              </div>
-              <h3 className="text-lg font-bold text-brand-navy mb-2">
-                {f.title}
-              </h3>
-              <p className="text-sm font-sans font-light text-brand-navy/70 leading-relaxed">
-                {f.desc}
-              </p>
-            </motion.div>
-          ))}
-        </div>
 
         {/* Calendly embed OR WhatsApp CTA */}
         <motion.div

@@ -9,7 +9,6 @@ import { BookingSection } from '@/components/BookingSection';
 import { Footer } from '@/components/Footer';
 import heroBgImg from '@/img/hero-bg.jpg';
 import cataCutoutImg from '@/img/cata-cutout.png';
-import linenTextureImg from '@/img/linen-texture.jpg';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { Download } from 'lucide-react';
 
@@ -221,9 +220,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. MAJESTIC QUOTE (LINEN TEXTURE) */}
-      <section className="relative h-[100vh] flex items-center justify-center overflow-hidden">
-        <Image src={linenTextureImg} alt="" fill className="object-cover" />
+      {/* 4. MAJESTIC QUOTE */}
+      <section className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-brand-sand">
         <div className="absolute inset-0 opacity-20" style={{ background: 'radial-gradient(circle at center, #0B2545 0%, transparent 60%)' }} />
         <ScrollReveal>
           <h3 className="text-5xl md:text-7xl lg:text-8xl font-serif italic font-bold text-center leading-tight px-6 max-w-6xl mx-auto relative z-10">
