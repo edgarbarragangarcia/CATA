@@ -261,11 +261,44 @@ export default function Home() {
               { letter: 'I', title: 'Identificar creencias' },
               { letter: 'D', title: 'Decidir con criterio' },
               { letter: 'A', title: 'Actuar con propósito' },
-            ].map((step) => (
-              <div key={step.letter} className="bg-white/80 border border-white/60 rounded-[2rem] p-8 flex flex-col gap-4 shadow-sm">
-                <span className="text-5xl font-bold text-brand-coral font-serif">{step.letter}</span>
-                <p className="text-xl font-light text-brand-navy leading-snug">{step.title}</p>
-              </div>
+            ].map((step, i) => (
+              <motion.div
+                key={step.letter}
+                whileHover={{ y: -10, scale: 1.03 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                className="group relative bg-white/80 border border-white/60 rounded-[2rem] p-8 flex flex-col gap-4 shadow-sm overflow-hidden cursor-default transition-shadow duration-300 hover:shadow-2xl hover:border-brand-coral/40"
+              >
+                {/* Glow que aparece en hover */}
+                <div
+                  className="absolute -top-10 -right-10 w-32 h-32 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ background: 'radial-gradient(circle, rgba(255,94,54,0.35) 0%, transparent 70%)' }}
+                />
+
+                {/* Número de paso */}
+                <span className="absolute top-6 right-7 text-xs font-sans font-bold text-brand-navy/25 tracking-widest">
+                  0{i + 1}
+                </span>
+
+                <span
+                  className="relative text-5xl font-bold font-serif transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3"
+                  style={{
+                    background: 'linear-gradient(135deg, #FF5E36 0%, #FF9100 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  {step.letter}
+                </span>
+                <p className="relative text-xl font-light text-brand-navy leading-snug">
+                  {step.title}
+                </p>
+
+                {/* Línea inferior animada */}
+                <span className="absolute bottom-0 left-0 h-1 w-0 group-hover:w-full transition-all duration-500 ease-out rounded-full"
+                  style={{ background: 'linear-gradient(90deg, #FF5E36 0%, #FF9100 100%)' }}
+                />
+              </motion.div>
             ))}
           </ScrollReveal>
         </div>
