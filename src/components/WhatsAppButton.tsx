@@ -10,7 +10,6 @@ import { MessageCircle, Mail, Calendar, Contact, X } from 'lucide-react';
 const WHATSAPP_NUMBER = '573142736009';
 const WHATSAPP_MESSAGE = '¡Hola Cata! 👋 Me interesa agendar una sesión de mentoría contigo.';
 const EMAIL = 'hola@cataayala.com';
-const CALENDLY_URL = 'https://calendly.com/ayalacata/30min';
 // ─────────────────────────────────────────────
 
 export const WhatsAppButton: React.FC = () => {
@@ -51,8 +50,8 @@ export const WhatsAppButton: React.FC = () => {
       id: 'agenda',
       label: 'Agendar Sesión',
       icon: Calendar,
-      href: CALENDLY_URL,
-      target: '_blank',
+      href: '#agenda',
+      target: '_self',
       bgColor: 'bg-brand-amber',
       hoverColor: 'hover:brightness-90',
     }

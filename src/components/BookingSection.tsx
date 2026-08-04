@@ -1,21 +1,40 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // ─────────────────────────────────────────────
-// CONFIGURACIÓN — cambia este valor cuando tengas tu link de Calendly o Cal.com
-// Ejemplo: 'https://cal.com/cata-ayala/sesion-estrategia'
+// CONFIGURACIÓN — links de Cal.com
 // ─────────────────────────────────────────────
-const CALENDLY_URL = 'https://calendly.com/ayalacata/30min';
-const WHATSAPP_NUMBER = '573142736009';
-const WHATSAPP_BOOKING_MESSAGE =
-  '¡Hola Cata! 👋 Quiero agendar una sesión de mentoría contigo. ¿Cuándo tienes disponibilidad?';
+const CALENDARS = [
+  {
+    id: 'coaching',
+    title: 'Sesión de Coaching',
+    description: 'Una sesión profunda de acompañamiento personalizado.',
+    url: 'https://cal.com/cata-ayala/sesioncoaching?layout=mobile&overlayCalendar=true',
+  },
+  {
+    id: 'discovery',
+    title: 'Llamada de Descubrimiento',
+    description: 'Una primera conversación para conocernos y ver si encajamos.',
+    url: 'https://cal.com/cata-ayala/llamadadescubrimiento?layout=mobile&overlayCalendar=true',
+  },
+];
 // ─────────────────────────────────────────────
 
 export const BookingSection: React.FC = () => {
+  const [activeCal, setActiveCal] = useState<(typeof CALENDARS)[number] | null>(null);
   const [calLoaded, setCalLoaded] = useState(false);
-  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_BOOKING_MESSAGE)}`;
+
+  const openCal = (cal: (typeof CALENDARS)[number]) => {
+    setCalLoaded(false);
+    setActiveCal(cal);
+  };
+
+  const closeCal = () => {
+    setActiveCal(null);
+    setCalLoaded(false);
+  };
 
   return (
     <section
@@ -68,93 +87,129 @@ export const BookingSection: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Calendly embed OR WhatsApp CTA */}
+        {/* Botones de calendario */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
+          className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto"
         >
-          {CALENDLY_URL ? (
-            /* ── Embed de Calendly ── */
-            <div className="relative max-w-3xl mx-auto rounded-[2rem] overflow-hidden shadow-2xl border border-white/60 bg-white">
-              {!calLoaded && (
-                <div className="flex items-center justify-center h-[600px]">
-                  <div className="flex flex-col items-center gap-4 text-brand-navy/40">
-                    <div className="w-10 h-10 border-2 border-brand-amber border-t-transparent rounded-full animate-spin" />
-                    <p className="text-sm font-sans">Cargando calendario…</p>
-                  </div>
-                </div>
-              )}
-              <iframe
-                src={`${CALENDLY_URL}?hide_gdpr_banner=1&background_color=F5E6D3&text_color=0B2545&primary_color=FF9100`}
-                width="100%"
-                height="1050"
-                frameBorder="0"
-                title="Agenda una sesión con Cata Ayala"
-                onLoad={() => setCalLoaded(true)}
-                style={{ display: calLoaded ? 'block' : 'none' }}
-              />
-            </div>
-          ) : (
-            /* ── CTA de WhatsApp mientras no hay calendario ── */
-            <div
-              className="relative rounded-[2rem] overflow-hidden text-center py-16 px-8 shadow-2xl bg-brand-navy"
+          {CALENDARS.map((cal) => (
+            <motion.button
+              key={cal.id}
+              onClick={() => openCal(cal)}
+              whileHover={{ scale: 1.02, y: -4 }}
+              whileTap={{ scale: 0.98 }}
+              className="text-left rounded-[1.75rem] p-8 shadow-xl border border-white/60 bg-white transition-all duration-300 hover:shadow-2xl"
             >
-              {/* Warm shimmer overlay */}
               <div
-                className="absolute inset-0 opacity-10"
+                className="w-12 h-12 mb-5 rounded-full flex items-center justify-center"
                 style={{
-                  background:
-                    'linear-gradient(135deg, #FF5E36 0%, #FF9100 50%, #FF5E36 100%)',
+                  background: 'linear-gradient(135deg, #FF5E36 0%, #FF9100 100%)',
                 }}
-              />
-
-              <div className="relative z-10">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center"
-                  style={{ background: 'linear-gradient(135deg, #25D366, #128C7E)' }}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
-                  <svg viewBox="0 0 32 32" className="w-8 h-8" fill="white">
-                    <path d="M16.001 2.667C8.637 2.667 2.667 8.637 2.667 16c0 2.347.64 4.64 1.853 6.64L2.667 29.333l6.853-1.8A13.267 13.267 0 0 0 16 29.333c7.363 0 13.333-5.97 13.333-13.333 0-7.363-5.97-13.333-13.332-13.333zM16 27.2a11.147 11.147 0 0 1-5.68-1.547l-.4-.24-4.08 1.067 1.093-3.973-.267-.413A11.12 11.12 0 0 1 4.8 16c0-6.187 5.013-11.2 11.2-11.2S27.2 9.813 27.2 16 22.187 27.2 16 27.2zm6.147-8.387c-.334-.173-1.987-.987-2.294-1.093-.306-.107-.533-.16-.76.173-.226.334-.88 1.094-1.08 1.32-.2.227-.4.254-.733.08-.333-.16-1.414-.52-2.694-1.653-.987-.894-1.654-1.987-1.854-2.32-.2-.334-.013-.507.16-.68.16-.147.333-.387.506-.574.16-.186.213-.32.32-.534.107-.213.054-.4-.027-.573-.08-.174-.747-1.814-1.04-2.48-.267-.64-.546-.56-.747-.573h-.64c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.666c0 1.574 1.147 3.094 1.307 3.307.16.213 2.24 3.467 5.467 4.854.76.333 1.36.52 1.827.653.773.24 1.467.2 2.027.12.614-.093 1.987-.813 2.267-1.6.28-.786.28-1.466.2-1.6-.08-.133-.307-.213-.64-.373z" />
-                  </svg>
-                </div>
-
-                <h3 className="text-2xl md:text-4xl font-bold text-brand-sand mb-4 leading-tight">
-                  ¿Lista para dar el paso?
-                </h3>
-                <p className="text-base md:text-lg font-sans font-light text-brand-sand/70 max-w-lg mx-auto mb-10 leading-relaxed">
-                  Escríbeme directamente por WhatsApp y coordinamos tu primera
-                  sesión juntas. Respondo personalmente.
-                </p>
-
-                <motion.a
-                  href={waUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  id="booking-whatsapp-btn"
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="inline-flex items-center gap-3 px-10 py-4 rounded-full text-base font-sans font-bold tracking-wide text-white shadow-2xl transition-all duration-300"
-                  style={{
-                    background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
-                    boxShadow: '0 8px 32px rgba(37, 211, 102, 0.4)',
-                  }}
-                >
-                  <svg viewBox="0 0 32 32" className="w-5 h-5 shrink-0" fill="white">
-                    <path d="M16.001 2.667C8.637 2.667 2.667 8.637 2.667 16c0 2.347.64 4.64 1.853 6.64L2.667 29.333l6.853-1.8A13.267 13.267 0 0 0 16 29.333c7.363 0 13.333-5.97 13.333-13.333 0-7.363-5.97-13.333-13.332-13.333zM16 27.2a11.147 11.147 0 0 1-5.68-1.547l-.4-.24-4.08 1.067 1.093-3.973-.267-.413A11.12 11.12 0 0 1 4.8 16c0-6.187 5.013-11.2 11.2-11.2S27.2 9.813 27.2 16 22.187 27.2 16 27.2zm6.147-8.387c-.334-.173-1.987-.987-2.294-1.093-.306-.107-.533-.16-.76.173-.226.334-.88 1.094-1.08 1.32-.2.227-.4.254-.733.08-.333-.16-1.414-.52-2.694-1.653-.987-.894-1.654-1.987-1.854-2.32-.2-.334-.013-.507.16-.68.16-.147.333-.387.506-.574.16-.186.213-.32.32-.534.107-.213.054-.4-.027-.573-.08-.174-.747-1.814-1.04-2.48-.267-.64-.546-.56-.747-.573h-.64c-.213 0-.56.08-.853.4s-1.12 1.093-1.12 2.666c0 1.574 1.147 3.094 1.307 3.307.16.213 2.24 3.467 5.467 4.854.76.333 1.36.52 1.827.653.773.24 1.467.2 2.027.12.614-.093 1.987-.813 2.267-1.6.28-.786.28-1.466.2-1.6-.08-.133-.307-.213-.64-.373z" />
-                  </svg>
-                  Agendar por WhatsApp
-                </motion.a>
-
-                <p className="text-xs font-sans text-brand-sand/40 mt-6 tracking-wide">
-                  También puedes escribirme a{' '}
-                  <span className="text-brand-sand/60">+57 314 273 6009</span>
-                </p>
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
               </div>
-            </div>
-          )}
+              <h3 className="text-xl md:text-2xl font-bold text-brand-navy mb-2 leading-snug">
+                {cal.title}
+              </h3>
+              <p className="text-sm md:text-base font-sans font-light text-brand-navy/60 leading-relaxed mb-5">
+                {cal.description}
+              </p>
+              <span className="inline-flex items-center gap-2 text-sm font-sans font-bold text-brand-coral">
+                Agendar ahora
+                <svg
+                  viewBox="0 0 24 24"
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </span>
+            </motion.button>
+          ))}
         </motion.div>
       </div>
+
+      {/* Popup con el calendario */}
+      <AnimatePresence>
+        {activeCal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
+            style={{ background: 'rgba(11, 37, 69, 0.6)' }}
+            onClick={closeCal}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-3xl max-h-[90vh] rounded-[1.5rem] overflow-hidden shadow-2xl bg-white flex flex-col"
+            >
+              {/* Header del popup */}
+              <div className="flex items-center justify-between px-6 py-4 border-b border-brand-navy/10 shrink-0">
+                <h4 className="text-base md:text-lg font-bold text-brand-navy">
+                  {activeCal.title}
+                </h4>
+                <button
+                  onClick={closeCal}
+                  aria-label="Cerrar"
+                  className="w-9 h-9 flex items-center justify-center rounded-full text-brand-navy/50 hover:text-brand-navy hover:bg-brand-navy/5 transition-colors"
+                >
+                  <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Contenido: iframe de Cal.com */}
+              <div className="relative flex-1 overflow-auto">
+                {!calLoaded && (
+                  <div className="flex items-center justify-center h-[600px]">
+                    <div className="flex flex-col items-center gap-4 text-brand-navy/40">
+                      <div className="w-10 h-10 border-2 border-brand-amber border-t-transparent rounded-full animate-spin" />
+                      <p className="text-sm font-sans">Cargando calendario…</p>
+                    </div>
+                  </div>
+                )}
+                <iframe
+                  src={activeCal.url}
+                  width="100%"
+                  height="650"
+                  frameBorder="0"
+                  title={activeCal.title}
+                  onLoad={() => setCalLoaded(true)}
+                  style={{ display: calLoaded ? 'block' : 'none' }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
