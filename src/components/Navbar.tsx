@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
 import heroBgImg from '@/img/hero-bg.jpg';
+import { useBookingPopup } from '@/components/BookingPopupProvider';
 
 const navLinks = [
   { label: 'Inicio', href: '#hero' },
@@ -17,6 +18,7 @@ const navLinks = [
 
 export const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { openChooser } = useBookingPopup();
 
   return (
     <>
@@ -70,6 +72,14 @@ export const Navbar: React.FC = () => {
               <li key={link.href}>
                 <a
                   href={link.href}
+                  onClick={
+                    link.href === '#agenda'
+                      ? (e) => {
+                          e.preventDefault();
+                          openChooser();
+                        }
+                      : undefined
+                  }
                   className="font-sans text-xs font-semibold tracking-widest uppercase transition-colors duration-300 hover:text-gray-300"
                 >
                   {link.label}
@@ -81,6 +91,10 @@ export const Navbar: React.FC = () => {
           {/* CTA Button */}
           <a
             href="#agenda"
+            onClick={(e) => {
+              e.preventDefault();
+              openChooser();
+            }}
             className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-sans font-semibold tracking-widest uppercase text-white bg-brand-coral border border-transparent hover:bg-transparent hover:text-brand-coral hover:border-brand-coral shadow-md hover:shadow-lg transition-all duration-300"
           >
             Conectar
@@ -105,7 +119,13 @@ export const Navbar: React.FC = () => {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => {
+                    setMenuOpen(false);
+                    if (link.href === '#agenda') {
+                      e.preventDefault();
+                      openChooser();
+                    }
+                  }}
                   className="font-serif text-2xl text-white/90 hover:text-brand-coral transition-colors"
                 >
                   {link.label}
@@ -115,7 +135,11 @@ export const Navbar: React.FC = () => {
             <li>
               <a
                 href="#agenda"
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                  openChooser();
+                }}
                 className="inline-block mt-4 px-8 py-3 rounded-full text-sm font-sans font-semibold tracking-widest uppercase text-brand-navy bg-brand-sand shadow-lg"
               >
                 Conectar

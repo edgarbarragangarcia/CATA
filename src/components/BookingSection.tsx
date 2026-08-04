@@ -1,117 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-
-// ─────────────────────────────────────────────
-// CONFIGURACIÓN — links de Cal.com
-// ─────────────────────────────────────────────
-const CALENDARS = [
-  {
-    id: 'coaching',
-    title: 'Sesión de Coaching',
-    description: 'Una sesión profunda de acompañamiento personalizado.',
-    url: 'https://cal.com/cata-ayala/sesioncoaching?layout=mobile&overlayCalendar=true',
-  },
-  {
-    id: 'discovery',
-    title: 'Llamada de Descubrimiento',
-    description: 'Una primera conversación para conocernos y ver si encajamos.',
-    url: 'https://cal.com/cata-ayala/llamadadescubrimiento?layout=mobile&overlayCalendar=true',
-  },
-];
-// ─────────────────────────────────────────────
+import React from 'react';
+import { motion } from 'framer-motion';
+import { CALENDARS, useBookingPopup } from '@/components/BookingPopupProvider';
 
 export const BookingSection: React.FC = () => {
-  const [activeCal, setActiveCal] = useState<(typeof CALENDARS)[number] | null>(null);
-  const [calLoaded, setCalLoaded] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!activeCal) return;
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = prevOverflow;
-    };
-  }, [activeCal]);
-
-  const openCal = (cal: (typeof CALENDARS)[number]) => {
-    setCalLoaded(false);
-    setActiveCal(cal);
-  };
-
-  const closeCal = () => {
-    setActiveCal(null);
-    setCalLoaded(false);
-  };
-
-  const popup = (
-    <AnimatePresence>
-      {activeCal && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
-          style={{ background: 'rgba(11, 37, 69, 0.6)' }}
-          onClick={closeCal}
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.25 }}
-            onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-3xl max-h-[90vh] rounded-[1.5rem] overflow-hidden shadow-2xl bg-white flex flex-col"
-          >
-            {/* Header del popup */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-brand-navy/10 shrink-0">
-              <h4 className="text-base md:text-lg font-bold text-brand-navy">
-                {activeCal.title}
-              </h4>
-              <button
-                onClick={closeCal}
-                aria-label="Cerrar"
-                className="w-9 h-9 flex items-center justify-center rounded-full text-brand-navy/50 hover:text-brand-navy hover:bg-brand-navy/5 transition-colors"
-              >
-                <svg viewBox="0 0 24 24" className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Contenido: iframe de Cal.com */}
-            <div className="relative flex-1 overflow-auto">
-              {!calLoaded && (
-                <div className="flex items-center justify-center h-[600px]">
-                  <div className="flex flex-col items-center gap-4 text-brand-navy/40">
-                    <div className="w-10 h-10 border-2 border-brand-amber border-t-transparent rounded-full animate-spin" />
-                    <p className="text-sm font-sans">Cargando calendario…</p>
-                  </div>
-                </div>
-              )}
-              <iframe
-                src={activeCal.url}
-                width="100%"
-                height="650"
-                frameBorder="0"
-                title={activeCal.title}
-                onLoad={() => setCalLoaded(true)}
-                style={{ display: calLoaded ? 'block' : 'none' }}
-              />
-            </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
+  const { openCal } = useBookingPopup();
 
   return (
     <section
@@ -226,8 +120,6 @@ export const BookingSection: React.FC = () => {
           ))}
         </motion.div>
       </div>
-
-      {mounted ? createPortal(popup, document.body) : null}
     </section>
   );
 };

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, Mail, Calendar, Contact, X } from 'lucide-react';
+import { useBookingPopup } from '@/components/BookingPopupProvider';
 
 // ─────────────────────────────────────────────
 // CONFIGURACIÓN
@@ -15,6 +16,7 @@ const EMAIL = 'hola@cataayala.com';
 export const WhatsAppButton: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [visible, setVisible] = useState(false);
+  const { openChooser } = useBookingPopup();
 
   useEffect(() => {
     // Aparece después de 1 segundo
@@ -94,6 +96,15 @@ export const WhatsAppButton: React.FC = () => {
                       href={option.href}
                       target={option.target}
                       rel="noopener noreferrer"
+                      onClick={
+                        option.id === 'agenda'
+                          ? (e) => {
+                              e.preventDefault();
+                              setIsOpen(false);
+                              openChooser();
+                            }
+                          : undefined
+                      }
                       variants={{
                         open: { opacity: 1, y: 0, scale: 1 },
                         closed: { opacity: 0, y: 20, scale: 0.8 }

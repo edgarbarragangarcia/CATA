@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform, useMotionTemplate } from 'framer-motio
 import { Navbar } from '@/components/Navbar';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 import { BookingSection } from '@/components/BookingSection';
+import { BookingPopupProvider } from '@/components/BookingPopupProvider';
 import { Footer } from '@/components/Footer';
 import heroBgImg from '@/img/hero-bg.jpg';
 import cataCutoutImg from '@/img/cata-cutout.png';
@@ -53,6 +54,7 @@ export default function Home() {
     : { opacity: heroTextOpacity };
 
   return (
+    <BookingPopupProvider>
     <main className="min-h-screen relative selection:bg-brand-coral selection:text-white bg-brand-navy text-white">
       <Navbar />
 
@@ -469,5 +471,6 @@ export default function Home() {
       <Footer />
       <WhatsAppButton />
     </main>
+    </BookingPopupProvider>
   );
 }
