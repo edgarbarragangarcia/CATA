@@ -113,13 +113,13 @@ export default function Home() {
       <section className="relative z-20 bg-gradient-to-b from-brand-amber via-[#FFCB80] to-white text-brand-navy py-28 md:py-40 rounded-t-[3rem] md:rounded-t-[4rem] -mt-20 shadow-[0_-30px_60px_rgba(0,0,0,0.8)]">
         <div className="max-w-6xl mx-auto px-6">
           <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-navy uppercase mb-6 text-center">
-              Tal vez hoy te sientes así
-            </h2>
-            <h3 className="text-4xl md:text-6xl font-bold text-center tracking-tight leading-[1.15] mb-16 max-w-4xl mx-auto">
+            <h3 className="text-4xl md:text-6xl font-bold text-center tracking-tight leading-[1.15] mb-6 max-w-4xl mx-auto">
               "La vida es demasiado espectacular <br className="hidden md:block" />
               como para no disfrutarla."
             </h3>
+            <p className="text-2xl md:text-3xl italic font-serif font-bold text-brand-navy text-center mb-16">
+              Tal vez hoy te sientes así
+            </p>
           </ScrollReveal>
 
           <ScrollReveal yOffset={40} staggerChildren={0.08} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-16">
@@ -148,7 +148,7 @@ export default function Home() {
               <p className="text-2xl md:text-3xl font-light text-brand-navy/80 leading-relaxed">
                 Porque cuando cambia tu manera de mirar la vida, cambia la manera de vivirla.
               </p>
-              <p className="mt-8 text-xl italic font-serif text-brand-coral">
+              <p className="mt-8 text-2xl md:text-3xl italic font-serif font-bold text-brand-coral">
                 "Más que motivación, es estrategia de vida."
               </p>
             </div>
@@ -160,7 +160,7 @@ export default function Home() {
       <section id="quien-es" className="relative bg-gradient-to-b from-brand-mint via-[#BEF0EB] to-white text-brand-navy pt-28 md:pt-40 pb-28 md:pb-40">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-coral uppercase mb-6 text-center">
+            <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-coral uppercase mb-4 text-center">
               Quién es Cata Ayala
             </h2>
             <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center tracking-tight leading-[1.15] mb-24 max-w-3xl mx-auto text-brand-navy">
@@ -213,9 +213,8 @@ export default function Home() {
               <p className="text-xl md:text-2xl font-light text-gray-600 leading-relaxed">
                 Sobre todo, soy una persona profundamente convencida de que todos tenemos más potencial de lo que imaginamos. A veces nos dejamos convencer de las creencias que permitimos establecernos y olvidamos quiénes somos y lo que queremos.
               </p>
-              <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10">
-                <p className="text-lg italic font-serif text-brand-navy">"La actitud es una decisión."</p>
-                <p className="text-lg italic font-serif text-brand-coral">"No te doy respuestas. Te ayudo a descubrir las tuyas."</p>
+              <div className="pt-6 flex items-center justify-center">
+                <p className="text-2xl md:text-3xl italic font-serif font-bold text-brand-navy">"La actitud es una decisión."</p>
               </div>
             </div>
           </ScrollReveal>
@@ -246,7 +245,7 @@ export default function Home() {
         />
         <div className="relative max-w-6xl mx-auto px-6">
           <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-navy uppercase mb-6 text-center">Metodología</h2>
+            <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-coral uppercase mb-4 text-center">Metodología</h2>
             <h3
               className="text-6xl md:text-8xl font-bold tracking-tighter text-center mb-20 text-white"
               style={{ textShadow: '0 4px 30px rgba(11,37,69,0.35)' }}
@@ -266,7 +265,7 @@ export default function Home() {
                 key={step.letter}
                 whileHover={{ y: -10, scale: 1.03 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                className="group relative bg-white/80 border border-white/60 rounded-[2rem] p-8 flex flex-col gap-4 shadow-sm overflow-hidden cursor-default transition-shadow duration-300 hover:shadow-2xl hover:border-brand-coral/40"
+                className="group relative bg-white/80 border border-white/60 rounded-[2rem] p-8 flex flex-col gap-4 shadow-sm overflow-hidden cursor-default transition-shadow duration-300 hover:shadow-2xl hover:border-brand-coral/40 h-full min-h-[220px] justify-between"
               >
                 {/* Glow que aparece en hover */}
                 <div
@@ -308,7 +307,7 @@ export default function Home() {
       <section id="servicios" className="py-32 md:py-48 bg-brand-sand text-brand-navy">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-coral uppercase mb-6 text-center">Servicios</h2>
+            <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-coral uppercase mb-4 text-center">Servicios</h2>
             <h3 className="text-5xl md:text-7xl font-bold tracking-tight text-center mb-20 leading-[1.1]">
               Encuentra claridad,<br />encuentra tu norte.
             </h3>
@@ -405,7 +404,7 @@ export default function Home() {
       <section id="resultados" className="py-28 md:py-40 bg-white text-brand-navy">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-coral uppercase mb-6">Algunos resultados</h2>
+            <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-coral uppercase mb-4 text-center">Algunos resultados</h2>
             <h3 className="text-4xl md:text-6xl font-bold tracking-tight mb-16 leading-[1.1]">
               "Necesitamos criterio para saber elegir<br className="hidden md:block" /> y carácter para mantenerlo."
             </h3>
@@ -419,7 +418,7 @@ export default function Home() {
               },
               {
                 name: 'Pilar Echeverri',
-                quote: 'Testimonio próximamente',
+                quote: 'Trabajar con Cata cambió la forma en que tomo decisiones. Llegué sin claridad y con muchas dudas, y en cada sesión sentí un acompañamiento genuino, sin juicios, que me ayudó a reconectar conmigo misma. Hoy tengo más criterio, más calma y una vida mucho más alineada con lo que realmente quiero.',
               },
             ].map(({ name, quote }) => (
               <div key={name} className="bg-brand-sand/40 border border-brand-sand/60 rounded-[2rem] p-10 text-left flex flex-col">
@@ -435,7 +434,7 @@ export default function Home() {
       <section id="recursos" className="py-32 md:py-48 bg-brand-sand text-brand-navy">
         <div className="max-w-6xl mx-auto px-6">
           <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-coral uppercase mb-6 text-center">Recursos gratuitos</h2>
+            <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-coral uppercase mb-4 text-center">Recursos gratuitos</h2>
             <h3 className="text-5xl md:text-7xl font-bold tracking-tight text-center mb-20 leading-[1.1]">
               Para que empieces<br />hoy mismo.
             </h3>
