@@ -43,6 +43,19 @@ export default function Home() {
   const heroImageScaleDesktop = useTransform(heroProgress, [0, 1], [1, 1.1]);
   const heroImageOpacityDesktop = useTransform(heroProgress, [0.5, 1], [1, 0]);
 
+  // Agenda steps: reveal one at a time as the box scrolls through view.
+  const stepsRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: stepsProgress } = useScroll({
+    target: stepsRef,
+    offset: ["start 0.85", "end 0.35"]
+  });
+  const step1Opacity = useTransform(stepsProgress, [0, 0.28], [0, 1]);
+  const step1Y = useTransform(stepsProgress, [0, 0.28], [24, 0]);
+  const step2Opacity = useTransform(stepsProgress, [0.36, 0.64], [0, 1]);
+  const step2Y = useTransform(stepsProgress, [0.36, 0.64], [24, 0]);
+  const step3Opacity = useTransform(stepsProgress, [0.72, 1], [0, 1]);
+  const step3Y = useTransform(stepsProgress, [0.72, 1], [24, 0]);
+
   const heroBgStyle = isDesktop
     ? { scale: heroImageScaleDesktop, opacity: heroImageOpacityDesktop }
     : {};
@@ -485,22 +498,25 @@ export default function Home() {
           <h3 className="text-3xl md:text-5xl font-bold tracking-tight mb-10 leading-[1.15]">
             Tal vez hoy solo necesites una conversación.
           </h3>
-          <div className="text-left space-y-6 bg-white p-8 md:p-10 rounded-[2rem] shadow-sm">
-            <ScrollReveal yOffset={30}>
-              <p className="text-base md:text-lg font-light text-gray-600 leading-relaxed">
-                <strong className="font-semibold text-brand-navy">Sesión de descubrimiento:</strong> son 15 minutos en los que nos conoceremos y te explicaré cómo es el proceso, con el fin de establecer acuerdos (tiempos de la sesión, pagos, entre otros). Este espacio NO es para conversar sobre la situación en sí, únicamente para aclarar dudas y conocernos. A veces no conectamos bien con quienes creíamos, por eso es mejor darnos la oportunidad de elegir a la persona correcta que te acompañe en tu camino.
-              </p>
-            </ScrollReveal>
-            <ScrollReveal yOffset={30}>
-              <p className="text-base md:text-lg font-light text-gray-600 leading-relaxed">
-                <strong className="font-semibold text-brand-navy">1ra sesión:</strong> aquí comienza el proceso. Empezaremos a hacernos muchas preguntas que solo tú contestarás, y veremos cuántas sesiones adicionales podrías tomar. Usualmente comenzamos con 4.
-              </p>
-            </ScrollReveal>
-            <ScrollReveal yOffset={30}>
-              <p className="text-base md:text-lg font-light text-gray-600 leading-relaxed">
-                <strong className="font-semibold text-brand-navy">Continuación:</strong> acorde a las sesiones que se establecieron, continuamos el camino.
-              </p>
-            </ScrollReveal>
+          <div ref={stepsRef} className="text-left space-y-6 bg-white p-8 md:p-10 rounded-[2rem] shadow-sm">
+            <motion.p
+              style={{ opacity: step1Opacity, y: step1Y }}
+              className="text-base md:text-lg font-light text-gray-600 leading-relaxed"
+            >
+              <strong className="font-semibold text-brand-navy">Sesión de descubrimiento:</strong> son 15 minutos en los que nos conoceremos y te explicaré cómo es el proceso, con el fin de establecer acuerdos (tiempos de la sesión, pagos, entre otros). Este espacio NO es para conversar sobre la situación en sí, únicamente para aclarar dudas y conocernos. A veces no conectamos bien con quienes creíamos, por eso es mejor darnos la oportunidad de elegir a la persona correcta que te acompañe en tu camino.
+            </motion.p>
+            <motion.p
+              style={{ opacity: step2Opacity, y: step2Y }}
+              className="text-base md:text-lg font-light text-gray-600 leading-relaxed"
+            >
+              <strong className="font-semibold text-brand-navy">1ra sesión:</strong> aquí comienza el proceso. Empezaremos a hacernos muchas preguntas que solo tú contestarás, y veremos cuántas sesiones adicionales podrías tomar. Usualmente comenzamos con 4.
+            </motion.p>
+            <motion.p
+              style={{ opacity: step3Opacity, y: step3Y }}
+              className="text-base md:text-lg font-light text-gray-600 leading-relaxed"
+            >
+              <strong className="font-semibold text-brand-navy">Continuación:</strong> acorde a las sesiones que se establecieron, continuamos el camino.
+            </motion.p>
           </div>
         </ScrollReveal>
         <BookingSection />
