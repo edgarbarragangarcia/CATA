@@ -245,7 +245,7 @@ export default function Home() {
         />
         <div className="relative max-w-6xl mx-auto px-6">
           <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-coral uppercase mb-4 text-center">Metodología</h2>
+            <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-white uppercase mb-4 text-center">Metodología</h2>
             <h3
               className="text-6xl md:text-8xl font-bold tracking-tighter text-center mb-20 text-white"
               style={{ textShadow: '0 4px 30px rgba(11,37,69,0.35)' }}
@@ -486,15 +486,21 @@ export default function Home() {
             Tal vez hoy solo necesites una conversación.
           </h3>
           <div className="text-left space-y-6 bg-white p-8 md:p-10 rounded-[2rem] shadow-sm">
-            <p className="text-base md:text-lg font-light text-gray-600 leading-relaxed">
-              <strong className="font-semibold text-brand-navy">Sesión de descubrimiento:</strong> son 15 minutos en los que nos conoceremos y te explicaré cómo es el proceso, con el fin de establecer acuerdos (tiempos de la sesión, pagos, entre otros). Este espacio NO es para conversar sobre la situación en sí, únicamente para aclarar dudas y conocernos. A veces no conectamos bien con quienes creíamos, por eso es mejor darnos la oportunidad de elegir a la persona correcta que te acompañe en tu camino.
-            </p>
-            <p className="text-base md:text-lg font-light text-gray-600 leading-relaxed">
-              <strong className="font-semibold text-brand-navy">1ra sesión:</strong> aquí comienza el proceso. Empezaremos a hacernos muchas preguntas que solo tú contestarás, y veremos cuántas sesiones adicionales podrías tomar. Usualmente comenzamos con 4.
-            </p>
-            <p className="text-base md:text-lg font-light text-gray-600 leading-relaxed">
-              <strong className="font-semibold text-brand-navy">Continuación:</strong> acorde a las sesiones que se establecieron, continuamos el camino.
-            </p>
+            <ScrollReveal yOffset={30}>
+              <p className="text-base md:text-lg font-light text-gray-600 leading-relaxed">
+                <strong className="font-semibold text-brand-navy">Sesión de descubrimiento:</strong> son 15 minutos en los que nos conoceremos y te explicaré cómo es el proceso, con el fin de establecer acuerdos (tiempos de la sesión, pagos, entre otros). Este espacio NO es para conversar sobre la situación en sí, únicamente para aclarar dudas y conocernos. A veces no conectamos bien con quienes creíamos, por eso es mejor darnos la oportunidad de elegir a la persona correcta que te acompañe en tu camino.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal yOffset={30}>
+              <p className="text-base md:text-lg font-light text-gray-600 leading-relaxed">
+                <strong className="font-semibold text-brand-navy">1ra sesión:</strong> aquí comienza el proceso. Empezaremos a hacernos muchas preguntas que solo tú contestarás, y veremos cuántas sesiones adicionales podrías tomar. Usualmente comenzamos con 4.
+              </p>
+            </ScrollReveal>
+            <ScrollReveal yOffset={30}>
+              <p className="text-base md:text-lg font-light text-gray-600 leading-relaxed">
+                <strong className="font-semibold text-brand-navy">Continuación:</strong> acorde a las sesiones que se establecieron, continuamos el camino.
+              </p>
+            </ScrollReveal>
           </div>
         </ScrollReveal>
         <BookingSection />
