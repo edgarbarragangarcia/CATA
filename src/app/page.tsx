@@ -498,25 +498,31 @@ export default function Home() {
           <h3 className="text-3xl md:text-5xl font-bold tracking-tight mb-10 leading-[1.15]">
             Tal vez hoy solo necesites una conversación.
           </h3>
-          <div ref={stepsRef} className="text-left space-y-6 bg-white p-8 md:p-10 rounded-[2rem] shadow-sm">
-            <motion.p
+          <div ref={stepsRef} className="space-y-6">
+            <motion.div
               style={{ opacity: step1Opacity, y: step1Y }}
-              className="text-base md:text-lg font-light text-gray-600 leading-relaxed"
+              className="text-left bg-white p-8 md:p-10 rounded-[2rem] shadow-sm"
             >
-              <strong className="font-semibold text-brand-navy">Sesión de descubrimiento:</strong> son 15 minutos en los que nos conoceremos y te explicaré cómo es el proceso, con el fin de establecer acuerdos (tiempos de la sesión, pagos, entre otros). Este espacio NO es para conversar sobre la situación en sí, únicamente para aclarar dudas y conocernos. A veces no conectamos bien con quienes creíamos, por eso es mejor darnos la oportunidad de elegir a la persona correcta que te acompañe en tu camino.
-            </motion.p>
-            <motion.p
+              <p className="text-base md:text-lg font-light text-gray-600 leading-relaxed">
+                <strong className="font-semibold text-brand-navy">Sesión de descubrimiento:</strong> son 15 minutos en los que nos conoceremos y te explicaré cómo es el proceso, con el fin de establecer acuerdos (tiempos de la sesión, pagos, entre otros). Este espacio NO es para conversar sobre la situación en sí, únicamente para aclarar dudas y conocernos. A veces no conectamos bien con quienes creíamos, por eso es mejor darnos la oportunidad de elegir a la persona correcta que te acompañe en tu camino.
+              </p>
+            </motion.div>
+            <motion.div
               style={{ opacity: step2Opacity, y: step2Y }}
-              className="text-base md:text-lg font-light text-gray-600 leading-relaxed"
+              className="text-left bg-white p-8 md:p-10 rounded-[2rem] shadow-sm"
             >
-              <strong className="font-semibold text-brand-navy">1ra sesión:</strong> aquí comienza el proceso. Empezaremos a hacernos muchas preguntas que solo tú contestarás, y veremos cuántas sesiones adicionales podrías tomar. Usualmente comenzamos con 4.
-            </motion.p>
-            <motion.p
+              <p className="text-base md:text-lg font-light text-gray-600 leading-relaxed">
+                <strong className="font-semibold text-brand-navy">1ra sesión:</strong> aquí comienza el proceso. Empezaremos a hacernos muchas preguntas que solo tú contestarás, y veremos cuántas sesiones adicionales podrías tomar. Usualmente comenzamos con 4.
+              </p>
+            </motion.div>
+            <motion.div
               style={{ opacity: step3Opacity, y: step3Y }}
-              className="text-base md:text-lg font-light text-gray-600 leading-relaxed"
+              className="text-left bg-white p-8 md:p-10 rounded-[2rem] shadow-sm"
             >
-              <strong className="font-semibold text-brand-navy">Continuación:</strong> acorde a las sesiones que se establecieron, continuamos el camino.
-            </motion.p>
+              <p className="text-base md:text-lg font-light text-gray-600 leading-relaxed">
+                <strong className="font-semibold text-brand-navy">Continuación:</strong> acorde a las sesiones que se establecieron, continuamos el camino.
+              </p>
+            </motion.div>
           </div>
         </ScrollReveal>
         <BookingSection />
