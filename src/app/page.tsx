@@ -11,7 +11,7 @@ import { Footer } from '@/components/Footer';
 import heroBgImg from '@/img/hero-bg.jpg';
 import cataCutoutImg from '@/img/cata-cutout.png';
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { Download } from 'lucide-react';
+import { Download, ArrowDown } from 'lucide-react';
 
 export default function Home() {
   // Hero Animation Setup
@@ -498,7 +498,7 @@ export default function Home() {
           <h3 className="text-3xl md:text-5xl font-bold tracking-tight mb-10 leading-[1.15]">
             Tal vez hoy solo necesites una conversación.
           </h3>
-          <div ref={stepsRef} className="space-y-6">
+          <div ref={stepsRef} className="flex flex-col items-stretch">
             <motion.div
               style={{ opacity: step1Opacity, y: step1Y }}
               className="text-left bg-white p-8 md:p-10 rounded-[2rem] shadow-sm"
@@ -507,6 +507,11 @@ export default function Home() {
                 <strong className="font-semibold text-brand-navy">Sesión de descubrimiento:</strong> son 15 minutos en los que nos conoceremos y te explicaré cómo es el proceso, con el fin de establecer acuerdos (tiempos de la sesión, pagos, entre otros). Este espacio NO es para conversar sobre la situación en sí, únicamente para aclarar dudas y conocernos. A veces no conectamos bien con quienes creíamos, por eso es mejor darnos la oportunidad de elegir a la persona correcta que te acompañe en tu camino.
               </p>
             </motion.div>
+
+            <motion.div style={{ opacity: step2Opacity }} className="flex justify-center py-2">
+              <ArrowDown className="w-6 h-6 text-brand-coral" strokeWidth={2.5} />
+            </motion.div>
+
             <motion.div
               style={{ opacity: step2Opacity, y: step2Y }}
               className="text-left bg-white p-8 md:p-10 rounded-[2rem] shadow-sm"
@@ -515,6 +520,11 @@ export default function Home() {
                 <strong className="font-semibold text-brand-navy">1ra sesión:</strong> aquí comienza el proceso. Empezaremos a hacernos muchas preguntas que solo tú contestarás, y veremos cuántas sesiones adicionales podrías tomar. Usualmente comenzamos con 4.
               </p>
             </motion.div>
+
+            <motion.div style={{ opacity: step3Opacity }} className="flex justify-center py-2">
+              <ArrowDown className="w-6 h-6 text-brand-coral" strokeWidth={2.5} />
+            </motion.div>
+
             <motion.div
               style={{ opacity: step3Opacity, y: step3Y }}
               className="text-left bg-white p-8 md:p-10 rounded-[2rem] shadow-sm"
