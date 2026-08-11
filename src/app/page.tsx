@@ -434,7 +434,7 @@ export default function Home() {
                 quote: 'Trabajar con Cata cambió la forma en que tomo decisiones. Llegué sin claridad y con muchas dudas, y en cada sesión sentí un acompañamiento genuino, sin juicios, que me ayudó a reconectar conmigo misma. Hoy tengo más criterio, más calma y una vida mucho más alineada con lo que realmente quiero.',
               },
             ].map(({ name, quote }) => (
-              <div key={name} className="bg-brand-sand/40 border border-brand-sand/60 rounded-[2rem] p-10 text-left flex flex-col">
+              <div key={name} className="h-full bg-brand-sand/40 border border-brand-sand/60 rounded-[2rem] p-10 text-left flex flex-col justify-center">
                 <p className="text-lg italic text-gray-600 font-serif leading-relaxed">"{quote}"</p>
               </div>
             ))}
