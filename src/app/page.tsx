@@ -435,8 +435,7 @@ export default function Home() {
               },
             ].map(({ name, quote }) => (
               <div key={name} className="bg-brand-sand/40 border border-brand-sand/60 rounded-[2rem] p-10 text-left flex flex-col">
-                <p className="text-lg italic text-gray-600 font-serif mb-6 leading-relaxed">"{quote}"</p>
-                <p className="font-semibold text-brand-navy mt-auto">{name}</p>
+                <p className="text-lg italic text-gray-600 font-serif leading-relaxed">"{quote}"</p>
               </div>
             ))}
           </ScrollReveal>
