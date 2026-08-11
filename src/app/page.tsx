@@ -494,7 +494,7 @@ export default function Home() {
       <div className="bg-brand-sand">
         <ScrollReveal className="max-w-4xl mx-auto px-6 pt-24 md:pt-32 text-center">
           <p className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-coral uppercase mb-6">Antes de empezar</p>
-          <h3 className="text-3xl md:text-5xl font-bold tracking-tight mb-10 leading-[1.15] text-brand-navy">
+          <h3 className="text-3xl md:text-5xl font-bold tracking-tight mb-10 leading-[1.15] text-brand-mint">
             Tal vez hoy solo necesites una conversación.
           </h3>
           <div ref={stepsRef} className="flex flex-col items-stretch">
