@@ -110,12 +110,12 @@ export default function Home() {
             className="relative z-10 text-center md:text-left px-6 md:px-0 max-w-5xl md:max-w-none mx-auto flex flex-col items-center md:items-start mt-12 md:mt-20 w-full md:pl-16 lg:pl-24 md:pr-[32%] lg:pr-[28%]"
           >
             <h1 className="text-7xl sm:text-8xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none mb-4 md:mb-6">
-              <span className="block text-white mb-1 md:mb-2">Gózate</span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-brand-amber to-brand-coral">
+              <span className="block text-brand-navy mb-1 md:mb-2">Gózate</span>
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-brand-coral to-[#C42E0B]">
                 la vida.
               </span>
             </h1>
-            <p className="text-xl sm:text-2xl md:text-3xl font-light text-white/90 max-w-3xl mx-auto md:mx-0 leading-relaxed mt-4 md:mt-8">
+            <p className="text-xl sm:text-2xl md:text-3xl font-normal text-brand-navy max-w-3xl mx-auto md:mx-0 leading-relaxed mt-4 md:mt-8">
               Un espacio donde no te doy fórmulas mágicas, sino que te devuelvo el poder de descubrir tus propias respuestas.
             </p>
           </motion.div>
