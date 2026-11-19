@@ -45,8 +45,8 @@ export const WhatsAppButton: React.FC = () => {
       icon: Mail,
       href: `mailto:${EMAIL}`,
       target: '_self',
-      bgColor: 'bg-brand-coral',
-      hoverColor: 'hover:brightness-90',
+      bgColor: 'bg-brand-navy',
+      hoverColor: 'hover:brightness-125',
     },
     {
       id: 'agenda',
@@ -54,7 +54,7 @@ export const WhatsAppButton: React.FC = () => {
       icon: Calendar,
       href: '#agenda',
       target: '_self',
-      bgColor: 'bg-brand-amber',
+      bgColor: 'bg-brand-coral',
       hoverColor: 'hover:brightness-90',
     }
   ];
@@ -113,7 +113,7 @@ export const WhatsAppButton: React.FC = () => {
                       whileTap={{ scale: 0.95 }}
                       className="flex items-center gap-3 group"
                     >
-                      <span className="bg-white px-3 py-1.5 rounded-lg shadow-lg text-sm font-sans font-semibold text-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      <span className="bg-brand-cream px-3 py-1.5 rounded-full shadow-card text-xs font-sans font-semibold tracking-wide text-brand-navy opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                         {option.label}
                       </span>
                       <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg transition-colors duration-300 ${option.bgColor} ${option.hoverColor}`}>
@@ -131,12 +131,10 @@ export const WhatsAppButton: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleMenu}
-              className="relative w-14 h-14 rounded-full shadow-2xl flex items-center justify-center z-50 overflow-hidden"
+              className="relative w-14 h-14 rounded-full flex items-center justify-center z-50 overflow-hidden border border-brand-cream/40"
               style={{
-                background: isOpen ? '#0B2545' : '#30D5C8', // brand-navy / brand-mint
-                boxShadow: isOpen
-                  ? '0 4px 20px rgba(0,0,0,0.3)'
-                  : '0 8px 32px rgba(48, 213, 200, 0.4)'
+                background: isOpen ? '#FF5E36' : '#0B2545', // brand-coral / brand-navy
+                boxShadow: '0 12px 32px -10px rgba(11, 37, 69, 0.55)'
               }}
             >
               <AnimatePresence mode="wait" initial={false}>

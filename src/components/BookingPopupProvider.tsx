@@ -117,10 +117,10 @@ export const BookingPopupProvider: React.FC<{ children: React.ReactNode }> = ({ 
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-2xl rounded-[1.5rem] overflow-hidden shadow-2xl bg-white"
+              className="relative w-full max-w-2xl rounded-3xl overflow-hidden shadow-2xl bg-brand-cream"
             >
               <div className="flex items-center justify-between px-6 py-4 border-b border-brand-navy/10">
-                <h4 className="text-base md:text-lg font-bold text-brand-navy">
+                <h4 className="font-display font-medium text-xl md:text-2xl text-brand-navy">
                   Elige tu sesión
                 </h4>
                 <button
@@ -137,15 +137,14 @@ export const BookingPopupProvider: React.FC<{ children: React.ReactNode }> = ({ 
                   <button
                     key={cal.id}
                     onClick={() => openCal(cal)}
-                    className="text-left rounded-[1.25rem] p-6 border border-brand-navy/10 bg-brand-sand/20 hover:bg-brand-sand/40 hover:border-brand-coral/30 transition-all duration-300"
+                    className="text-left rounded-2xl p-6 border border-brand-navy/10 bg-white/80 hover:border-brand-coral/40 hover:shadow-card transition-all duration-300"
                   >
                     <div
-                      className="w-10 h-10 mb-4 rounded-full flex items-center justify-center"
-                      style={{ background: 'linear-gradient(135deg, #FF5E36 0%, #FF9100 100%)' }}
+                      className="w-10 h-10 mb-5 rounded-full flex items-center justify-center bg-brand-navy"
                     >
                       <CalendarIcon />
                     </div>
-                    <h5 className="text-lg font-bold text-brand-navy mb-1.5 leading-snug">
+                    <h5 className="font-display font-medium text-xl text-brand-navy mb-1.5 leading-snug">
                       {cal.title}
                     </h5>
                     <p className="text-sm font-sans font-light text-brand-navy/60 leading-relaxed">
@@ -176,11 +175,11 @@ export const BookingPopupProvider: React.FC<{ children: React.ReactNode }> = ({ 
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.25 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-3xl max-h-[90vh] rounded-[1.5rem] overflow-hidden shadow-2xl bg-white flex flex-col"
+              className="relative w-full max-w-3xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl bg-white flex flex-col"
             >
               {/* Header del popup */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-brand-navy/10 shrink-0">
-                <h4 className="text-base md:text-lg font-bold text-brand-navy">
+                <h4 className="font-display font-medium text-xl md:text-2xl text-brand-navy">
                   {activeCal.title}
                 </h4>
                 <button
@@ -197,7 +196,7 @@ export const BookingPopupProvider: React.FC<{ children: React.ReactNode }> = ({ 
                 {!calLoaded && (
                   <div className="flex items-center justify-center h-[600px]">
                     <div className="flex flex-col items-center gap-4 text-brand-navy/40">
-                      <div className="w-10 h-10 border-2 border-brand-amber border-t-transparent rounded-full animate-spin" />
+                      <div className="w-10 h-10 border-2 border-brand-coral border-t-transparent rounded-full animate-spin" />
                       <p className="text-sm font-sans">Cargando calendario…</p>
                     </div>
                   </div>

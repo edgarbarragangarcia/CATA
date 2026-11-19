@@ -1,11 +1,19 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Montserrat } from 'next/font/google';
+import { Cormorant_Garamond, Montserrat, Playfair_Display } from 'next/font/google';
 import './globals.css';
 
 const cormorant = Cormorant_Garamond({ 
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
   variable: '--font-cormorant',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair',
 });
 
 const montserrat = Montserrat({
@@ -26,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="scroll-smooth">
-      <body className={`${cormorant.variable} ${montserrat.variable}`}>
+      <body className={`${playfair.variable} ${cormorant.variable} ${montserrat.variable}`}>
         {children}
       </body>
     </html>

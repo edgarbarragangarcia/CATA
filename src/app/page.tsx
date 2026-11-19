@@ -11,7 +11,119 @@ import { Footer } from '@/components/Footer';
 import heroBgImg from '@/img/hero-bg.jpg';
 import cataCutoutImg from '@/img/cata-cutout.png';
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { Download, ArrowDown } from 'lucide-react';
+import { Eyebrow, Dot, HeroActions, sectionTitle, leadText, bodyText } from '@/components/ui';
+import { Download, ArrowRight } from 'lucide-react';
+
+const FEELINGS = [
+  'No encuentras claridad.',
+  'Trabajas mucho pero no disfrutas.',
+  'Quieres cambiar, pero no sabes cómo.',
+  'Sientes culpa constantemente.',
+  'Te cuesta tomar decisiones.',
+  'Vives en automático.',
+  'Sabes que puedes dar más.',
+];
+
+const CREDENTIALS = [
+  { value: '17+', label: 'Años de liderazgo en marketing' },
+  { value: 'Máster', label: 'Comunicación Estratégica' },
+  { value: 'Trainer', label: 'Dale Carnegie' },
+  { value: 'Coach', label: 'De vida certificada' },
+];
+
+const VIDA_STEPS = [
+  { letter: 'V', title: 'Ver con claridad' },
+  { letter: 'I', title: 'Identificar creencias' },
+  { letter: 'D', title: 'Decidir con criterio' },
+  { letter: 'A', title: 'Actuar con propósito' },
+];
+
+const SERVICES = [
+  {
+    tag: 'Claridad',
+    title: 'Encuentra tu norte',
+    subtitle: 'Claridad para tomar decisiones con confianza.',
+    lead: 'Cuando sabes que algo necesita cambiar, pero aún no sabes por dónde empezar.',
+    body: 'Hay momentos en los que la vida parece llena de preguntas. Tal vez estás enfrentando una decisión importante, te sientes estancado, has perdido la motivación o simplemente sabes que no estás viviendo la vida que deseas. En este proceso encontrarás un espacio de escucha, reflexión y conversación para ordenar tus ideas, comprender lo que realmente quieres y recuperar la confianza para tomar decisiones con mayor criterio y tranquilidad.',
+    bullets: [
+      'Tienes muchas dudas y pocas respuestas.',
+      'Estás atravesando un cambio importante.',
+      'Quieres recuperar el rumbo de tu vida.',
+      'Necesitas claridad para tomar una decisión.',
+    ],
+    objective: 'Salir de la confusión y volver a avanzar con confianza.',
+  },
+  {
+    tag: 'Transformación',
+    title: 'Rediseña tu vida',
+    subtitle: 'Un proceso para rediseñar la vida que quieres construir.',
+    lead: 'Porque nunca es tarde para construir una vida que realmente disfrutes.',
+    body: 'A veces no se trata de cambiarlo todo, sino de transformar la manera en que vivimos. Este proceso está diseñado para quienes desean revisar sus hábitos, ampliar su perspectiva, fortalecer su capacidad para tomar decisiones conscientes y construir una vida más alineada con sus valores y propósito. A través de conversaciones profundas y preguntas poderosas, descubrirás los recursos que ya existen en ti para generar cambios sostenibles y convertir pequeñas acciones en grandes transformaciones.',
+    bullets: [
+      'Recuperar el equilibrio entre tu vida personal y profesional.',
+      'Romper patrones que ya no te generan bienestar.',
+      'Tomar decisiones con mayor confianza y criterio.',
+      'Desarrollar hábitos más coherentes con la vida que deseas construir.',
+      'Vivir con mayor propósito y bienestar.',
+    ],
+    objective: 'Diseñar una vida más coherente con la persona que quieres ser, desarrollando la claridad, el criterio y la actitud necesarios para avanzar con intención y disfrutar más el camino.',
+    quote: '“No se trata de convertirte en alguien diferente. Se trata de construir, desde quien ya eres, una vida que disfrutes con mayor propósito, coherencia y plenitud.”',
+  },
+  {
+    tag: 'Maternidad',
+    title: 'Mamá sin pausa',
+    subtitle: 'Coaching para madres.',
+    lead: 'Porque cuidar de todos no debería significar dejar de cuidarte a ti.',
+    body: 'Ser mamá transforma la vida de una manera maravillosa, pero también trae nuevos retos, emociones y responsabilidades. Es fácil sentir que el tiempo ya no alcanza, que la culpa aparece con frecuencia o que has dejado en pausa algunos de tus propios sueños. Como mamá de tres hijos —nacidos con año y 11 meses de diferencia entre el mayor y los gemelos— conozco de primera mano los desafíos de equilibrar la maternidad, el desarrollo profesional, la vida en pareja y el crecimiento personal. Este es un espacio pensado para que vuelvas a encontrarte contigo misma sin dejar de ser la gran mamá que ya eres.',
+    bullets: [
+      '¿Cómo volver a tener tiempo para mí?',
+      '¿Cómo equilibrar mi familia y mi desarrollo profesional?',
+      '¿Cómo dejar de sentir culpa constantemente?',
+      '¿Cómo disfrutar más esta etapa?',
+    ],
+    objective: 'Aceptar y vivir la maternidad con mayor equilibrio, tranquilidad y disfrute.',
+  },
+  {
+    tag: 'Liderazgo',
+    title: 'Lidera desde quién eres',
+    subtitle: 'Coaching para líderes.',
+    lead: 'Porque el mejor liderazgo nace de la autenticidad, no de la presión.',
+    body: 'Los retos del liderazgo no solo transforman las organizaciones; también transforman a quienes las lideran. La presión por los resultados, las decisiones difíciles y las múltiples responsabilidades pueden llevarnos, sin darnos cuenta, a alejarnos de la forma en que realmente queremos liderar. Este proceso de coaching es un espacio para detenerse, reflexionar y reconectar con el líder que deseas ser. No busca enseñarte un modelo de liderazgo, sino ayudarte a descubrir cómo liderar desde tus valores, tu propósito y tu autenticidad.',
+    bullets: [
+      'Recuperar la coherencia entre lo que piensan, sienten y proyectan.',
+      'Reflexionar sobre el tipo de líder que quieren ser.',
+      'Tomar decisiones con mayor serenidad y criterio.',
+      'Fortalecer la calidad de sus conversaciones y relaciones.',
+      'Liderar desde la autenticidad, incluso en contextos de alta exigencia.',
+    ],
+    objective: 'Reconectar con tu esencia para ejercer un liderazgo más consciente, coherente y auténtico, capaz de generar confianza, fortalecer las relaciones y construir resultados sostenibles.',
+  },
+];
+
+const TESTIMONIALS = [
+  'Cata es una persona muy profesional pero sobre todo muy humana. Abre un espacio donde genera confianza desde el momento cero y con paciencia guía a las personas a encontrar las respuestas. Para mí fue un espacio muy enriquecedor que le recomiendo a todos. A ella le agradezco enormemente su empatía, su apertura y su guía.',
+  'Trabajar con Cata cambió la forma en que tomo decisiones. Llegué sin claridad y con muchas dudas, y en cada sesión sentí un acompañamiento genuino, sin juicios, que me ayudó a reconectar conmigo misma. Hoy tengo más criterio, más calma y una vida mucho más alineada con lo que realmente quiero.',
+];
+
+const RESOURCES = [
+  {
+    title: 'Modelo YOU',
+    desc: 'Describe tu ADN y cómo eres en el entorno personal, y cómo esos rasgos son tus diferenciales en el mundo laboral.',
+    file: '/downloads/Modelo-YOU-by-Cata-Ayala.pdf',
+  },
+  {
+    title: 'Test: ¿Qué tan conectado estás con tu propósito?',
+    desc: 'Un test rápido para entender qué tan alineada está tu vida con lo que realmente quieres.',
+    file: '/downloads/Test-Conexion-con-tu-Proposito.pdf',
+  },
+  {
+    title: 'Checklist: 7 señales de piloto automático',
+    desc: 'Identifica si estás viviendo en automático con este checklist de autodiagnóstico.',
+    file: '/downloads/Checklist-7-Senales-Piloto-Automatico.pdf',
+  },
+];
+
+const cardBase = 'bg-white/75 border border-brand-navy/10 rounded-3xl shadow-card';
 
 export default function Home() {
   // Hero Animation Setup
@@ -66,421 +178,361 @@ export default function Home() {
     ? { opacity: heroTextOpacityDesktop, scale: heroTextScaleDesktop }
     : { opacity: heroTextOpacity };
 
+  const steps = [
+    {
+      n: 1,
+      title: 'Sesión de descubrimiento',
+      text: 'Son 15 minutos en los que nos conoceremos y te explicaré cómo es el proceso, con el fin de establecer acuerdos (tiempos de la sesión, pagos, entre otros). Este espacio NO es para conversar sobre la situación en sí, únicamente para aclarar dudas y conocernos. A veces no conectamos bien con quienes creíamos, por eso es mejor darnos la oportunidad de elegir a la persona correcta que te acompañe en tu camino.',
+      style: { opacity: step1Opacity, y: step1Y },
+    },
+    {
+      n: 2,
+      title: 'Primera sesión',
+      text: 'Aquí comienza el proceso. Empezaremos a hacernos muchas preguntas que solo tú contestarás, y veremos cuántas sesiones adicionales podrías tomar. Usualmente comenzamos con 4.',
+      style: { opacity: step2Opacity, y: step2Y },
+    },
+    {
+      n: 3,
+      title: 'Continuación',
+      text: 'Acorde a las sesiones que se establecieron, continuamos el camino.',
+      style: { opacity: step3Opacity, y: step3Y },
+    },
+  ];
+  const connectorOpacity = [step2Opacity, step3Opacity];
+
   return (
     <BookingPopupProvider>
     <main className="min-h-screen relative selection:bg-brand-coral selection:text-white bg-brand-sand text-brand-navy">
       <Navbar />
 
-      {/* 1. HERO SECTION (APPLE STYLE) — scroll: text sharpens in, photo blurs out */}
-      <section ref={heroRef} className="relative h-[200vh] bg-brand-sand">
+      {/* 1. HERO — scroll: text fades/scales out on desktop; on mobile the photo blurs out and the text fades in */}
+      <section id="hero" ref={heroRef} className="relative h-[200vh] bg-brand-sand">
         <div className="sticky top-0 h-screen flex flex-col items-center justify-center overflow-hidden">
 
-          {/* Background Texture that scales up */}
-          <motion.div
-            style={heroBgStyle}
-            className="absolute inset-0 z-0"
-          >
-            <Image
-              src={heroBgImg}
-              alt=""
-              fill
-              className="object-cover"
-              priority
-            />
+          {/* Background texture (the stone/sand texture Cata chose) */}
+          <motion.div style={heroBgStyle} className="absolute inset-0 z-0">
+            <Image src={heroBgImg} alt="" fill className="object-cover" priority />
+            {/* Isotipo construction lines behind the photo — the "C" protector circle */}
+            <svg
+              aria-hidden
+              viewBox="0 0 100 100"
+              className="hidden md:block absolute right-[-6vh] lg:right-[2vw] top-1/2 -translate-y-[42%] h-[92vh] w-[92vh] text-brand-navy pointer-events-none"
+            >
+              <circle
+                cx="50" cy="50" r="48" fill="none" stroke="currentColor" strokeOpacity="0.16"
+                strokeWidth="1.25" vectorEffect="non-scaling-stroke"
+                strokeDasharray="270 31.6" strokeDashoffset="-15.8" strokeLinecap="round"
+              />
+              <circle
+                cx="50" cy="50" r="36" fill="none" stroke="currentColor" strokeOpacity="0.14"
+                strokeWidth="1" vectorEffect="non-scaling-stroke" strokeDasharray="2 5"
+              />
+              <line x1="2" y1="50" x2="98" y2="50" stroke="currentColor" strokeOpacity="0.06" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+              <line x1="50" y1="2" x2="50" y2="98" stroke="currentColor" strokeOpacity="0.06" strokeWidth="1" vectorEffect="non-scaling-stroke" />
+            </svg>
           </motion.div>
 
-          {/* Cata silhouette cutout, sitting on the textured background */}
+          {/* Cata cutout */}
           <motion.div
             style={heroPhotoStyle}
             className="absolute bottom-[8%] md:bottom-0 right-0 z-[5] h-[75%] md:h-[85%] lg:h-[90%] aspect-[356/723]"
           >
-            <Image
-              src={cataCutoutImg}
-              alt="Cata Ayala"
-              fill
-              className="object-contain object-bottom"
-              priority
-            />
+            <Image src={cataCutoutImg} alt="Cata Ayala" fill className="object-contain object-bottom" priority />
           </motion.div>
 
-          {/* Central Hero Text */}
+          {/* Hero copy */}
           <motion.div
             style={heroTextStyle}
-            className="relative z-10 text-center md:text-left px-6 md:px-0 max-w-5xl md:max-w-none mx-auto flex flex-col items-center md:items-start mt-12 md:mt-20 w-full md:pl-16 lg:pl-24 md:pr-[32%] lg:pr-[28%]"
+            className="relative z-10 text-center md:text-left px-6 md:px-0 max-w-5xl md:max-w-none mx-auto flex flex-col items-center md:items-start mt-12 md:mt-16 w-full md:pl-16 lg:pl-24 md:pr-[34%] lg:pr-[30%]"
           >
-            <h1 className="text-7xl sm:text-8xl md:text-8xl lg:text-9xl font-bold tracking-tighter leading-none mb-4 md:mb-6">
-              <span className="block text-brand-navy mb-1 md:mb-2">Gózate</span>
-              <span className="block italic font-semibold text-brand-navy">
-                la vida<span className="text-brand-coral">.</span>
-              </span>
+            <p className="mb-6 md:mb-8 flex items-center justify-center md:justify-start gap-3 text-[10px] md:text-xs font-semibold uppercase tracking-[0.22em] md:tracking-[0.28em] text-brand-coral">
+              <span className="hidden md:block h-px w-7 bg-current opacity-70" aria-hidden />
+              Coach de vida · Mentora estratégica
+            </p>
+            <h1 className="font-display font-medium text-brand-navy text-[4.25rem] sm:text-8xl lg:text-[8.5rem] leading-[0.95] tracking-[-0.03em]">
+              <span className="block">Gózate</span>
+              <span className="block italic">la vida<Dot /></span>
             </h1>
-            <p className="text-xl sm:text-2xl md:text-3xl font-normal text-brand-navy max-w-3xl mx-auto md:mx-0 leading-relaxed mt-4 md:mt-8">
+            <p className="mt-7 md:mt-9 max-w-xl text-lg sm:text-xl md:text-2xl font-light text-brand-navy/85 leading-relaxed">
               Un espacio donde no te doy fórmulas mágicas, sino que te devuelvo el poder de descubrir tus propias respuestas.
             </p>
+            <HeroActions className="mt-9 md:mt-11" />
           </motion.div>
         </div>
       </section>
 
-      {/* 2. ¿TE SIENTES ASÍ? */}
-      <section className="relative z-20 bg-linen-cream text-brand-navy py-28 md:py-40 rounded-t-[3rem] md:rounded-t-[4rem] -mt-20 shadow-[0_-24px_60px_rgba(11,37,69,0.10)]">
-        <div className="max-w-6xl mx-auto px-6">
-          <ScrollReveal>
-            <h3 className="text-4xl md:text-6xl font-bold text-center tracking-tight leading-[1.15] mb-6 max-w-4xl mx-auto">
-              “La vida es demasiado espectacular <br className="hidden md:block" />
-              como para no disfrutarla.”
-            </h3>
-            <p className="text-2xl md:text-3xl italic font-serif font-bold text-brand-navy text-center mb-16">
-              Tal vez hoy te sientes así
+      {/* 2. ¿TE SIENTES ASÍ? — editorial two-column */}
+      <section className="relative z-20 bg-linen-cream py-24 md:py-36 rounded-t-[2.5rem] md:rounded-t-[4rem] -mt-20 shadow-[0_-24px_60px_rgba(11,37,69,0.10)]">
+        <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-12 gap-14 lg:gap-20">
+          <ScrollReveal className="lg:col-span-6">
+            <Eyebrow align="left">El punto de partida</Eyebrow>
+            <span aria-hidden className="block mt-8 font-display text-7xl leading-none text-brand-gold">“</span>
+            <h2 className={`${sectionTitle} -mt-6`}>
+              La vida es demasiado espectacular como para no <span className="italic">disfrutarla</span><Dot />
+            </h2>
+            <div className={`mt-8 space-y-4 ${leadText}`}>
+              <p>No significa que todo sea fácil. Significa aprender a encontrar sentido incluso en los momentos difíciles.</p>
+              <p>Porque cuando cambia tu manera de mirar la vida, cambia la manera de vivirla.</p>
+            </div>
+            <p className="mt-10 font-serif italic font-medium text-2xl md:text-[1.75rem] text-brand-navy">
+              Más que motivación, es estrategia de vida.
             </p>
           </ScrollReveal>
 
-          <ScrollReveal yOffset={40} staggerChildren={0.08} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-16">
-            {[
-              'No encuentras claridad.',
-              'Trabajas mucho pero no disfrutas.',
-              'Quieres cambiar, pero no sabes cómo.',
-              'Sientes culpa constantemente.',
-              'Te cuesta tomar decisiones.',
-              'Vives en automático.',
-              'Sabes que puedes dar más.',
-              'No has perdido la capacidad.',
-              'Solo necesitas reencontrarte.',
-            ].map((item) => (
-              <div key={item} className="bg-white/70 rounded-2xl p-6 border border-brand-sand shadow-sm">
-                <p className="text-lg font-light text-brand-navy/80 leading-snug">{item}</p>
-              </div>
-            ))}
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.15}>
-            <div className="max-w-3xl mx-auto text-center">
-              <p className="text-2xl md:text-3xl font-light text-brand-navy/80 leading-relaxed mb-4">
-                No significa que todo sea fácil. Significa aprender a encontrar sentido incluso en los momentos difíciles.
+          <div className="lg:col-span-6 lg:pt-6">
+            <ScrollReveal>
+              <p className="font-serif italic text-2xl md:text-[1.75rem] text-brand-navy/80 mb-6">Tal vez hoy te sientes así…</p>
+            </ScrollReveal>
+            <ScrollReveal yOffset={16} staggerChildren={0.06} className="border-t border-brand-navy/10">
+              {FEELINGS.map((f, i) => (
+                <div key={f} className="flex items-baseline gap-6 py-4 md:py-5 border-b border-brand-navy/10">
+                  <span className="w-6 shrink-0 text-[11px] font-semibold tracking-[0.15em] text-brand-coral tabular-nums">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <p className="text-lg md:text-xl text-brand-navy/85">{f}</p>
+                </div>
+              ))}
+            </ScrollReveal>
+            <ScrollReveal delay={0.1}>
+              <p className="mt-10 font-display text-2xl md:text-3xl leading-snug text-brand-navy">
+                <span className="italic">No has perdido la capacidad.</span>
+                <br />
+                Solo necesitas reencontrarte<Dot />
               </p>
-              <p className="text-2xl md:text-3xl font-light text-brand-navy/80 leading-relaxed">
-                Porque cuando cambia tu manera de mirar la vida, cambia la manera de vivirla.
-              </p>
-              <p className="mt-8 text-2xl md:text-3xl italic font-serif font-bold text-brand-coral">
-                "Más que motivación, es estrategia de vida."
-              </p>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
       {/* 3. QUIÉN ES CATA AYALA */}
-      <section id="quien-es" className="relative bg-linen-sand text-brand-navy pt-28 md:pt-40 pb-28 md:pb-40">
-        <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-coral uppercase mb-4 text-center">
-              Quién es Cata Ayala
+      <section id="quien-es" className="relative bg-linen-sand py-24 md:py-36">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 lg:gap-20 items-start">
+          <ScrollReveal className="lg:col-span-6">
+            <Eyebrow align="left">Quién es Cata Ayala</Eyebrow>
+            <h2 className={`${sectionTitle} mt-6`}>
+              Estructura corporativa, <span className="italic">alma de madre</span><Dot />
             </h2>
-            <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center tracking-tight leading-[1.15] mb-24 max-w-3xl mx-auto text-brand-navy">
-              Estructura corporativa,<br />
-              <span className="italic text-brand-coral">alma de madre.</span>
-            </h3>
+            <p className="mt-8 text-xl md:text-2xl font-light text-brand-navy leading-snug">
+              Lejos del espacio saturado del “life coaching genérico”, Cata trae a la mesa <strong className="font-semibold">más de 17 años de liderazgo en marketing</strong>.
+            </p>
+            <p className={`mt-5 ${bodyText}`}>
+              Junto con formación de alto rendimiento y un Máster en Comunicación Estratégica. Todo esto se fusiona con una feroz resiliencia humana. Es el equilibrio perfecto entre la estructura corporativa implacable y el acompañamiento empático genuino.
+            </p>
+            <div className="mt-10 pt-10 border-t border-brand-navy/10 space-y-5">
+              <p className={bodyText}>Durante años ayudé a construir, crecer y conectar marcas con las audiencias. Después entendí que la marca más importante era la vida de cada persona.</p>
+              <p className={bodyText}>Soy administradora, tengo una maestría en comunicación. Soy Trainer Dale Carnegie y Coach.</p>
+              <p className={bodyText}>Soy mamá de tres hijos —uno de 4 años y gemelos de 2 años—. Un sueño hecho realidad, luego de una pérdida y de escuchar a médicos decirme que no podía ser mamá.</p>
+              <p className={bodyText}>Sobre todo, soy una persona profundamente convencida de que todos tenemos más potencial de lo que imaginamos. A veces nos dejamos convencer de las creencias que permitimos establecernos y olvidamos quiénes somos y lo que queremos.</p>
+            </div>
+            <div className="mt-10">
+              <p className="font-serif italic font-medium text-3xl md:text-4xl text-brand-navy">“La actitud es una decisión.”</p>
+              <p className="mt-3 text-[11px] font-semibold tracking-[0.28em] uppercase text-brand-navy/50">— Cata Ayala</p>
+            </div>
           </ScrollReveal>
 
-          <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-center">
-            <ScrollReveal yOffset={60}>
-              <p className="text-3xl md:text-4xl lg:text-5xl font-light text-brand-navy leading-tight mb-8 tracking-tight">
-                Lejos del espacio saturado del "life coaching genérico", Cata Ayala trae a la mesa <strong className="font-semibold">más de 17 años de liderazgo en marketing</strong>.
-              </p>
-              <p className="text-xl md:text-2xl font-light text-brand-navy/70 leading-relaxed">
-                Junto con formación de alto rendimiento y un Máster en Comunicación Estratégica. Todo esto se fusiona con una feroz resiliencia humana. Es el equilibrio perfecto entre la estructura corporativa implacable y el acompañamiento empático genuino.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={0.2} yOffset={60}>
-              <a href="#respaldo" className="block relative w-full aspect-square bg-brand-cream rounded-[3rem] md:rounded-[4rem] overflow-hidden group cursor-pointer border border-brand-navy/10 shadow-xl hover:shadow-2xl transition-shadow duration-500">
-                <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-brand-cream to-brand-sand">
-                  <div className="absolute w-[52%] aspect-[4/3] left-4 md:left-8 top-6 md:top-8 rounded-2xl shadow-2xl transition-all duration-700 group-hover:-rotate-12 group-hover:-translate-x-4 group-hover:-translate-y-2 bg-white -rotate-[8deg]">
-                    <Image src="/diplomas/master-comunicacion-cert.jpg" alt="Máster en Comunicación Estratégica" fill className="object-contain p-3" />
-                    <div className="absolute inset-0 border border-black/5 rounded-2xl pointer-events-none" />
-                  </div>
-                  <div className="absolute w-[58%] aspect-[4/3] right-4 md:right-10 top-14 md:top-16 rounded-2xl shadow-2xl transition-all duration-700 group-hover:rotate-6 group-hover:translate-x-6 group-hover:-translate-y-4 z-10 bg-white">
-                    <Image src="/diplomas/dna-cert.png" alt="DNA" fill className="object-contain p-3" />
-                    <div className="absolute inset-0 border border-black/5 rounded-2xl pointer-events-none" />
-                  </div>
-                  <div className="absolute w-[62%] aspect-[4/3] left-1/2 -translate-x-1/2 bottom-6 md:bottom-8 rounded-2xl shadow-2xl transition-all duration-700 group-hover:-rotate-3 group-hover:translate-y-2 z-20 bg-white rotate-[3deg]">
-                    <Image src="/diplomas/coaching-cert.png" alt="Coaching" fill className="object-contain p-3" />
-                    <div className="absolute inset-0 border border-black/5 rounded-2xl pointer-events-none" />
-                  </div>
-                </div>
-              </a>
-            </ScrollReveal>
-          </div>
-
-          <ScrollReveal delay={0.1} yOffset={40}>
-            <div className="max-w-4xl mx-auto mt-24 md:mt-32 space-y-6 text-center">
-              <p className="text-xl md:text-2xl font-light text-brand-navy/75 leading-relaxed">
-                Durante años ayudé a construir, crecer y conectar marcas con las audiencias. Después entendí que la marca más importante era la vida de cada persona.
-              </p>
-              <p className="text-xl md:text-2xl font-light text-brand-navy/75 leading-relaxed">
-                Soy administradora, tengo una maestría en comunicación. Soy Trainer Dale Carnegie y Coach.
-              </p>
-              <p className="text-xl md:text-2xl font-light text-brand-navy/75 leading-relaxed">
-                Soy mamá de tres hijos —uno de 4 años y gemelos de 2 años—. Un sueño hecho realidad, luego de una pérdida y de escuchar a médicos decirme que no podía ser mamá.
-              </p>
-              <p className="text-xl md:text-2xl font-light text-brand-navy/75 leading-relaxed">
-                Sobre todo, soy una persona profundamente convencida de que todos tenemos más potencial de lo que imaginamos. A veces nos dejamos convencer de las creencias que permitimos establecernos y olvidamos quiénes somos y lo que queremos.
-              </p>
-              <div className="pt-6 flex items-center justify-center">
-                <p className="text-2xl md:text-3xl italic font-serif font-bold text-brand-navy">"La actitud es una decisión."</p>
+          <ScrollReveal delay={0.15} yOffset={60} className="lg:col-span-6">
+            <div className="relative w-full aspect-square bg-gradient-to-br from-brand-cream to-brand-sand rounded-[2.5rem] overflow-hidden group border border-brand-navy/10 shadow-card hover:shadow-card-hover transition-shadow duration-500">
+              <div className="absolute w-[52%] aspect-[4/3] left-4 md:left-8 top-6 md:top-8 rounded-2xl shadow-2xl transition-all duration-700 group-hover:-rotate-12 group-hover:-translate-x-4 group-hover:-translate-y-2 bg-white -rotate-[8deg]">
+                <Image src="/diplomas/master-comunicacion-cert.jpg" alt="Máster en Comunicación Estratégica" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-contain p-3" />
+                <div className="absolute inset-0 border border-black/5 rounded-2xl pointer-events-none" />
+              </div>
+              <div className="absolute w-[58%] aspect-[4/3] right-4 md:right-10 top-14 md:top-16 rounded-2xl shadow-2xl transition-all duration-700 group-hover:rotate-6 group-hover:translate-x-6 group-hover:-translate-y-4 z-10 bg-white">
+                <Image src="/diplomas/dna-cert.png" alt="Certificación DNA" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-contain p-3" />
+                <div className="absolute inset-0 border border-black/5 rounded-2xl pointer-events-none" />
+              </div>
+              <div className="absolute w-[62%] aspect-[4/3] left-1/2 -translate-x-1/2 bottom-6 md:bottom-8 rounded-2xl shadow-2xl transition-all duration-700 group-hover:-rotate-3 group-hover:translate-y-2 z-20 bg-white rotate-[3deg]">
+                <Image src="/diplomas/coaching-cert.png" alt="Maestría en Coaching" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-contain p-3" />
+                <div className="absolute inset-0 border border-black/5 rounded-2xl pointer-events-none" />
               </div>
             </div>
+
+            <dl className="mt-8 grid grid-cols-2 border-t border-l border-brand-navy/10">
+              {CREDENTIALS.map((c) => (
+                <div key={c.label} className="border-b border-r border-brand-navy/10 p-5 md:p-7">
+                  <dt className="font-display lining-nums text-3xl md:text-4xl text-brand-navy">{c.value}</dt>
+                  <dd className="mt-2 text-xs md:text-[13px] text-brand-navy/60 leading-snug">{c.label}</dd>
+                </div>
+              ))}
+            </dl>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* 4. MAJESTIC QUOTE */}
-      <section data-nav-theme="dark" className="relative h-[100vh] flex items-center justify-center overflow-hidden bg-brand-navy">
+      {/* 4. FILOSOFÍA — navy + oro (hot stamping) */}
+      <section data-nav-theme="dark" className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-brand-navy py-28">
         <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at center, rgba(227,181,101,0.16) 0%, transparent 60%)' }} />
-        <ScrollReveal>
-          <h3 className="text-5xl md:text-7xl lg:text-8xl font-serif italic font-bold text-center leading-tight px-6 max-w-6xl mx-auto relative z-10">
+        <Image
+          src="/logo-icon.png"
+          alt=""
+          width={352}
+          height={352}
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] max-w-[920px] opacity-[0.05]"
+        />
+        <ScrollReveal className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+          <Eyebrow tone="gold">Mi filosofía</Eyebrow>
+          <h2 className="mt-10 font-serif italic font-semibold text-5xl md:text-7xl lg:text-8xl leading-[1.05] pb-2">
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#F3D9A4] to-brand-gold">
               “No te doy respuestas.<br />Te ayudo a descubrir las tuyas.”
             </span>
-          </h3>
+          </h2>
+          <div className="mx-auto mt-10 h-px w-16 bg-brand-gold/50" />
+          <p className="mt-6 text-[11px] font-semibold tracking-[0.3em] uppercase text-brand-cream/60">Cata Ayala</p>
         </ScrollReveal>
       </section>
 
-      {/* 6. METODOLOGÍA VIDA */}
-      <section id="metodologia" className="relative overflow-hidden py-32 md:py-48 bg-linen-cream text-brand-navy">
+      {/* 5. METODOLOGÍA VIDA */}
+      <section id="metodologia" className="relative overflow-hidden py-24 md:py-36 bg-linen-cream">
         <div
           className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[60%] aspect-square rounded-full blur-3xl pointer-events-none"
           style={{ background: 'radial-gradient(circle, rgba(227,181,101,0.22) 0%, transparent 70%)' }}
         />
         <div
           className="absolute bottom-0 right-0 w-[45%] aspect-square rounded-full blur-3xl pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(255,94,54,0.10) 0%, transparent 70%)' }}
+          style={{ background: 'radial-gradient(circle, rgba(255,94,54,0.08) 0%, transparent 70%)' }}
         />
         <div className="relative max-w-6xl mx-auto px-6">
-          <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-coral uppercase mb-4 text-center">Metodología</h2>
-            <h3
-              className="text-6xl md:text-8xl font-bold tracking-tighter text-center mb-20 text-brand-navy"
-            >
-              VIDA
-            </h3>
+          <ScrollReveal className="text-center">
+            <Eyebrow>Metodología</Eyebrow>
+            <h2 className="mt-6 font-display font-medium text-brand-navy text-7xl md:text-9xl tracking-[0.08em] leading-none">VIDA</h2>
+            <p className={`mt-6 max-w-xl mx-auto ${leadText}`}>
+              Cuatro pasos para vivir con propósito, criterio y una actitud al 101%.
+            </p>
           </ScrollReveal>
 
-          <ScrollReveal yOffset={40} staggerChildren={0.1} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { letter: 'V', title: 'Ver con claridad' },
-              { letter: 'I', title: 'Identificar creencias' },
-              { letter: 'D', title: 'Decidir con criterio' },
-              { letter: 'A', title: 'Actuar con propósito' },
-            ].map((step, i) => (
+          <ScrollReveal yOffset={40} staggerChildren={0.1} itemClassName="h-full" className="mt-14 md:mt-20 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 md:gap-6">
+            {VIDA_STEPS.map((step, i) => (
               <motion.div
                 key={step.letter}
                 whileHover={{ y: -10, scale: 1.03 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                className="group relative bg-white/80 border border-brand-sand rounded-[2rem] p-8 flex flex-col gap-4 shadow-sm overflow-hidden cursor-default transition-shadow duration-300 hover:shadow-2xl hover:border-brand-coral/40 h-full min-h-[220px] justify-between"
+                className={`group relative ${cardBase} p-5 sm:p-8 flex flex-col overflow-hidden cursor-default transition-shadow duration-300 hover:shadow-card-hover hover:border-brand-coral/30 h-full min-h-[190px] sm:min-h-[240px] justify-between`}
               >
-                {/* Glow que aparece en hover */}
+                {/* Glow on hover */}
                 <div
                   className="absolute -top-10 -right-10 w-32 h-32 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{ background: 'radial-gradient(circle, rgba(255,94,54,0.35) 0%, transparent 70%)' }}
+                  style={{ background: 'radial-gradient(circle, rgba(255,94,54,0.22) 0%, transparent 70%)' }}
                 />
-
-                {/* Número de paso */}
-                <span className="absolute top-6 right-7 text-xs font-sans font-bold text-brand-navy/25 tracking-widest">
-                  0{i + 1}
+                <span className="relative text-[11px] font-semibold tracking-[0.2em] text-brand-coral tabular-nums">
+                  {String(i + 1).padStart(2, '0')}
                 </span>
-
-                <span
-                  className="relative text-5xl font-bold font-serif transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3"
-                  style={{
-                    background: 'linear-gradient(135deg, #FF5E36 0%, #FF9100 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }}
-                >
+                <span className="relative font-display font-medium text-5xl sm:text-6xl text-brand-navy transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 origin-left">
                   {step.letter}
                 </span>
-                <p className="relative text-xl font-light text-brand-navy leading-snug">
-                  {step.title}
-                </p>
-
-                {/* Línea inferior animada */}
-                <span className="absolute bottom-0 left-0 h-1 w-0 group-hover:w-full transition-all duration-500 ease-out rounded-full"
-                  style={{ background: 'linear-gradient(90deg, #FF5E36 0%, #FF9100 100%)' }}
-                />
+                <p className="relative text-[15px] sm:text-lg font-medium text-brand-navy leading-snug">{step.title}</p>
+                {/* Animated bottom line */}
+                <span className="absolute bottom-0 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-500 ease-out bg-brand-coral" />
               </motion.div>
             ))}
           </ScrollReveal>
         </div>
       </section>
 
-      {/* 7. SERVICIOS */}
-      <section id="servicios" className="py-32 md:py-48 bg-linen-sand text-brand-navy">
+      {/* 6. SERVICIOS */}
+      <section id="servicios" className="py-24 md:py-36 bg-linen-sand">
         <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-coral uppercase mb-4 text-center">Servicios</h2>
-            <h3 className="text-5xl md:text-7xl font-bold tracking-tight text-center mb-20 leading-[1.1]">
-              Encuentra claridad,<br />encuentra tu norte.
-            </h3>
+          <ScrollReveal className="text-center">
+            <Eyebrow>Servicios</Eyebrow>
+            <h2 className={`${sectionTitle} mt-6`}>
+              Encuentra claridad,<br /><span className="italic">encuentra tu norte</span><Dot />
+            </h2>
           </ScrollReveal>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: 'Encuentra tu norte',
-                subtitle: 'Claridad para tomar decisiones con confianza.',
-                lead: 'Cuando sabes que algo necesita cambiar, pero aún no sabes por dónde empezar.',
-                body: 'Hay momentos en los que la vida parece llena de preguntas. Tal vez estás enfrentando una decisión importante, te sientes estancado, has perdido la motivación o simplemente sabes que no estás viviendo la vida que deseas. En este proceso encontrarás un espacio de escucha, reflexión y conversación para ordenar tus ideas, comprender lo que realmente quieres y recuperar la confianza para tomar decisiones con mayor criterio y tranquilidad.',
-                bullets: [
-                  'Tienes muchas dudas y pocas respuestas.',
-                  'Estás atravesando un cambio importante.',
-                  'Quieres recuperar el rumbo de tu vida.',
-                  'Necesitas claridad para tomar una decisión.',
-                ],
-                objective: 'Salir de la confusión y volver a avanzar con confianza.',
-              },
-              {
-                title: 'Rediseña tu vida',
-                subtitle: 'Un proceso para rediseñar la vida que quieres construir.',
-                lead: 'Porque nunca es tarde para construir una vida que realmente disfrutes.',
-                body: 'A veces no se trata de cambiarlo todo, sino de transformar la manera en que vivimos. Este proceso está diseñado para quienes desean revisar sus hábitos, ampliar su perspectiva, fortalecer su capacidad para tomar decisiones conscientes y construir una vida más alineada con sus valores y propósito. A través de conversaciones profundas y preguntas poderosas, descubrirás los recursos que ya existen en ti para generar cambios sostenibles y convertir pequeñas acciones en grandes transformaciones.',
-                bullets: [
-                  'Recuperar el equilibrio entre tu vida personal y profesional.',
-                  'Romper patrones que ya no te generan bienestar.',
-                  'Tomar decisiones con mayor confianza y criterio.',
-                  'Desarrollar hábitos más coherentes con la vida que deseas construir.',
-                  'Vivir con mayor propósito y bienestar.',
-                ],
-                objective: 'Diseñar una vida más coherente con la persona que quieres ser, desarrollando la claridad, el criterio y la actitud necesarios para avanzar con intención y disfrutar más el camino.',
-                quote: '"No se trata de convertirte en alguien diferente. Se trata de construir, desde quien ya eres, una vida que disfrutes con mayor propósito, coherencia y plenitud."',
-              },
-              {
-                title: 'Mamá sin pausa',
-                subtitle: 'Coaching para madres.',
-                lead: 'Porque cuidar de todos no debería significar dejar de cuidarte a ti.',
-                body: 'Ser mamá transforma la vida de una manera maravillosa, pero también trae nuevos retos, emociones y responsabilidades. Es fácil sentir que el tiempo ya no alcanza, que la culpa aparece con frecuencia o que has dejado en pausa algunos de tus propios sueños. Como mamá de tres hijos —nacidos con año y 11 meses de diferencia entre el mayor y los gemelos— conozco de primera mano los desafíos de equilibrar la maternidad, el desarrollo profesional, la vida en pareja y el crecimiento personal. Este es un espacio pensado para que vuelvas a encontrarte contigo misma sin dejar de ser la gran mamá que ya eres.',
-                bullets: [
-                  '¿Cómo volver a tener tiempo para mí?',
-                  '¿Cómo equilibrar mi familia y mi desarrollo profesional?',
-                  '¿Cómo dejar de sentir culpa constantemente?',
-                  '¿Cómo disfrutar más esta etapa?',
-                ],
-                objective: 'Aceptar y vivir la maternidad con mayor equilibrio, tranquilidad y disfrute.',
-              },
-              {
-                title: 'Lidera desde quién eres',
-                subtitle: 'Coaching para líderes.',
-                lead: 'Porque el mejor liderazgo nace de la autenticidad, no de la presión.',
-                body: 'Los retos del liderazgo no solo transforman las organizaciones; también transforman a quienes las lideran. La presión por los resultados, las decisiones difíciles y las múltiples responsabilidades pueden llevarnos, sin darnos cuenta, a alejarnos de la forma en que realmente queremos liderar. Este proceso de coaching es un espacio para detenerse, reflexionar y reconectar con el líder que deseas ser. No busca enseñarte un modelo de liderazgo, sino ayudarte a descubrir cómo liderar desde tus valores, tu propósito y tu autenticidad.',
-                bullets: [
-                  'Recuperar la coherencia entre lo que piensan, sienten y proyectan.',
-                  'Reflexionar sobre el tipo de líder que quieren ser.',
-                  'Tomar decisiones con mayor serenidad y criterio.',
-                  'Fortalecer la calidad de sus conversaciones y relaciones.',
-                  'Liderar desde la autenticidad, incluso en contextos de alta exigencia.',
-                ],
-                objective: 'Reconectar con tu esencia para ejercer un liderazgo más consciente, coherente y auténtico, capaz de generar confianza, fortalecer las relaciones y construir resultados sostenibles.',
-              },
-            ].map((service) => (
-              <ScrollReveal key={service.title} yOffset={60} className="bg-white p-10 md:p-12 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-shadow duration-500 border border-brand-sand flex flex-col">
-                <h4 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight">{service.title}</h4>
-                <p className="text-brand-coral font-semibold mb-6">{service.subtitle}</p>
-                <p className="text-lg italic text-brand-navy/70 font-serif mb-6">{service.lead}</p>
-                <p className="text-base font-light text-brand-navy/75 leading-relaxed mb-8">{service.body}</p>
+          <div className="mt-16 md:mt-20 grid md:grid-cols-2 gap-6 md:gap-8">
+            {SERVICES.map((service, i) => (
+              <ScrollReveal
+                key={service.title}
+                yOffset={60}
+                className={`${cardBase} p-8 md:p-12 hover:shadow-card-hover transition-shadow duration-500 flex flex-col`}
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-semibold tracking-[0.2em] text-brand-coral tabular-nums">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span className="text-[10px] font-semibold tracking-[0.28em] uppercase text-brand-navy/45">{service.tag}</span>
+                </div>
+                <h3 className="mt-8 font-display font-medium text-3xl md:text-4xl leading-tight">{service.title}</h3>
+                <p className="mt-3 text-[15px] font-medium text-brand-navy/80">{service.subtitle}</p>
+                <p className="mt-6 font-serif italic text-xl md:text-2xl text-brand-navy/85 leading-snug">{service.lead}</p>
+                <p className={`mt-5 ${bodyText}`}>{service.body}</p>
 
-                <p className="text-sm font-bold tracking-widest uppercase text-brand-navy/60 mb-4">Ideal si:</p>
-                <ul className="space-y-2 mb-8">
+                <p className="mt-8 mb-4 text-[11px] font-semibold tracking-[0.28em] uppercase text-brand-navy/50">Ideal si</p>
+                <ul className="space-y-3">
                   {service.bullets.map((b) => (
-                    <li key={b} className="flex gap-3 text-base font-light text-brand-navy/75 leading-relaxed">
-                      <span className="text-brand-mint mt-1">●</span>
+                    <li key={b} className={`flex gap-3 ${bodyText}`}>
+                      <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-coral" aria-hidden />
                       <span>{b}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-auto bg-brand-sand/50 p-6 rounded-[1.5rem]">
-                  <p className="text-sm font-bold tracking-widest uppercase text-brand-navy/60 mb-2">Objetivo del proceso</p>
-                  <p className="text-base font-light text-brand-navy/80 leading-relaxed">{service.objective}</p>
+                <div className="mt-auto pt-8">
+                  <div className="border-l-2 border-brand-coral bg-brand-cream/80 rounded-r-2xl px-6 py-5">
+                    <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-brand-navy/50 mb-2">Objetivo del proceso</p>
+                    <p className="text-[15px] md:text-base text-brand-navy/85 leading-relaxed">{service.objective}</p>
+                  </div>
+                  {service.quote && (
+                    <p className="mt-6 pl-6 border-l border-brand-gold font-serif italic text-lg text-brand-navy/65 leading-snug">{service.quote}</p>
+                  )}
                 </div>
-                {service.quote && (
-                  <p className="text-base italic text-brand-navy/50 font-serif mt-6 border-l-4 border-brand-sand pl-6">{service.quote}</p>
-                )}
               </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 8. RESULTADOS */}
-      <section id="resultados" className="py-28 md:py-40 bg-linen-cream text-brand-navy">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-coral uppercase mb-4 text-center">Algunos resultados</h2>
-            <h3 className="text-4xl md:text-6xl font-bold tracking-tight mb-16 leading-[1.1]">
-              “Necesitamos criterio para saber elegir<br className="hidden md:block" /> y carácter para mantenerlo.”
-            </h3>
+      {/* 7. RESULTADOS */}
+      <section id="resultados" className="py-24 md:py-36 bg-linen-cream">
+        <div className="max-w-6xl mx-auto px-6">
+          <ScrollReveal className="text-center">
+            <Eyebrow>Algunos resultados</Eyebrow>
+            <h2 className="mt-6 font-display font-medium text-brand-navy text-3xl sm:text-4xl md:text-5xl leading-[1.15] tracking-tight max-w-4xl mx-auto">
+              “Necesitamos criterio para saber elegir y <span className="italic">carácter para mantenerlo</span>.”
+            </h2>
           </ScrollReveal>
 
-          <ScrollReveal delay={0.15} yOffset={40} staggerChildren={0.1} className="grid sm:grid-cols-2 gap-6">
-            {[
-              {
-                name: 'Vivian Nuñez',
-                quote: 'Cata es una persona muy profesional pero sobre todo muy humana. Abre un espacio donde genera confianza desde el momento cero y con paciencia guía a las personas a encontrar las respuestas. Para mí fue un espacio muy enriquecedor que le recomiendo a todos. A ella le agradezco enormemente su empatía, su apertura y su guía.',
-              },
-              {
-                name: 'Pilar Echeverri',
-                quote: 'Trabajar con Cata cambió la forma en que tomo decisiones. Llegué sin claridad y con muchas dudas, y en cada sesión sentí un acompañamiento genuino, sin juicios, que me ayudó a reconectar conmigo misma. Hoy tengo más criterio, más calma y una vida mucho más alineada con lo que realmente quiero.',
-              },
-            ].map(({ name, quote }) => (
-              <div key={name} className="h-full bg-brand-sand/40 border border-brand-sand/60 rounded-[2rem] p-10 text-left flex flex-col justify-center">
-                <p className="text-lg italic text-brand-navy/75 font-serif leading-relaxed">"{quote}"</p>
-              </div>
+          <ScrollReveal delay={0.15} yOffset={40} staggerChildren={0.1} itemClassName="h-full" className="mt-16 grid md:grid-cols-2 gap-6 md:gap-8">
+            {TESTIMONIALS.map((quote) => (
+              <figure key={quote.slice(0, 20)} className={`h-full ${cardBase} p-8 md:p-12 flex flex-col`}>
+                <span aria-hidden className="font-display text-7xl leading-none text-brand-gold">“</span>
+                <blockquote className="-mt-4 font-serif italic text-xl md:text-[1.4rem] text-brand-navy/85 leading-relaxed">
+                  {quote}
+                </blockquote>
+                <span className="mt-8 h-px w-10 bg-brand-coral" aria-hidden />
+              </figure>
             ))}
           </ScrollReveal>
         </div>
       </section>
 
-      {/* 9. RECURSOS GRATUITOS */}
-      <section id="recursos" className="py-32 md:py-48 bg-linen-sand text-brand-navy">
+      {/* 8. RECURSOS GRATUITOS */}
+      <section id="recursos" className="py-24 md:py-36 bg-linen-sand">
         <div className="max-w-6xl mx-auto px-6">
-          <ScrollReveal>
-            <h2 className="text-xs md:text-sm font-sans font-bold tracking-widest text-brand-coral uppercase mb-4 text-center">Recursos gratuitos</h2>
-            <h3 className="text-5xl md:text-7xl font-bold tracking-tight text-center mb-20 leading-[1.1]">
-              Para que empieces<br />hoy mismo.
-            </h3>
+          <ScrollReveal className="text-center">
+            <Eyebrow>Recursos gratuitos</Eyebrow>
+            <h2 className={`${sectionTitle} mt-6`}>
+              Para que empieces <span className="italic">hoy mismo</span><Dot />
+            </h2>
           </ScrollReveal>
 
-          <ScrollReveal yOffset={40} staggerChildren={0.1} className="grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: 'Modelo YOU',
-                desc: 'Describe tu ADN y cómo eres en el entorno personal, y cómo esos rasgos son tus diferenciales en el mundo laboral.',
-                file: '/downloads/Modelo-YOU-by-Cata-Ayala.pdf',
-              },
-              {
-                title: 'Test: ¿Qué tan conectado estás con tu propósito?',
-                desc: 'Un test rápido para entender qué tan alineada está tu vida con lo que realmente quieres.',
-                file: '/downloads/Test-Conexion-con-tu-Proposito.pdf',
-              },
-              {
-                title: 'Checklist: 7 señales de piloto automático',
-                desc: 'Identifica si estás viviendo en automático con este checklist de autodiagnóstico.',
-                file: '/downloads/Checklist-7-Senales-Piloto-Automatico.pdf',
-              },
-            ].map((res) => (
+          <ScrollReveal yOffset={40} staggerChildren={0.1} itemClassName="h-full" className="mt-16 md:mt-20 grid md:grid-cols-3 gap-5 md:gap-6">
+            {RESOURCES.map((res) => (
               <a
                 key={res.title}
                 href={res.file}
                 download
-                className="group bg-white rounded-[2rem] p-10 shadow-sm hover:shadow-2xl transition-shadow duration-500 border border-white flex flex-col"
+                className={`group h-full ${cardBase} p-8 md:p-10 hover:shadow-card-hover transition-shadow duration-500 flex flex-col`}
               >
-                <div className="w-14 h-14 rounded-2xl bg-brand-mint/15 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                  <Download className="w-6 h-6 text-brand-mint" />
+                <div className="flex items-center justify-between mb-10">
+                  <span className="w-12 h-12 rounded-full border border-brand-navy/15 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Download className="w-5 h-5 text-brand-navy" strokeWidth={1.5} />
+                  </span>
+                  <span className="text-[10px] font-semibold tracking-[0.28em] uppercase text-brand-navy/45">PDF gratuito</span>
                 </div>
-                <h4 className="text-2xl font-bold mb-4 tracking-tight leading-snug">{res.title}</h4>
-                <p className="text-base font-light text-brand-navy/70 leading-relaxed mb-8">{res.desc}</p>
-                <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold tracking-widest uppercase text-brand-coral">
-                  Descargar PDF
+                <h3 className="font-display font-medium text-2xl leading-snug">{res.title}</h3>
+                <p className={`mt-4 mb-8 ${bodyText}`}>{res.desc}</p>
+                <span className="mt-auto inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-brand-coral">
+                  Descargar <ArrowRight className="w-4 h-4" strokeWidth={2} />
                 </span>
               </a>
             ))}
@@ -488,48 +540,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 10. AGENDA SECTION */}
+      {/* 9. AGENDA */}
       <div className="bg-linen-cream">
-        <ScrollReveal className="max-w-4xl mx-auto px-6 pt-24 md:pt-32 text-center">
-          <p className="text-xs md:text-sm font-bold tracking-[0.3em] text-brand-coral uppercase mb-6">Antes de empezar</p>
-          <h3 className="text-3xl md:text-5xl font-bold tracking-tight mb-10 leading-[1.15] text-brand-navy">
-            Tal vez hoy solo necesites una conversación.
-          </h3>
-          <div ref={stepsRef} className="flex flex-col items-stretch">
-            <motion.div
-              style={{ opacity: step1Opacity, y: step1Y }}
-              className="text-left bg-white p-8 md:p-10 rounded-[2rem] shadow-sm"
-            >
-              <p className="text-base md:text-lg font-light text-brand-navy/75 leading-relaxed">
-                <strong className="font-semibold text-brand-navy">Sesión de descubrimiento:</strong> son 15 minutos en los que nos conoceremos y te explicaré cómo es el proceso, con el fin de establecer acuerdos (tiempos de la sesión, pagos, entre otros). Este espacio NO es para conversar sobre la situación en sí, únicamente para aclarar dudas y conocernos. A veces no conectamos bien con quienes creíamos, por eso es mejor darnos la oportunidad de elegir a la persona correcta que te acompañe en tu camino.
-              </p>
-            </motion.div>
-
-            <motion.div style={{ opacity: step2Opacity }} className="flex justify-center py-2">
-              <ArrowDown className="w-6 h-6 text-brand-coral" strokeWidth={2.5} />
-            </motion.div>
-
-            <motion.div
-              style={{ opacity: step2Opacity, y: step2Y }}
-              className="text-left bg-white p-8 md:p-10 rounded-[2rem] shadow-sm"
-            >
-              <p className="text-base md:text-lg font-light text-brand-navy/75 leading-relaxed">
-                <strong className="font-semibold text-brand-navy">1ra sesión:</strong> aquí comienza el proceso. Empezaremos a hacernos muchas preguntas que solo tú contestarás, y veremos cuántas sesiones adicionales podrías tomar. Usualmente comenzamos con 4.
-              </p>
-            </motion.div>
-
-            <motion.div style={{ opacity: step3Opacity }} className="flex justify-center py-2">
-              <ArrowDown className="w-6 h-6 text-brand-coral" strokeWidth={2.5} />
-            </motion.div>
-
-            <motion.div
-              style={{ opacity: step3Opacity, y: step3Y }}
-              className="text-left bg-white p-8 md:p-10 rounded-[2rem] shadow-sm"
-            >
-              <p className="text-base md:text-lg font-light text-brand-navy/75 leading-relaxed">
-                <strong className="font-semibold text-brand-navy">Continuación:</strong> acorde a las sesiones que se establecieron, continuamos el camino.
-              </p>
-            </motion.div>
+        <ScrollReveal className="max-w-3xl mx-auto px-6 pt-24 md:pt-36">
+          <div className="text-center">
+            <Eyebrow>Antes de empezar</Eyebrow>
+            <h2 className={`${sectionTitle} mt-6`}>
+              Tal vez hoy solo necesites una <span className="italic">conversación</span><Dot />
+            </h2>
+          </div>
+          <div ref={stepsRef} className="mt-14 md:mt-16 flex flex-col">
+            {steps.map((step, i) => (
+              <React.Fragment key={step.n}>
+                {i > 0 && (
+                  <motion.div style={{ opacity: connectorOpacity[i - 1] }} className="ml-[21px] md:ml-[23px] h-8 w-px bg-brand-navy/20" />
+                )}
+                <motion.div style={step.style} className="flex gap-5 md:gap-7">
+                  <span className="mt-1 w-11 h-11 md:w-12 md:h-12 shrink-0 rounded-full border border-brand-navy/20 bg-brand-cream flex items-center justify-center font-display lining-nums text-lg text-brand-navy">
+                    {step.n}
+                  </span>
+                  <div className={`flex-1 ${cardBase} p-7 md:p-9`}>
+                    <h3 className="font-display font-medium text-xl md:text-2xl">{step.title}</h3>
+                    <p className={`mt-3 ${bodyText}`}>{step.text}</p>
+                  </div>
+                </motion.div>
+              </React.Fragment>
+            ))}
           </div>
         </ScrollReveal>
         <BookingSection />

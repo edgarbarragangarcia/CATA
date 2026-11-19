@@ -9,6 +9,7 @@ interface ScrollRevealProps {
   className?: string;
   yOffset?: number;
   staggerChildren?: number;
+  itemClassName?: string;
 }
 
 export const ScrollReveal: React.FC<ScrollRevealProps> = ({
@@ -17,6 +18,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   className = '',
   yOffset = 40,
   staggerChildren,
+  itemClassName,
 }) => {
   // Staggered Children Approach
   if (staggerChildren) {
@@ -50,7 +52,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
         className={className}
       >
         {React.Children.map(children, child => (
-          <motion.div variants={item}>{child}</motion.div>
+          <motion.div variants={item} className={itemClassName}>{child}</motion.div>
         ))}
       </motion.div>
     );

@@ -14,14 +14,19 @@ const config: Config = {
           amber: '#FF9100', // Warmth, optimism, light
           mint: '#30D5C8',  // Modern freshness, digital accent
           navy: '#0B2545',  // Authority, corporate heritage
-          sand: '#F5E6D3',
-          cream: '#FBF0E0', // Alabaster / fondo claro del brand book
-          gold: '#E3B565',  // Oro (hot stamping) para texto sobre navy  // Smooth, organic background texture
+          sand: '#F5E6D3',  // Sunset Sand — fondo corporativo orgánico
+          cream: '#FBF0E0', // Alabaster — fondo claro del brand book
+          gold: '#E3B565',  // Oro (hot stamping) — solo sobre navy
         },
       },
       fontFamily: {
-        serif: ['var(--font-cormorant)', 'serif'],
-        sans: ['var(--font-montserrat)', 'sans-serif'],
+        display: ['var(--font-playfair)', 'Georgia', 'serif'], // títulos (brand book)
+        serif: ['var(--font-cormorant)', 'Georgia', 'serif'],  // citas y énfasis
+        sans: ['var(--font-montserrat)', 'sans-serif'],        // texto e interfaz
+      },
+      boxShadow: {
+        card: '0 1px 2px rgba(11,37,69,0.04), 0 12px 32px -16px rgba(11,37,69,0.18)',
+        'card-hover': '0 2px 4px rgba(11,37,69,0.05), 0 28px 56px -24px rgba(11,37,69,0.28)',
       },
       backgroundImage: {
         'brand-warm': 'linear-gradient(135deg, #FF5E36 0%, #FF9100 100%)',

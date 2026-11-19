@@ -51,7 +51,7 @@ export const Navbar: React.FC = () => {
         {/* Textured background bar */}
         <div
           className="absolute inset-0 overflow-hidden pointer-events-none"
-          style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 20%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 0%, black 20%, transparent 100%)' }}
+          style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 60%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 0%, black 60%, transparent 100%)' }}
         >
           <Image
             src={heroBgImg}
@@ -60,7 +60,7 @@ export const Navbar: React.FC = () => {
             className="object-cover blur-md scale-110"
             priority
           />
-          <div className={`absolute inset-0 bg-gradient-to-b from-brand-cream/95 via-brand-cream/75 to-transparent transition-opacity duration-500 ${dark ? 'opacity-0' : 'opacity-100'}`} />
+          <div className={`absolute inset-0 bg-gradient-to-b from-brand-cream via-brand-cream/90 to-brand-cream/0 transition-opacity duration-500 ${dark ? 'opacity-0' : 'opacity-100'}`} />
           <div className={`absolute inset-0 bg-gradient-to-b from-brand-navy/95 via-brand-navy/70 to-transparent transition-opacity duration-500 ${dark ? 'opacity-100' : 'opacity-0'}`} />
         </div>
 
@@ -86,10 +86,10 @@ export const Navbar: React.FC = () => {
               />
             </div>
             <div className={`leading-tight transition-colors duration-500 ${textColor}`}>
-              <span className="font-serif font-bold text-xl tracking-wide block">
+              <span className="font-display font-semibold text-xl tracking-wide block">
                 Cata Ayala
               </span>
-              <p className={`text-[10px] font-sans tracking-[0.2em] uppercase font-semibold transition-colors duration-500 ${dark ? 'text-white/70' : 'text-brand-navy/60'}`}>
+              <p className={`text-[10px] font-sans tracking-[0.3em] uppercase font-semibold transition-colors duration-500 ${dark ? 'text-brand-gold' : 'text-brand-navy/55'}`}>
                 COACH DE VIDA
               </p>
             </div>
@@ -124,7 +124,7 @@ export const Navbar: React.FC = () => {
               e.preventDefault();
               openChooser();
             }}
-            className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-sans font-semibold tracking-widest uppercase text-white bg-brand-coral border border-transparent hover:bg-transparent hover:text-brand-coral hover:border-brand-coral shadow-md hover:shadow-lg transition-all duration-300"
+            className={`hidden lg:inline-flex items-center gap-2 px-6 py-3 rounded-full text-[11px] font-sans font-semibold tracking-[0.2em] uppercase text-white bg-brand-coral shadow-[0_10px_24px_-12px_rgba(255,94,54,0.7)] transition-colors duration-300 ${dark ? 'hover:bg-brand-cream hover:text-brand-navy' : 'hover:bg-brand-navy'}`}
           >
             Conectar
           </a>
@@ -155,7 +155,7 @@ export const Navbar: React.FC = () => {
                       openChooser();
                     }
                   }}
-                  className="font-serif text-2xl text-white/90 hover:text-brand-coral transition-colors"
+                  className="font-display text-3xl text-brand-cream/90 hover:text-brand-gold transition-colors"
                 >
                   {link.label}
                 </a>
@@ -169,7 +169,7 @@ export const Navbar: React.FC = () => {
                   setMenuOpen(false);
                   openChooser();
                 }}
-                className="inline-block mt-4 px-8 py-3 rounded-full text-sm font-sans font-semibold tracking-widest uppercase text-brand-navy bg-brand-sand shadow-lg"
+                className="inline-block mt-4 px-8 py-3 rounded-full text-sm font-sans font-semibold tracking-widest uppercase text-white bg-brand-coral shadow-lg"
               >
                 Conectar
               </a>
