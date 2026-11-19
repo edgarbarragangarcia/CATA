@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Menu, X } from 'lucide-react';
@@ -18,7 +18,27 @@ const navLinks = [
 
 export const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [onDarkSection, setOnDarkSection] = useState(false);
   const { openChooser } = useBookingPopup();
+
+  // Light sections (sand / cream) get a navy navbar; sections marked
+  // data-nav-theme="dark" (navy quote, footer) get the white version.
+  useEffect(() => {
+    const check = () => {
+      const els = document.elementsFromPoint(window.innerWidth / 2, 48);
+      setOnDarkSection(els.some((el) => el.closest('[data-nav-theme="dark"]')));
+    };
+    check();
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check);
+    return () => {
+      window.removeEventListener('scroll', check);
+      window.removeEventListener('resize', check);
+    };
+  }, []);
+
+  const dark = onDarkSection || menuOpen;
+  const textColor = dark ? 'text-white' : 'text-brand-navy';
 
   return (
     <>
@@ -40,34 +60,43 @@ export const Navbar: React.FC = () => {
             className="object-cover blur-md scale-110"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/95 via-brand-navy/70 to-transparent" />
+          <div className={`absolute inset-0 bg-gradient-to-b from-brand-cream/95 via-brand-cream/75 to-transparent transition-opacity duration-500 ${dark ? 'opacity-0' : 'opacity-100'}`} />
+          <div className={`absolute inset-0 bg-gradient-to-b from-brand-navy/95 via-brand-navy/70 to-transparent transition-opacity duration-500 ${dark ? 'opacity-100' : 'opacity-0'}`} />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 flex items-center justify-between pointer-events-auto">
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-4 group outline-none focus-visible:ring-2 focus-visible:ring-white/40 rounded-lg">
+          <a href="#hero" className="flex items-center gap-4 group outline-none focus-visible:ring-2 focus-visible:ring-brand-coral/40 rounded-lg">
             <div className="relative w-12 h-12 flex-shrink-0">
               <Image
-                src="/logo-icon.png"
+                src="/logo-icon-light.png"
                 alt="Cata Ayala"
                 width={176}
                 height={176}
-                className="w-full h-full object-contain"
+                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${dark ? 'opacity-0' : 'opacity-100'}`}
+                priority
+              />
+              <Image
+                src="/logo-icon.png"
+                alt=""
+                width={176}
+                height={176}
+                className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-500 ${dark ? 'opacity-100' : 'opacity-0'}`}
                 priority
               />
             </div>
-            <div className="leading-tight text-white">
+            <div className={`leading-tight transition-colors duration-500 ${textColor}`}>
               <span className="font-serif font-bold text-xl tracking-wide block">
                 Cata Ayala
               </span>
-              <p className="text-[10px] font-sans tracking-[0.2em] uppercase font-semibold text-white/70">
+              <p className={`text-[10px] font-sans tracking-[0.2em] uppercase font-semibold transition-colors duration-500 ${dark ? 'text-white/70' : 'text-brand-navy/60'}`}>
                 COACH DE VIDA
               </p>
             </div>
           </a>
 
           {/* Desktop Nav Links */}
-          <ul className="hidden lg:flex items-center gap-8 text-white">
+          <ul className={`hidden lg:flex items-center gap-8 transition-colors duration-500 ${textColor}`}>
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a
@@ -80,7 +109,7 @@ export const Navbar: React.FC = () => {
                         }
                       : undefined
                   }
-                  className="font-sans text-xs font-semibold tracking-widest uppercase transition-colors duration-300 hover:text-gray-300"
+                  className={`font-sans text-xs font-semibold tracking-widest uppercase transition-colors duration-300 ${dark ? 'hover:text-brand-gold' : 'hover:text-brand-coral'}`}
                 >
                   {link.label}
                 </a>
@@ -103,7 +132,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMenuOpen((o) => !o)}
-            className="lg:hidden p-2 rounded-lg text-white"
+            className={`lg:hidden p-2 rounded-lg transition-colors duration-500 ${textColor}`}
             aria-label="Toggle menu"
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}

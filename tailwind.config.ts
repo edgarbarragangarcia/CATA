@@ -14,7 +14,9 @@ const config: Config = {
           amber: '#FF9100', // Warmth, optimism, light
           mint: '#30D5C8',  // Modern freshness, digital accent
           navy: '#0B2545',  // Authority, corporate heritage
-          sand: '#F5E6D3',  // Smooth, organic background texture
+          sand: '#F5E6D3',
+          cream: '#FBF0E0', // Alabaster / fondo claro del brand book
+          gold: '#E3B565',  // Oro (hot stamping) para texto sobre navy  // Smooth, organic background texture
         },
       },
       fontFamily: {

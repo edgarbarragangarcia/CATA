@@ -6,7 +6,7 @@ import { Mail, Phone, Globe } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="relative z-10 bg-brand-navy text-white border-t border-brand-sand/10 pt-16 pb-12 px-6 sm:px-8">
+    <footer data-nav-theme="dark" className="relative z-10 bg-brand-navy text-white border-t border-brand-sand/10 pt-16 pb-12 px-6 sm:px-8">
       {/* Subtle mint accent line on top */}
       <div className="absolute top-0 left-0 right-0 h-[1.5px]" style={{ background: 'linear-gradient(90deg, transparent 0%, #30D5C8 50%, transparent 100%)' }} />
       
@@ -25,13 +25,7 @@ export const Footer: React.FC = () => {
             </div>
             <div className="leading-tight">
               <span
-                className="font-serif font-bold text-lg tracking-wide block"
-                style={{
-                  background: 'linear-gradient(135deg, #FF5E36 0%, #FF9100 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
+                className="font-serif font-bold text-lg tracking-wide block text-brand-gold"
               >
                 Cata Ayala
               </span>

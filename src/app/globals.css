@@ -63,6 +63,18 @@
   100% { transform: translate(0, 0) scale(1); }
 }
 
+/* Lino de algodón (brand book: texturas sugeridas) */
+.bg-linen-cream {
+  background-color: #FBF0E0;
+  background-image: linear-gradient(rgba(251, 240, 224, 0.72), rgba(251, 240, 224, 0.72)), url('/textures/linen.jpg');
+  background-size: auto, 520px;
+}
+.bg-linen-sand {
+  background-color: #F5E6D3;
+  background-image: linear-gradient(rgba(245, 230, 211, 0.6), rgba(245, 230, 211, 0.6)), url('/textures/linen.jpg');
+  background-size: auto, 520px;
+}
+
 /* Custom Utilities */
 @layer utilities {
   .text-gradient-gold {

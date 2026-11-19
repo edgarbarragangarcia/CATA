@@ -38,18 +38,7 @@ export const BookingSection: React.FC = () => {
           </p>
           <h2 className="text-3xl md:text-5xl font-bold text-brand-navy mb-6 leading-tight">
             Agenda tu{' '}
-            <span
-              className="font-serif italic"
-              style={{
-                background:
-                  'linear-gradient(135deg, #FF5E36 0%, #FF9100 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              sesión
-            </span>
+            <span className="font-serif italic text-brand-coral">sesión</span>
           </h2>
           <div className="w-20 h-1 bg-brand-mint mx-auto mb-6 rounded-full" />
           <p className="text-base md:text-lg font-sans font-light text-brand-navy/70 max-w-xl mx-auto leading-relaxed">
