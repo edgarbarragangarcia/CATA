@@ -13,14 +13,14 @@ const LINKS = [
   { label: 'Agenda', href: '#agenda' },
 ];
 
-const headingClass = 'text-[11px] font-sans font-semibold tracking-[0.28em] uppercase text-brand-gold';
-const iconWrap = 'w-9 h-9 rounded-full border border-brand-gold/25 flex items-center justify-center shrink-0 transition-colors group-hover:border-brand-gold/60';
+const headingClass = 'text-[11px] font-sans font-semibold tracking-[0.28em] uppercase text-brand-amber';
+const iconWrap = 'w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-transform group-hover:scale-110';
 
 export const Footer: React.FC = () => {
   return (
     <footer data-nav-theme="dark" className="relative z-10 bg-brand-navy text-brand-cream pt-20 pb-10 px-6 sm:px-8">
       {/* Gold hairline on top */}
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(227,181,101,0.6) 50%, transparent 100%)' }} />
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(255,145,0,0.7) 35%, rgba(48,213,200,0.7) 65%, transparent 100%)' }} />
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 pb-14 border-b border-white/10">
         {/* Brand */}
@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
             </div>
             <div className="leading-tight">
               <span className="font-display font-semibold text-xl tracking-wide block text-brand-cream">Cata Ayala</span>
-              <span className="text-[10px] font-sans tracking-[0.3em] uppercase font-semibold text-brand-gold">Coach de vida</span>
+              <span className="text-[10px] font-sans tracking-[0.3em] uppercase font-semibold text-brand-mint">Coach de vida</span>
             </div>
           </a>
           <p className="font-serif italic text-xl text-brand-cream/80 max-w-sm leading-snug">
@@ -45,7 +45,7 @@ export const Footer: React.FC = () => {
           <ul className="grid grid-cols-2 md:grid-cols-1 gap-x-4 gap-y-3">
             {LINKS.map((link) => (
               <li key={link.href}>
-                <a href={link.href} className="text-sm text-brand-cream/70 hover:text-brand-gold transition-colors duration-200">
+                <a href={link.href} className="text-sm text-brand-cream/70 hover:text-brand-mint transition-colors duration-200">
                   {link.label}
                 </a>
               </li>
@@ -64,18 +64,18 @@ export const Footer: React.FC = () => {
                 rel="noopener noreferrer"
                 className="group flex items-center gap-3 text-sm text-brand-cream/75 hover:text-brand-cream transition-colors"
               >
-                <span className={iconWrap}><Phone size={14} className="text-brand-gold" /></span>
+                <span className={`${iconWrap} bg-brand-mint`}><Phone size={14} className="text-brand-navy" /></span>
                 <span>+57 314 273 6009</span>
               </a>
             </li>
             <li>
               <a href="mailto:hola@cataayala.com" className="group flex items-center gap-3 text-sm text-brand-cream/75 hover:text-brand-cream transition-colors">
-                <span className={iconWrap}><Mail size={14} className="text-brand-gold" /></span>
+                <span className={`${iconWrap} bg-brand-coral`}><Mail size={14} className="text-white" /></span>
                 <span>hola@cataayala.com</span>
               </a>
             </li>
             <li className="group flex items-center gap-3 text-sm text-brand-cream/75">
-              <span className={iconWrap}><Globe size={14} className="text-brand-gold" /></span>
+              <span className={`${iconWrap} bg-brand-amber`}><Globe size={14} className="text-brand-navy" /></span>
               <span>Mentoría global online</span>
             </li>
           </ul>
@@ -86,7 +86,7 @@ export const Footer: React.FC = () => {
         <p className="text-[11px] tracking-[0.15em] uppercase text-brand-cream/40 text-center sm:text-left">
           © {new Date().getFullYear()} Cata Ayala · Todos los derechos reservados
         </p>
-        <p className="font-serif italic text-base text-brand-gold/70">El espíritu 101%</p>
+        <p className="font-serif italic text-base text-brand-amber">El espíritu 101%</p>
       </div>
     </footer>
   );

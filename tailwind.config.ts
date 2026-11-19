@@ -10,13 +10,13 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          coral: '#FF5E36', // High energy, primary action
-          amber: '#FF9100', // Warmth, optimism, light
-          mint: '#30D5C8',  // Modern freshness, digital accent
-          navy: '#0B2545',  // Authority, corporate heritage
-          sand: '#F5E6D3',  // Sunset Sand — fondo corporativo orgánico
-          cream: '#FBF0E0', // Alabaster — fondo claro del brand book
-          gold: '#E3B565',  // Oro (hot stamping) — solo sobre navy
+          // Paleta oficial del brand book (lámina "Paleta de color")
+          coral: '#FF5E36', // Coral Atardecer · Pantone 171 C — alta energía, color de acción
+          amber: '#FF9100', // Ámbar Solar · Pantone 130 C — calidez, optimismo y luz ("Gold")
+          mint: '#30D5C8',  // Verde Menta · Pantone 3262 C — frescura, acento digital
+          navy: '#0B2545',  // Marino Eléctrico · Pantone 294 C — autoridad y profundidad
+          sand: '#F5E6D3',  // Sunset Sand · Pantone 468 C — fondo corporativo orgánico
+          cream: '#FBF0E0', // Alabaster — fondo claro del isotipo (lámina "Isotipo")
         },
       },
       fontFamily: {

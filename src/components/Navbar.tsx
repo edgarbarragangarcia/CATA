@@ -24,16 +24,27 @@ export const Navbar: React.FC = () => {
   // Light sections (sand / cream) get a navy navbar; sections marked
   // data-nav-theme="dark" (navy quote, footer) get the white version.
   useEffect(() => {
+    const NAV_Y = 48; // vertical centre of the navbar
+    let trailing: ReturnType<typeof setTimeout> | undefined;
     const check = () => {
-      const els = document.elementsFromPoint(window.innerWidth / 2, 48);
-      setOnDarkSection(els.some((el) => el.closest('[data-nav-theme="dark"]')));
+      const dark = Array.from(document.querySelectorAll('[data-nav-theme="dark"]')).some((el) => {
+        const r = el.getBoundingClientRect();
+        return r.top <= NAV_Y && r.bottom >= NAV_Y;
+      });
+      setOnDarkSection(dark);
+    };
+    const onScroll = () => {
+      check();
+      clearTimeout(trailing);
+      trailing = setTimeout(check, 150); // settle after fast / programmatic scrolls
     };
     check();
-    window.addEventListener('scroll', check, { passive: true });
-    window.addEventListener('resize', check);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
     return () => {
-      window.removeEventListener('scroll', check);
-      window.removeEventListener('resize', check);
+      clearTimeout(trailing);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
     };
   }, []);
 
@@ -89,7 +100,7 @@ export const Navbar: React.FC = () => {
               <span className="font-display font-semibold text-xl tracking-wide block">
                 Cata Ayala
               </span>
-              <p className={`text-[10px] font-sans tracking-[0.3em] uppercase font-semibold transition-colors duration-500 ${dark ? 'text-brand-gold' : 'text-brand-navy/55'}`}>
+              <p className={`text-[10px] font-sans tracking-[0.3em] uppercase font-semibold transition-colors duration-500 ${dark ? 'text-brand-mint' : 'text-brand-navy/55'}`}>
                 COACH DE VIDA
               </p>
             </div>
@@ -109,7 +120,7 @@ export const Navbar: React.FC = () => {
                         }
                       : undefined
                   }
-                  className={`font-sans text-xs font-semibold tracking-widest uppercase transition-colors duration-300 ${dark ? 'hover:text-brand-gold' : 'hover:text-brand-coral'}`}
+                  className={`font-sans text-xs font-semibold tracking-widest uppercase transition-colors duration-300 ${dark ? 'hover:text-brand-amber' : 'hover:text-brand-coral'}`}
                 >
                   {link.label}
                 </a>
@@ -155,7 +166,7 @@ export const Navbar: React.FC = () => {
                       openChooser();
                     }
                   }}
-                  className="font-display text-3xl text-brand-cream/90 hover:text-brand-gold transition-colors"
+                  className="font-display text-3xl text-brand-cream/90 hover:text-brand-amber transition-colors"
                 >
                   {link.label}
                 </a>

@@ -25,22 +25,31 @@ const FEELINGS = [
 ];
 
 const CREDENTIALS = [
-  { value: '17+', label: 'Años de liderazgo en marketing' },
-  { value: 'Máster', label: 'Comunicación Estratégica' },
-  { value: 'Trainer', label: 'Dale Carnegie' },
-  { value: 'Coach', label: 'De vida certificada' },
+  { value: '17+', label: 'Años de liderazgo en marketing', bar: 'bg-brand-coral' },
+  { value: 'Máster', label: 'Comunicación Estratégica', bar: 'bg-brand-amber' },
+  { value: 'Trainer', label: 'Dale Carnegie', bar: 'bg-brand-mint' },
+  { value: 'Coach', label: 'De vida certificada', bar: 'bg-brand-navy' },
 ];
 
+// Cada paso lleva el color cuyo significado le corresponde en el brand book.
 const VIDA_STEPS = [
-  { letter: 'V', title: 'Ver con claridad' },
-  { letter: 'I', title: 'Identificar creencias' },
-  { letter: 'D', title: 'Decidir con criterio' },
-  { letter: 'A', title: 'Actuar con propósito' },
+  { letter: 'V', title: 'Ver con claridad', card: 'bg-brand-mint text-brand-navy', num: 'text-brand-navy/60', line: 'bg-brand-navy' },
+  { letter: 'I', title: 'Identificar creencias', card: 'bg-brand-amber text-brand-navy', num: 'text-brand-navy/60', line: 'bg-brand-navy' },
+  { letter: 'D', title: 'Decidir con criterio', card: 'bg-brand-navy text-white', num: 'text-brand-mint', line: 'bg-brand-amber' },
+  { letter: 'A', title: 'Actuar con propósito', card: 'bg-brand-coral text-white', num: 'text-white/80', line: 'bg-brand-navy' },
 ];
+
+type Accent = 'mint' | 'coral' | 'amber' | 'navy';
+const ACCENTS: Record<Accent, { bg: string; badge: string; pill: string; soft: string; border: string }> = {
+  mint: { bg: 'bg-brand-mint', badge: 'bg-brand-mint text-brand-navy', pill: 'bg-brand-mint/20 text-brand-navy', soft: 'bg-brand-mint/15', border: 'border-brand-mint' },
+  coral: { bg: 'bg-brand-coral', badge: 'bg-brand-coral text-white', pill: 'bg-brand-coral/15 text-brand-navy', soft: 'bg-brand-coral/10', border: 'border-brand-coral' },
+  amber: { bg: 'bg-brand-amber', badge: 'bg-brand-amber text-brand-navy', pill: 'bg-brand-amber/20 text-brand-navy', soft: 'bg-brand-amber/15', border: 'border-brand-amber' },
+  navy: { bg: 'bg-brand-navy', badge: 'bg-brand-navy text-white', pill: 'bg-brand-navy/10 text-brand-navy', soft: 'bg-brand-navy/[0.06]', border: 'border-brand-navy' },
+};
 
 const SERVICES = [
   {
-    tag: 'Claridad',
+    tag: 'Claridad', accent: 'mint' as Accent,
     title: 'Encuentra tu norte',
     subtitle: 'Claridad para tomar decisiones con confianza.',
     lead: 'Cuando sabes que algo necesita cambiar, pero aún no sabes por dónde empezar.',
@@ -54,7 +63,7 @@ const SERVICES = [
     objective: 'Salir de la confusión y volver a avanzar con confianza.',
   },
   {
-    tag: 'Transformación',
+    tag: 'Transformación', accent: 'coral' as Accent,
     title: 'Rediseña tu vida',
     subtitle: 'Un proceso para rediseñar la vida que quieres construir.',
     lead: 'Porque nunca es tarde para construir una vida que realmente disfrutes.',
@@ -70,7 +79,7 @@ const SERVICES = [
     quote: '“No se trata de convertirte en alguien diferente. Se trata de construir, desde quien ya eres, una vida que disfrutes con mayor propósito, coherencia y plenitud.”',
   },
   {
-    tag: 'Maternidad',
+    tag: 'Maternidad', accent: 'amber' as Accent,
     title: 'Mamá sin pausa',
     subtitle: 'Coaching para madres.',
     lead: 'Porque cuidar de todos no debería significar dejar de cuidarte a ti.',
@@ -84,7 +93,7 @@ const SERVICES = [
     objective: 'Aceptar y vivir la maternidad con mayor equilibrio, tranquilidad y disfrute.',
   },
   {
-    tag: 'Liderazgo',
+    tag: 'Liderazgo', accent: 'navy' as Accent,
     title: 'Lidera desde quién eres',
     subtitle: 'Coaching para líderes.',
     lead: 'Porque el mejor liderazgo nace de la autenticidad, no de la presión.',
@@ -122,8 +131,6 @@ const RESOURCES = [
     file: '/downloads/Checklist-7-Senales-Piloto-Automatico.pdf',
   },
 ];
-
-const cardBase = 'bg-white/75 border border-brand-navy/10 rounded-3xl shadow-card';
 
 export default function Home() {
   // Hero Animation Setup
@@ -181,18 +188,21 @@ export default function Home() {
   const steps = [
     {
       n: 1,
+      badge: 'bg-brand-mint text-brand-navy',
       title: 'Sesión de descubrimiento',
       text: 'Son 15 minutos en los que nos conoceremos y te explicaré cómo es el proceso, con el fin de establecer acuerdos (tiempos de la sesión, pagos, entre otros). Este espacio NO es para conversar sobre la situación en sí, únicamente para aclarar dudas y conocernos. A veces no conectamos bien con quienes creíamos, por eso es mejor darnos la oportunidad de elegir a la persona correcta que te acompañe en tu camino.',
       style: { opacity: step1Opacity, y: step1Y },
     },
     {
       n: 2,
+      badge: 'bg-brand-amber text-brand-navy',
       title: 'Primera sesión',
       text: 'Aquí comienza el proceso. Empezaremos a hacernos muchas preguntas que solo tú contestarás, y veremos cuántas sesiones adicionales podrías tomar. Usualmente comenzamos con 4.',
       style: { opacity: step2Opacity, y: step2Y },
     },
     {
       n: 3,
+      badge: 'bg-brand-coral text-white',
       title: 'Continuación',
       text: 'Acorde a las sesiones que se establecieron, continuamos el camino.',
       style: { opacity: step3Opacity, y: step3Y },
@@ -224,7 +234,7 @@ export default function Home() {
                 strokeDasharray="270 31.6" strokeDashoffset="-15.8" strokeLinecap="round"
               />
               <circle
-                cx="50" cy="50" r="36" fill="none" stroke="currentColor" strokeOpacity="0.14"
+                cx="50" cy="50" r="36" fill="none" stroke="#30D5C8" strokeOpacity="0.7"
                 strokeWidth="1" vectorEffect="non-scaling-stroke" strokeDasharray="2 5"
               />
               <line x1="2" y1="50" x2="98" y2="50" stroke="currentColor" strokeOpacity="0.06" strokeWidth="1" vectorEffect="non-scaling-stroke" />
@@ -261,41 +271,43 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. ¿TE SIENTES ASÍ? — editorial two-column */}
-      <section className="relative z-20 bg-linen-cream py-24 md:py-36 rounded-t-[2.5rem] md:rounded-t-[4rem] -mt-20 shadow-[0_-24px_60px_rgba(11,37,69,0.10)]">
-        <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-12 gap-14 lg:gap-20">
+      {/* 2. ¿TE SIENTES ASÍ? — Marino Eléctrico (entorno digital del brand book) */}
+      <section data-nav-theme="dark" className="relative z-20 bg-brand-navy text-white py-24 md:py-36 rounded-t-[2.5rem] md:rounded-t-[4rem] -mt-20 shadow-[0_-24px_60px_rgba(11,37,69,0.25)] overflow-hidden">
+        <div className="absolute -top-40 -left-40 w-[520px] h-[520px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(255,145,0,0.16) 0%, transparent 65%)' }} />
+        <div className="absolute -bottom-40 -right-40 w-[520px] h-[520px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(48,213,200,0.12) 0%, transparent 65%)' }} />
+        <div className="relative max-w-6xl mx-auto px-6 grid lg:grid-cols-12 gap-14 lg:gap-20">
           <ScrollReveal className="lg:col-span-6">
-            <Eyebrow align="left">El punto de partida</Eyebrow>
-            <span aria-hidden className="block mt-8 font-display text-7xl leading-none text-brand-gold">“</span>
-            <h2 className={`${sectionTitle} -mt-6`}>
-              La vida es demasiado espectacular como para no <span className="italic">disfrutarla</span><Dot />
+            <Eyebrow align="left" tone="mint">El punto de partida</Eyebrow>
+            <span aria-hidden className="block mt-8 font-display text-7xl leading-none text-brand-amber">“</span>
+            <h2 className="-mt-6 font-display font-medium text-white text-4xl sm:text-5xl md:text-6xl leading-[1.08] tracking-tight">
+              La vida es demasiado espectacular como para no <span className="italic text-brand-amber">disfrutarla</span><Dot />
             </h2>
-            <div className={`mt-8 space-y-4 ${leadText}`}>
+            <div className="mt-8 space-y-4 text-lg md:text-xl font-light text-white/75 leading-relaxed">
               <p>No significa que todo sea fácil. Significa aprender a encontrar sentido incluso en los momentos difíciles.</p>
               <p>Porque cuando cambia tu manera de mirar la vida, cambia la manera de vivirla.</p>
             </div>
-            <p className="mt-10 font-serif italic font-medium text-2xl md:text-[1.75rem] text-brand-navy">
+            <p className="mt-10 font-serif italic font-medium text-2xl md:text-[1.75rem] text-brand-mint">
               Más que motivación, es estrategia de vida.
             </p>
           </ScrollReveal>
 
           <div className="lg:col-span-6 lg:pt-6">
             <ScrollReveal>
-              <p className="font-serif italic text-2xl md:text-[1.75rem] text-brand-navy/80 mb-6">Tal vez hoy te sientes así…</p>
+              <p className="font-serif italic text-2xl md:text-[1.75rem] text-white/80 mb-6">Tal vez hoy te sientes así…</p>
             </ScrollReveal>
-            <ScrollReveal yOffset={16} staggerChildren={0.06} className="border-t border-brand-navy/10">
+            <ScrollReveal yOffset={16} staggerChildren={0.06} className="border-t border-white/15">
               {FEELINGS.map((f, i) => (
-                <div key={f} className="flex items-baseline gap-6 py-4 md:py-5 border-b border-brand-navy/10">
-                  <span className="w-6 shrink-0 text-[11px] font-semibold tracking-[0.15em] text-brand-coral tabular-nums">
+                <div key={f} className="flex items-baseline gap-6 py-4 md:py-5 border-b border-white/15">
+                  <span className="w-6 shrink-0 text-[11px] font-semibold tracking-[0.15em] text-brand-mint tabular-nums">
                     {String(i + 1).padStart(2, '0')}
                   </span>
-                  <p className="text-lg md:text-xl text-brand-navy/85">{f}</p>
+                  <p className="text-lg md:text-xl text-white/90">{f}</p>
                 </div>
               ))}
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
-              <p className="mt-10 font-display text-2xl md:text-3xl leading-snug text-brand-navy">
-                <span className="italic">No has perdido la capacidad.</span>
+              <p className="mt-10 font-display text-2xl md:text-3xl leading-snug text-white">
+                <span className="italic text-brand-amber">No has perdido la capacidad.</span>
                 <br />
                 Solo necesitas reencontrarte<Dot />
               </p>
@@ -304,13 +316,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. QUIÉN ES CATA AYALA */}
+      {/* 3. QUIÉN ES CATA AYALA — Sunset Sand */}
       <section id="quien-es" className="relative bg-linen-sand py-24 md:py-36">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 lg:gap-20 items-start">
           <ScrollReveal className="lg:col-span-6">
             <Eyebrow align="left">Quién es Cata Ayala</Eyebrow>
             <h2 className={`${sectionTitle} mt-6`}>
-              Estructura corporativa, <span className="italic">alma de madre</span><Dot />
+              Estructura corporativa, <span className="italic text-brand-coral">alma de madre</span><Dot />
             </h2>
             <p className="mt-8 text-xl md:text-2xl font-light text-brand-navy leading-snug">
               Lejos del espacio saturado del “life coaching genérico”, Cata trae a la mesa <strong className="font-semibold">más de 17 años de liderazgo en marketing</strong>.
@@ -318,39 +330,41 @@ export default function Home() {
             <p className={`mt-5 ${bodyText}`}>
               Junto con formación de alto rendimiento y un Máster en Comunicación Estratégica. Todo esto se fusiona con una feroz resiliencia humana. Es el equilibrio perfecto entre la estructura corporativa implacable y el acompañamiento empático genuino.
             </p>
-            <div className="mt-10 pt-10 border-t border-brand-navy/10 space-y-5">
+            <div className="mt-10 pt-10 border-t border-brand-navy/15 space-y-5">
               <p className={bodyText}>Durante años ayudé a construir, crecer y conectar marcas con las audiencias. Después entendí que la marca más importante era la vida de cada persona.</p>
               <p className={bodyText}>Soy administradora, tengo una maestría en comunicación. Soy Trainer Dale Carnegie y Coach.</p>
               <p className={bodyText}>Soy mamá de tres hijos —uno de 4 años y gemelos de 2 años—. Un sueño hecho realidad, luego de una pérdida y de escuchar a médicos decirme que no podía ser mamá.</p>
               <p className={bodyText}>Sobre todo, soy una persona profundamente convencida de que todos tenemos más potencial de lo que imaginamos. A veces nos dejamos convencer de las creencias que permitimos establecernos y olvidamos quiénes somos y lo que queremos.</p>
             </div>
-            <div className="mt-10">
-              <p className="font-serif italic font-medium text-3xl md:text-4xl text-brand-navy">“La actitud es una decisión.”</p>
-              <p className="mt-3 text-[11px] font-semibold tracking-[0.28em] uppercase text-brand-navy/50">— Cata Ayala</p>
+            <div className="mt-10 flex items-start gap-5">
+              <span className="mt-2 h-12 w-1 rounded-full bg-brand-amber shrink-0" aria-hidden />
+              <div>
+                <p className="font-serif italic font-medium text-3xl md:text-4xl text-brand-navy">“La actitud es una decisión.”</p>
+                <p className="mt-3 text-[11px] font-semibold tracking-[0.28em] uppercase text-brand-navy/55">— Cata Ayala</p>
+              </div>
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.15} yOffset={60} className="lg:col-span-6">
-            <div className="relative w-full aspect-square bg-gradient-to-br from-brand-cream to-brand-sand rounded-[2.5rem] overflow-hidden group border border-brand-navy/10 shadow-card hover:shadow-card-hover transition-shadow duration-500">
+            <div className="relative w-full aspect-square bg-brand-navy rounded-[2.5rem] overflow-hidden group shadow-card hover:shadow-card-hover transition-shadow duration-500">
+              <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 30% 20%, rgba(255,145,0,0.28) 0%, transparent 55%), radial-gradient(circle at 80% 90%, rgba(48,213,200,0.22) 0%, transparent 55%)' }} />
               <div className="absolute w-[52%] aspect-[4/3] left-4 md:left-8 top-6 md:top-8 rounded-2xl shadow-2xl transition-all duration-700 group-hover:-rotate-12 group-hover:-translate-x-4 group-hover:-translate-y-2 bg-white -rotate-[8deg]">
                 <Image src="/diplomas/master-comunicacion-cert.jpg" alt="Máster en Comunicación Estratégica" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-contain p-3" />
-                <div className="absolute inset-0 border border-black/5 rounded-2xl pointer-events-none" />
               </div>
               <div className="absolute w-[58%] aspect-[4/3] right-4 md:right-10 top-14 md:top-16 rounded-2xl shadow-2xl transition-all duration-700 group-hover:rotate-6 group-hover:translate-x-6 group-hover:-translate-y-4 z-10 bg-white">
                 <Image src="/diplomas/dna-cert.png" alt="Certificación DNA" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-contain p-3" />
-                <div className="absolute inset-0 border border-black/5 rounded-2xl pointer-events-none" />
               </div>
               <div className="absolute w-[62%] aspect-[4/3] left-1/2 -translate-x-1/2 bottom-6 md:bottom-8 rounded-2xl shadow-2xl transition-all duration-700 group-hover:-rotate-3 group-hover:translate-y-2 z-20 bg-white rotate-[3deg]">
                 <Image src="/diplomas/coaching-cert.png" alt="Maestría en Coaching" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-contain p-3" />
-                <div className="absolute inset-0 border border-black/5 rounded-2xl pointer-events-none" />
               </div>
             </div>
 
-            <dl className="mt-8 grid grid-cols-2 border-t border-l border-brand-navy/10">
+            <dl className="mt-6 grid grid-cols-2 gap-3 md:gap-4">
               {CREDENTIALS.map((c) => (
-                <div key={c.label} className="border-b border-r border-brand-navy/10 p-5 md:p-7">
+                <div key={c.label} className="relative bg-white rounded-2xl p-5 md:p-6 shadow-card overflow-hidden">
+                  <span className={`absolute top-0 left-0 right-0 h-1 ${c.bar}`} aria-hidden />
                   <dt className="font-display lining-nums text-3xl md:text-4xl text-brand-navy">{c.value}</dt>
-                  <dd className="mt-2 text-xs md:text-[13px] text-brand-navy/60 leading-snug">{c.label}</dd>
+                  <dd className="mt-2 text-xs md:text-[13px] text-brand-navy/65 leading-snug">{c.label}</dd>
                 </div>
               ))}
             </dl>
@@ -358,43 +372,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. FILOSOFÍA — navy + oro (hot stamping) */}
+      {/* 4. FILOSOFÍA — Navy + "Sunset Coral & Gold" */}
       <section data-nav-theme="dark" className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-brand-navy py-28">
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at center, rgba(227,181,101,0.16) 0%, transparent 60%)' }} />
+        <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at 50% 55%, rgba(255,145,0,0.20) 0%, rgba(255,94,54,0.08) 35%, transparent 65%)' }} />
         <Image
           src="/logo-icon.png"
           alt=""
           width={352}
           height={352}
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] max-w-[920px] opacity-[0.05]"
+          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] max-w-[920px] opacity-[0.06]"
         />
         <ScrollReveal className="relative z-10 text-center px-6 max-w-6xl mx-auto">
-          <Eyebrow tone="gold">Mi filosofía</Eyebrow>
+          <Eyebrow tone="mint">Mi filosofía</Eyebrow>
           <h2 className="mt-10 font-serif italic font-semibold text-5xl md:text-7xl lg:text-8xl leading-[1.05] pb-2">
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#F3D9A4] to-brand-gold">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-amber via-[#FF7A1C] to-brand-coral">
               “No te doy respuestas.<br />Te ayudo a descubrir las tuyas.”
             </span>
           </h2>
-          <div className="mx-auto mt-10 h-px w-16 bg-brand-gold/50" />
-          <p className="mt-6 text-[11px] font-semibold tracking-[0.3em] uppercase text-brand-cream/60">Cata Ayala</p>
+          <div className="mx-auto mt-10 flex items-center justify-center gap-2" aria-hidden>
+            <span className="h-1.5 w-8 rounded-full bg-brand-coral" />
+            <span className="h-1.5 w-8 rounded-full bg-brand-amber" />
+            <span className="h-1.5 w-8 rounded-full bg-brand-mint" />
+          </div>
+          <p className="mt-6 text-[11px] font-semibold tracking-[0.3em] uppercase text-white/60">Cata Ayala</p>
         </ScrollReveal>
       </section>
 
-      {/* 5. METODOLOGÍA VIDA */}
+      {/* 5. METODOLOGÍA VIDA — un color de la paleta por paso */}
       <section id="metodologia" className="relative overflow-hidden py-24 md:py-36 bg-linen-cream">
-        <div
-          className="absolute top-[10%] left-1/2 -translate-x-1/2 w-[60%] aspect-square rounded-full blur-3xl pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(227,181,101,0.22) 0%, transparent 70%)' }}
-        />
-        <div
-          className="absolute bottom-0 right-0 w-[45%] aspect-square rounded-full blur-3xl pointer-events-none"
-          style={{ background: 'radial-gradient(circle, rgba(255,94,54,0.08) 0%, transparent 70%)' }}
-        />
         <div className="relative max-w-6xl mx-auto px-6">
           <ScrollReveal className="text-center">
             <Eyebrow>Metodología</Eyebrow>
-            <h2 className="mt-6 font-display font-medium text-brand-navy text-7xl md:text-9xl tracking-[0.08em] leading-none">VIDA</h2>
+            <h2 className="mt-6 font-display font-medium text-brand-navy text-7xl md:text-9xl tracking-[0.08em] leading-none">
+              <span className="text-brand-mint">V</span><span className="text-brand-amber">I</span><span className="text-brand-navy">D</span><span className="text-brand-coral">A</span>
+            </h2>
             <p className={`mt-6 max-w-xl mx-auto ${leadText}`}>
               Cuatro pasos para vivir con propósito, criterio y una actitud al 101%.
             </p>
@@ -406,29 +418,29 @@ export default function Home() {
                 key={step.letter}
                 whileHover={{ y: -10, scale: 1.03 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                className={`group relative ${cardBase} p-5 sm:p-8 flex flex-col overflow-hidden cursor-default transition-shadow duration-300 hover:shadow-card-hover hover:border-brand-coral/30 h-full min-h-[190px] sm:min-h-[240px] justify-between`}
+                className={`group relative rounded-3xl shadow-card p-5 sm:p-8 flex flex-col overflow-hidden cursor-default transition-shadow duration-300 hover:shadow-card-hover h-full min-h-[190px] sm:min-h-[260px] justify-between ${step.card}`}
               >
                 {/* Glow on hover */}
                 <div
                   className="absolute -top-10 -right-10 w-32 h-32 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{ background: 'radial-gradient(circle, rgba(255,94,54,0.22) 0%, transparent 70%)' }}
+                  style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.45) 0%, transparent 70%)' }}
                 />
-                <span className="relative text-[11px] font-semibold tracking-[0.2em] text-brand-coral tabular-nums">
+                <span className={`relative text-[11px] font-semibold tracking-[0.2em] tabular-nums ${step.num}`}>
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <span className="relative font-display font-medium text-5xl sm:text-6xl text-brand-navy transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 origin-left">
+                <span className="relative font-display font-medium text-5xl sm:text-7xl transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 origin-left">
                   {step.letter}
                 </span>
-                <p className="relative text-[15px] sm:text-lg font-medium text-brand-navy leading-snug">{step.title}</p>
+                <p className="relative text-[15px] sm:text-lg font-semibold leading-snug">{step.title}</p>
                 {/* Animated bottom line */}
-                <span className="absolute bottom-0 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-500 ease-out bg-brand-coral" />
+                <span className={`absolute bottom-0 left-0 h-[3px] w-0 group-hover:w-full transition-all duration-500 ease-out ${step.line}`} />
               </motion.div>
             ))}
           </ScrollReveal>
         </div>
       </section>
 
-      {/* 6. SERVICIOS */}
+      {/* 6. SERVICIOS — cada servicio con el color que corresponde a su significado */}
       <section id="servicios" className="py-24 md:py-36 bg-linen-sand">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollReveal className="text-center">
@@ -439,127 +451,136 @@ export default function Home() {
           </ScrollReveal>
 
           <div className="mt-16 md:mt-20 grid md:grid-cols-2 gap-6 md:gap-8">
-            {SERVICES.map((service, i) => (
-              <ScrollReveal
-                key={service.title}
-                yOffset={60}
-                className={`${cardBase} p-8 md:p-12 hover:shadow-card-hover transition-shadow duration-500 flex flex-col`}
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-semibold tracking-[0.2em] text-brand-coral tabular-nums">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span className="text-[10px] font-semibold tracking-[0.28em] uppercase text-brand-navy/45">{service.tag}</span>
-                </div>
-                <h3 className="mt-8 font-display font-medium text-3xl md:text-4xl leading-tight">{service.title}</h3>
-                <p className="mt-3 text-[15px] font-medium text-brand-navy/80">{service.subtitle}</p>
-                <p className="mt-6 font-serif italic text-xl md:text-2xl text-brand-navy/85 leading-snug">{service.lead}</p>
-                <p className={`mt-5 ${bodyText}`}>{service.body}</p>
-
-                <p className="mt-8 mb-4 text-[11px] font-semibold tracking-[0.28em] uppercase text-brand-navy/50">Ideal si</p>
-                <ul className="space-y-3">
-                  {service.bullets.map((b) => (
-                    <li key={b} className={`flex gap-3 ${bodyText}`}>
-                      <span className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full bg-brand-coral" aria-hidden />
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-auto pt-8">
-                  <div className="border-l-2 border-brand-coral bg-brand-cream/80 rounded-r-2xl px-6 py-5">
-                    <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-brand-navy/50 mb-2">Objetivo del proceso</p>
-                    <p className="text-[15px] md:text-base text-brand-navy/85 leading-relaxed">{service.objective}</p>
+            {SERVICES.map((service, i) => {
+              const a = ACCENTS[service.accent];
+              return (
+                <ScrollReveal
+                  key={service.title}
+                  yOffset={60}
+                  className="relative bg-white rounded-3xl shadow-card overflow-hidden p-8 md:p-12 hover:shadow-card-hover transition-shadow duration-500 flex flex-col"
+                >
+                  <span className={`absolute top-0 left-0 right-0 h-1.5 ${a.bg}`} aria-hidden />
+                  <div className="flex items-center justify-between">
+                    <span className={`w-11 h-11 rounded-full flex items-center justify-center font-display lining-nums text-lg ${a.badge}`}>
+                      {i + 1}
+                    </span>
+                    <span className={`rounded-full px-3.5 py-1.5 text-[10px] font-semibold tracking-[0.22em] uppercase ${a.pill}`}>{service.tag}</span>
                   </div>
-                  {service.quote && (
-                    <p className="mt-6 pl-6 border-l border-brand-gold font-serif italic text-lg text-brand-navy/65 leading-snug">{service.quote}</p>
-                  )}
-                </div>
-              </ScrollReveal>
-            ))}
+                  <h3 className="mt-8 font-display font-medium text-3xl md:text-4xl leading-tight">{service.title}</h3>
+                  <p className="mt-3 text-[15px] font-medium text-brand-navy/80">{service.subtitle}</p>
+                  <p className="mt-6 font-serif italic text-xl md:text-2xl text-brand-navy/85 leading-snug">{service.lead}</p>
+                  <p className={`mt-5 ${bodyText}`}>{service.body}</p>
+
+                  <p className="mt-8 mb-4 text-[11px] font-semibold tracking-[0.28em] uppercase text-brand-navy/55">Ideal si</p>
+                  <ul className="space-y-3">
+                    {service.bullets.map((b) => (
+                      <li key={b} className={`flex gap-3 ${bodyText}`}>
+                        <span className={`mt-[0.55em] h-2 w-2 shrink-0 rounded-full ${a.bg}`} aria-hidden />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-auto pt-8">
+                    <div className={`rounded-2xl px-6 py-5 ${a.soft}`}>
+                      <p className="text-[11px] font-semibold tracking-[0.28em] uppercase text-brand-navy/60 mb-2">Objetivo del proceso</p>
+                      <p className="text-[15px] md:text-base text-brand-navy leading-relaxed">{service.objective}</p>
+                    </div>
+                    {service.quote && (
+                      <p className={`mt-6 pl-6 border-l-2 ${a.border} font-serif italic text-lg text-brand-navy/70 leading-snug`}>{service.quote}</p>
+                    )}
+                  </div>
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* 7. RESULTADOS */}
-      <section id="resultados" className="py-24 md:py-36 bg-linen-cream">
-        <div className="max-w-6xl mx-auto px-6">
+      {/* 7. RESULTADOS — Verde Menta */}
+      <section id="resultados" className="relative py-24 md:py-36 bg-brand-mint overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(circle at 15% 10%, rgba(255,255,255,0.35) 0%, transparent 45%)' }} />
+        <div className="relative max-w-6xl mx-auto px-6">
           <ScrollReveal className="text-center">
-            <Eyebrow>Algunos resultados</Eyebrow>
+            <Eyebrow tone="navy">Algunos resultados</Eyebrow>
             <h2 className="mt-6 font-display font-medium text-brand-navy text-3xl sm:text-4xl md:text-5xl leading-[1.15] tracking-tight max-w-4xl mx-auto">
               “Necesitamos criterio para saber elegir y <span className="italic">carácter para mantenerlo</span>.”
             </h2>
           </ScrollReveal>
 
           <ScrollReveal delay={0.15} yOffset={40} staggerChildren={0.1} itemClassName="h-full" className="mt-16 grid md:grid-cols-2 gap-6 md:gap-8">
-            {TESTIMONIALS.map((quote) => (
-              <figure key={quote.slice(0, 20)} className={`h-full ${cardBase} p-8 md:p-12 flex flex-col`}>
-                <span aria-hidden className="font-display text-7xl leading-none text-brand-gold">“</span>
-                <blockquote className="-mt-4 font-serif italic text-xl md:text-[1.4rem] text-brand-navy/85 leading-relaxed">
+            {TESTIMONIALS.map((quote, i) => (
+              <figure key={quote.slice(0, 20)} className="h-full bg-white rounded-3xl shadow-card p-8 md:p-12 flex flex-col">
+                <span aria-hidden className={`font-display text-7xl leading-none ${i === 0 ? 'text-brand-coral' : 'text-brand-amber'}`}>“</span>
+                <blockquote className="-mt-4 font-serif italic text-xl md:text-[1.4rem] text-brand-navy leading-relaxed">
                   {quote}
                 </blockquote>
-                <span className="mt-8 h-px w-10 bg-brand-coral" aria-hidden />
+                <span className={`mt-8 h-1 w-12 rounded-full ${i === 0 ? 'bg-brand-coral' : 'bg-brand-amber'}`} aria-hidden />
               </figure>
             ))}
           </ScrollReveal>
         </div>
       </section>
 
-      {/* 8. RECURSOS GRATUITOS */}
-      <section id="recursos" className="py-24 md:py-36 bg-linen-sand">
-        <div className="max-w-6xl mx-auto px-6">
+      {/* 8. RECURSOS GRATUITOS — Navy */}
+      <section id="recursos" data-nav-theme="dark" className="relative py-24 md:py-36 bg-brand-navy text-white overflow-hidden">
+        <div className="absolute -top-32 right-0 w-[560px] h-[560px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(48,213,200,0.14) 0%, transparent 65%)' }} />
+        <div className="relative max-w-6xl mx-auto px-6">
           <ScrollReveal className="text-center">
-            <Eyebrow>Recursos gratuitos</Eyebrow>
-            <h2 className={`${sectionTitle} mt-6`}>
-              Para que empieces <span className="italic">hoy mismo</span><Dot />
+            <Eyebrow tone="amber">Recursos gratuitos</Eyebrow>
+            <h2 className="mt-6 font-display font-medium text-white text-4xl sm:text-5xl md:text-6xl leading-[1.08] tracking-tight">
+              Para que empieces <span className="italic text-brand-amber">hoy mismo</span><Dot />
             </h2>
           </ScrollReveal>
 
           <ScrollReveal yOffset={40} staggerChildren={0.1} itemClassName="h-full" className="mt-16 md:mt-20 grid md:grid-cols-3 gap-5 md:gap-6">
-            {RESOURCES.map((res) => (
-              <a
-                key={res.title}
-                href={res.file}
-                download
-                className={`group h-full ${cardBase} p-8 md:p-10 hover:shadow-card-hover transition-shadow duration-500 flex flex-col`}
-              >
-                <div className="flex items-center justify-between mb-10">
-                  <span className="w-12 h-12 rounded-full border border-brand-navy/15 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Download className="w-5 h-5 text-brand-navy" strokeWidth={1.5} />
+            {RESOURCES.map((res, i) => {
+              const icon = ['bg-brand-mint text-brand-navy', 'bg-brand-amber text-brand-navy', 'bg-brand-coral text-white'][i];
+              return (
+                <a
+                  key={res.title}
+                  href={res.file}
+                  download
+                  className="group h-full rounded-3xl p-8 md:p-10 bg-white/[0.05] border border-white/10 hover:bg-white/[0.09] hover:border-white/25 transition-colors duration-500 flex flex-col"
+                >
+                  <div className="flex items-center justify-between mb-10">
+                    <span className={`w-12 h-12 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform ${icon}`}>
+                      <Download className="w-5 h-5" strokeWidth={1.75} />
+                    </span>
+                    <span className="text-[10px] font-semibold tracking-[0.28em] uppercase text-white/50">PDF gratuito</span>
+                  </div>
+                  <h3 className="font-display font-medium text-2xl leading-snug text-white">{res.title}</h3>
+                  <p className="mt-4 mb-8 text-[15px] md:text-base text-white/70 leading-relaxed">{res.desc}</p>
+                  <span className="mt-auto inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-brand-mint">
+                    Descargar <ArrowRight className="w-4 h-4" strokeWidth={2} />
                   </span>
-                  <span className="text-[10px] font-semibold tracking-[0.28em] uppercase text-brand-navy/45">PDF gratuito</span>
-                </div>
-                <h3 className="font-display font-medium text-2xl leading-snug">{res.title}</h3>
-                <p className={`mt-4 mb-8 ${bodyText}`}>{res.desc}</p>
-                <span className="mt-auto inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-brand-coral">
-                  Descargar <ArrowRight className="w-4 h-4" strokeWidth={2} />
-                </span>
-              </a>
-            ))}
+                </a>
+              );
+            })}
           </ScrollReveal>
         </div>
       </section>
 
-      {/* 9. AGENDA */}
-      <div className="bg-linen-cream">
+      {/* 9. AGENDA — Sunset Sand */}
+      <div className="bg-linen-sand">
         <ScrollReveal className="max-w-3xl mx-auto px-6 pt-24 md:pt-36">
           <div className="text-center">
             <Eyebrow>Antes de empezar</Eyebrow>
             <h2 className={`${sectionTitle} mt-6`}>
-              Tal vez hoy solo necesites una <span className="italic">conversación</span><Dot />
+              Tal vez hoy solo necesites una <span className="italic text-brand-coral">conversación</span><Dot />
             </h2>
           </div>
           <div ref={stepsRef} className="mt-14 md:mt-16 flex flex-col">
             {steps.map((step, i) => (
               <React.Fragment key={step.n}>
                 {i > 0 && (
-                  <motion.div style={{ opacity: connectorOpacity[i - 1] }} className="ml-[21px] md:ml-[23px] h-8 w-px bg-brand-navy/20" />
+                  <motion.div style={{ opacity: connectorOpacity[i - 1] }} className="ml-[21px] md:ml-[23px] h-8 w-px bg-brand-navy/25" />
                 )}
                 <motion.div style={step.style} className="flex gap-5 md:gap-7">
-                  <span className="mt-1 w-11 h-11 md:w-12 md:h-12 shrink-0 rounded-full border border-brand-navy/20 bg-brand-cream flex items-center justify-center font-display lining-nums text-lg text-brand-navy">
+                  <span className={`mt-1 w-11 h-11 md:w-12 md:h-12 shrink-0 rounded-full flex items-center justify-center font-display lining-nums text-lg ${step.badge}`}>
                     {step.n}
                   </span>
-                  <div className={`flex-1 ${cardBase} p-7 md:p-9`}>
+                  <div className="flex-1 bg-white rounded-3xl shadow-card p-7 md:p-9">
                     <h3 className="font-display font-medium text-xl md:text-2xl">{step.title}</h3>
                     <p className={`mt-3 ${bodyText}`}>{step.text}</p>
                   </div>

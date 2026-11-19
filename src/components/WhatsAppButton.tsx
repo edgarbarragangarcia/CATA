@@ -45,8 +45,8 @@ export const WhatsAppButton: React.FC = () => {
       icon: Mail,
       href: `mailto:${EMAIL}`,
       target: '_self',
-      bgColor: 'bg-brand-navy',
-      hoverColor: 'hover:brightness-125',
+      bgColor: 'bg-brand-amber',
+      hoverColor: 'hover:brightness-95',
     },
     {
       id: 'agenda',
@@ -131,9 +131,9 @@ export const WhatsAppButton: React.FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleMenu}
-              className="relative w-14 h-14 rounded-full flex items-center justify-center z-50 overflow-hidden border border-brand-cream/40"
+              className="relative w-14 h-14 rounded-full flex items-center justify-center z-50 overflow-hidden border-2 border-white/70"
               style={{
-                background: isOpen ? '#FF5E36' : '#0B2545', // brand-coral / brand-navy
+                background: isOpen ? '#0B2545' : '#30D5C8', // brand-navy / brand-mint (acento digital)
                 boxShadow: '0 12px 32px -10px rgba(11, 37, 69, 0.55)'
               }}
             >
@@ -156,7 +156,7 @@ export const WhatsAppButton: React.FC = () => {
                     exit={{ opacity: 0, rotate: -90, scale: 0.6 }}
                     transition={{ type: 'spring', stiffness: 260, damping: 20 }}
                   >
-                    <Contact className="text-white" size={24} />
+                    <Contact className="text-brand-navy" size={24} />
                   </motion.div>
                 )}
               </AnimatePresence>

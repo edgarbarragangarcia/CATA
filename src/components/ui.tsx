@@ -6,18 +6,22 @@ import { useBookingPopup } from '@/components/BookingPopupProvider';
 /*
  * Sistema visual de la marca (brand book Cata Ayala)
  * ─────────────────────────────────────────────────
- * Superficies claras: arena / crema con textura de lino. Tinta: navy.
- * Acento sobre claro: coral, solo en detalles (etiquetas, punto final,
- * marcadores, botón de acción). Sobre navy: oro.
+ * Paleta oficial combinada por significado:
+ *   Navy (autoridad) y Arena (fondo orgánico) estructuran las secciones.
+ *   Coral = acción · Ámbar = calidez/luz (el "gold" digital) · Menta = frescura.
+ * Sobre claro: texto navy. Sobre navy: blanco, ámbar y menta (como pide el
+ * brand book para entornos digitales: "Prussian Navy / Sunset Coral & Gold").
  * Títulos: Playfair Display · Citas: Cormorant Garamond · Texto: Montserrat.
  */
 
-type Tone = 'coral' | 'gold' | 'navy';
+type Tone = 'coral' | 'amber' | 'mint' | 'navy' | 'white';
 
 const toneClass: Record<Tone, string> = {
   coral: 'text-brand-coral',
-  gold: 'text-brand-gold',
-  navy: 'text-brand-navy/55',
+  amber: 'text-brand-amber',
+  mint: 'text-brand-mint',
+  navy: 'text-brand-navy/70',
+  white: 'text-white/70',
 };
 
 /** Etiqueta pequeña sobre los títulos de sección. */
