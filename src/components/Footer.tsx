@@ -86,7 +86,7 @@ export const Footer: React.FC = () => {
         <p className="text-[11px] tracking-[0.15em] uppercase text-brand-cream/40 text-center sm:text-left">
           © {new Date().getFullYear()} Cata Ayala · Todos los derechos reservados
         </p>
-        <p className="font-serif italic text-base text-brand-amber">El espíritu 101%</p>
+        <p className="font-serif italic lining-nums text-lg text-brand-amber">Gózate la vida, con actitud al 101%</p>
       </div>
     </footer>
   );
